@@ -1,0 +1,30 @@
+project:
+  name: gvpa-function-attribution
+  stage: M1
+
+data:
+  dataset_version: null
+  split_version: null
+  target_label: null
+  random_seed: 42
+
+features:
+  type: amino_acid_composition
+  kmer_k: 2
+
+model:
+  name: logistic_regression
+  class_weight: balanced
+
+evaluation:
+  primary_metric: macro_f1
+  metrics:
+    - macro_f1
+    - roc_auc
+    - pr_auc
+    - mcc
+
+reproducibility:
+  deterministic: true
+  save_predictions: true
+  save_config: true
