@@ -1,0 +1,212 @@
+{
+  "scope": "Four targeted fact checks; not a dataset or label feasibility count. Response hashes identify retrievals; full responses are not archived.",
+  "records": [
+    {
+      "source_url": "https://www.ebi.ac.uk/interpro/api/entry/pfam/PF01132/",
+      "retrieved_utc": "2026-09-09T07:15:07.498784+00:00",
+      "response_sha256": "71754fea5d84c6778b99d94404f3cdf7da89dc409c2e51ce4f03b2a3267c120f",
+      "response_headers": {
+        "Date": "Wed, 09 Sep 2026 07:15:07 GMT"
+      },
+      "extracted_facts": {
+        "accession": "PF01132",
+        "name": {
+          "name": "Elongation factor P (EF-P) OB domain",
+          "short": "EFP"
+        },
+        "type": "domain",
+        "integrated": "IPR001059",
+        "source_database": "pfam"
+      }
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/interpro/api/entry/pfam/PF00741/",
+      "retrieved_utc": "2026-09-09T07:15:08.817236+00:00",
+      "response_sha256": "094064b336ab239cf609df86bac5b25cc3ad373caa44cd1796ebd8a4bf4a4936",
+      "response_headers": {
+        "Date": "Wed, 09 Sep 2026 07:15:08 GMT"
+      },
+      "extracted_facts": {
+        "accession": "PF00741",
+        "name": {
+          "name": "Gas vesicle protein",
+          "short": "Gas_vesicle"
+        },
+        "type": "family",
+        "integrated": "IPR000638",
+        "source_database": "pfam",
+        "curated_description_mentions_gvpj": true
+      }
+    },
+    {
+      "source_url": "https://rest.uniprot.org/uniprotkb/P08958.json",
+      "retrieved_utc": "2026-09-09T07:15:09.688032+00:00",
+      "response_sha256": "7a343741964244f61e65c18b23a044d7b3eb0c4da48b303f9faf7f5feb1ab1cf",
+      "response_headers": {
+        "Date": "Wed, 09 Sep 2026 07:12:54 GMT",
+        "X-UniProt-Release": "2026_03",
+        "X-UniProt-Release-Date": "02-September-2026"
+      },
+      "extracted_facts": {
+        "accession": "P08958",
+        "entry_type": "UniProtKB reviewed (Swiss-Prot)",
+        "entry_audit": {
+          "firstPublicDate": "1988-08-01",
+          "lastAnnotationUpdateDate": "2026-09-02",
+          "lastSequenceUpdateDate": "2007-01-23",
+          "entryVersion": 139,
+          "sequenceVersion": 3
+        },
+        "function_evidences": [
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "12167531"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "1956294"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "21158390"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "2586485"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "28898511"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "33711860"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "Reference",
+            "id": "Ref.10"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "10894744"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "12167531"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "1398080"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "1404376"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "21542854"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "33281806"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "7651141"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "8002589"
+          },
+          {
+            "evidenceCode": "ECO:0000269",
+            "source": "PubMed",
+            "id": "8423144"
+          }
+        ],
+        "pfam_accessions": [
+          "PF00741"
+        ],
+        "selected_references": [
+          {
+            "pubmed": "12167531",
+            "title": "The sequence of the major gas vesicle protein, GvpA, influences the width and strength of halobacterial gas vesicles.",
+            "reference_positions": [
+              "FUNCTION",
+              "MUTAGENESIS OF GLY-8; VAL-29 AND ALA-73"
+            ]
+          },
+          {
+            "pubmed": "28898511",
+            "title": "Mutations in the major gas vesicle protein GvpA and impacts on gas vesicle formation in Haloferax volcanii.",
+            "reference_positions": [
+              "FUNCTION",
+              "DOMAIN",
+              "MUTAGENESIS OF ASP-5; ARG-15; LYS-19; GLY-20; ASP-24; ALA-27; ARG-28; GLY-33; GLU-40; HIS-53; TYR-54; GLU-57; LYS-60 AND ILE-61"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_url": "https://rest.uniprot.org/uniprotkb/A0A0B6AAV2.json",
+      "retrieved_utc": "2026-09-09T07:15:10.498322+00:00",
+      "response_sha256": "17007e20d4bdc4fe39a5fa0bcc5e0794aa82d945ccb55d6b9140700c5d8eb8a2",
+      "response_headers": {
+        "Date": "Wed, 09 Sep 2026 07:12:54 GMT",
+        "X-UniProt-Release": "2026_03",
+        "X-UniProt-Release-Date": "02-September-2026"
+      },
+      "extracted_facts": {
+        "accession": "A0A0B6AAV2",
+        "entry_type": "UniProtKB unreviewed (TrEMBL)",
+        "entry_audit": {
+          "firstPublicDate": "2015-04-01",
+          "lastAnnotationUpdateDate": "2026-09-02",
+          "lastSequenceUpdateDate": "2015-04-01",
+          "entryVersion": 45,
+          "sequenceVersion": 1
+        },
+        "function_evidences": [
+          {
+            "evidenceCode": "ECO:0000256",
+            "source": "HAMAP-Rule",
+            "id": "MF_00576"
+          },
+          {
+            "evidenceCode": "ECO:0000256",
+            "source": "RuleBase",
+            "id": "RU000632"
+          }
+        ],
+        "pfam_accessions": [
+          "PF00741"
+        ],
+        "selected_references": [
+          {
+            "pubmed": "36868215",
+            "title": "Cryo-EM structure of gas vesicles for buoyancy-controlled motility.",
+            "reference_positions": [
+              "STRUCTURE BY ELECTRON MICROSCOPY (3.20 ANGSTROMS)"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
