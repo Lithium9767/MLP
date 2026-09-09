@@ -1,7 +1,15 @@
 # 数据卡（未冻结）
 
+## 当前候选数据
+教师提供的 `design/data/GvpA.fasta` 已完成首轮结构审计，并可通过
+`preprocessing/prepare_gvpa_dataset.py` 转换为候选元数据。共 856 条 GvpA 序列，
+全部通过格式、残基、accession、物种字段和精确重复检查，长度为 60–100 aa。
+当前状态仍为 `candidate_not_frozen`，监督标签尚未提供；详见
+`reports/M1/teacher_data_audit.md`。`recognition` 八分类数据只保留为补充来源审计，
+不作为本项目的主预测任务。
+
 ## 数据来源
-TODO：核查 NCBI/UniProt 数据库、下载 URL、日期和版本。
+候选记录带有 NCBI Protein accession，但原始查询、下载日期、数据库版本和许可仍需核查。
 ## 预测目标
 TODO：明确可检验的功能属性，不以项目名称代替标签定义。
 ## 标签定义
@@ -11,13 +19,15 @@ TODO：逐条追溯到独立证据；不得以同一 Pfam 标注同时构造标�
 ## 标签证据等级
 TODO：由 B/C 定义分级规则及最低纳入等级；未核查的注释不自动视为实验事实。
 ## 纳入与排除规则
-TODO：序列有效性、长度、证据要求、缺失值处理；保留 exclusion_reason。
+候选版本保留 FASTA 中可解析、序列非空、残基合法且非精确重复的记录；所有排除原因写入
+`exclusion_reason`。当前 856 条均通过，长度范围沿用老师数据已有的 60–100 aa 筛选，
+原始筛选依据仍需追溯。
 ## 去冗余方法
-TODO：选择 CD-HIT 或 MMseqs2，记录版本、命令、阈值与聚类结果。
+已按 SHA-256 完成精确序列去重审计，未发现重复。相似序列聚类脚本已提供，待 MMseqs2 可用后执行。
 ## similarity-aware split
 按 similarity_cluster 分组划分，同簇不跨集合；比例、阈值、种子和工具版本 TODO。见 splits/README.md。
 ## 类别和物种分布
-TODO：原始、排除后和各划分的样本统计；当前没有实际数据规模。
+当前为 856 条未标注 GvpA 序列；物种字段无缺失。标签和划分分布须在监督标签与 split 确定后补充。
 ## 数据偏差
 TODO：物种不均衡、注释偏差、同源冗余、缺失证据与标签泄漏审计。
 ## 数据许可

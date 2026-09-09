@@ -25,3 +25,6 @@ wandb/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Teacher-provided reference projects and datasets (local only)
+/gv/
