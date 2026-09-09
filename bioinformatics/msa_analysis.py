@@ -25,6 +25,8 @@ SCORE_FIELDS = [
 
 def read_fasta(path, aligned=True):
     """First header token is the ID. Normalize case and '.' gaps; reject bad input."""
+    if aligned and Path(path).suffix.lower() == ".a3m":
+        raise ValueError("A3M has insertion semantics; use bioinformatics.workflow --format a3m")
     records = {}
     identifier = None
     for number, raw in enumerate(Path(path).read_text(encoding="utf-8-sig").splitlines(), 1):
@@ -42,6 +44,8 @@ def read_fasta(path, aligned=True):
         else:
             if identifier is None:
                 raise ValueError(f"line {number}: sequence before FASTA header")
+            if not line.isascii():
+                raise ValueError(f"{identifier}: invalid non-ASCII residues")
             records[identifier].append(line.upper().replace(".", "-"))
     sequences = {key: "".join(parts) for key, parts in records.items()}
     if not sequences:
@@ -98,7 +102,7 @@ def column_scores(alignment, min_canonical=2, min_fraction=0.5):
             n_ambiguous=n - canonical - gaps, n_gaps=gaps,
             gap_fraction=gaps / n, canonical_fraction=canonical / n,
             consensus=consensus, entropy_bits=entropy,
-            conservation=1 - entropy / math.log2(20) if entropy is not None else None,
+            conservation=max(0.0, min(1.0, 1 - entropy / math.log2(20))) if entropy is not None else None,
             sufficient_support=canonical >= min_canonical and canonical / n >= min_fraction,
         )
 

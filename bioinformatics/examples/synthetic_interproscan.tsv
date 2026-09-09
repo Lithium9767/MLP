@@ -1,0 +1,4 @@
+toy_1	0284212c57741068db8238d74bec1332	17	Pfam	PF00741	SYNTHETIC mock hit; not a biological annotation	1	4	1e-10	T	09-09-2026	-	-	-	-
+toy_1	0284212c57741068db8238d74bec1332	17	Pfam	PF00741.1	SYNTHETIC mock hit; not a biological annotation	4	16	1e-10	T	09-09-2026	-	-	-	-
+toy_2	e6c472673c1fbfb791c468e0e466bf7c	18	Pfam	PF00001	SYNTHETIC mock hit; not a biological annotation	1	3	1e-10	T	09-09-2026	-	-	-	-
+toy_3	b24a9474019f2413accbad569089f274	17	Gene3D	G3DSA:1.10.10.10	SYNTHETIC mock hit; not a biological annotation	2	5	1e-10	T	09-09-2026	-	-	-	-

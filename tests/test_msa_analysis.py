@@ -77,6 +77,17 @@ def test_fasta_normalization_and_wrapping(tmp_path):
         read_fasta(path, aligned=False)
 
 
+def test_rejects_a3m_as_plain_fasta_and_unicode_case_expansion(tmp_path):
+    a3m = tmp_path / "input.a3m"
+    a3m.write_text(">a\nAqC\n>b\nACq\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="A3M"):
+        read_fasta(a3m)
+    fasta = tmp_path / "input.fa"
+    fasta.write_text(">a\nA\u00dfC\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="non-ASCII"):
+        read_fasta(fasta)
+
+
 @pytest.mark.parametrize("originals,match", [({"other": "AC"}, "identifiers"), ({"a": "CA"}, "reconstruct")])
 def test_original_mismatch(originals, match):
     with pytest.raises(ValueError, match=match):

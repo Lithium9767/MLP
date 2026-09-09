@@ -1,0 +1,15 @@
+# SYNTHETIC fixture only; no GvpA sequence or biological result.
+>ss_pred synthetic secondary structure annotation
+CHHEC
+>ss_conf synthetic confidence annotation
+98765
+>sa_pred synthetic accessibility annotation
+12345
+>aa_cons synthetic annotation
+ACDEF
+>query synthetic sequence with internal match gap and terminal inserts
+mAC-d.eEFg
+>homolog_one synthetic shorter insertion, leading match gap
+.-CtDEF
+>homolog_two synthetic ambiguous insert and deleted match states
+A-qxDE-
