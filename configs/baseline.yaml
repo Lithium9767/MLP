@@ -1,6 +1,9 @@
 project:
   name: gvpa-function-attribution
   stage: M1
+  route: fallback_supervised_only
+  enabled: false
+  disabled_reason: no_discriminative_natural_gvpa_labels
 
 data:
   dataset_version: null

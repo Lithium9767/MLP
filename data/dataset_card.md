@@ -1,30 +1,61 @@
-# 数据卡（未冻结）
+# 数据卡（v0.2，待冻结）
 
-## 数据来源
-TODO：核查 NCBI/UniProt 数据库、下载 URL、日期和版本。
-## 预测目标
-TODO：明确可检验的功能属性，不以项目名称代替标签定义。
-## 标签定义
-TODO：类别边界、未知标签及正负样本口径。
-## 标签来源
-TODO：逐条追溯到独立证据；不得以同一 Pfam 标注同时构造标签和验证归因。
-## 标签证据等级
-TODO：由 B/C 定义分级规则及最低纳入等级；未核查的注释不自动视为实验事实。
-## 纳入与排除规则
-TODO：序列有效性、长度、证据要求、缺失值处理；保留 exclusion_reason。
-## 去冗余方法
-TODO：选择 CD-HIT 或 MMseqs2，记录版本、命令、阈值与聚类结果。
-## similarity-aware split
-按 similarity_cluster 分组划分，同簇不跨集合；比例、阈值、种子和工具版本 TODO。见 splits/README.md。
-## 类别和物种分布
-TODO：原始、排除后和各划分的样本统计；当前没有实际数据规模。
+## 数据对象
+
+主候选来自 `gv.zip` recognition JSON：2078条按完全一致序列合并的天然GvpA代表记录。该数字是候选集规模，不是质量控制后的主分析规模。
+
+## 研究目标
+
+无监督的GvpA潜在功能区域识别与多源验证。当前没有天然序列功能分类标签，不把数据库家族注释或未知值强制转换为正负类。
+
+## 标签调查
+
+- PF00741表示Gas vesicle protein family，只用于身份、同源坐标和区域验证；
+- PF01132是EF-P OB domain，不是GvpA家族；
+- NCBI/UniProt功能文本缺少足够的样本间差异；
+- 文献突变仅在候选区域冻结后作为外部证据。
+
+开发分支报告的2078/2078 PF00741、0/2078 PF01132和数据库覆盖数字必须独立复跑后才能冻结。
+
+## 最低元数据字段
+
+```text
+sequence_id
+accession
+sequence
+sequence_hash
+sequence_length
+organism
+description
+source_file
+is_partial
+valid_residues
+gvp_type_conflict
+homology_cluster
+analysis_cohort
+exclusion_reason
+```
+
+## 纳入与排除
+
+- 完全重复合并状态需复核并记录代表关系；
+- 非标准残基进入排除或单独敏感性队列；
+- partial和Gvp类型冲突先标记，不默认删除；
+- 每个排除样本保留明确原因；
+- 主分析、partial敏感性和类型冲突敏感性分别报告。
+
+## 发现与验证划分
+
+按MMseqs2/CD-HIT等同源簇划分discovery和validation，同簇不得跨集合。无监督研究也必须隔离候选发现和验证；候选区域、参数和阈值在discovery冻结后才可查看validation结果。
+
 ## 数据偏差
-TODO：物种不均衡、注释偏差、同源冗余、缺失证据与标签泄漏审计。
-## 数据许可
-TODO：核查各来源的使用及再分发条件；确认前不公开再分发数据。
-## 数据版本
-TODO：dataset_version、split_version、元数据校验哈希及变更说明。旧版本不覆盖。
-## 适用与不适用范围
-计划用于课程内功能属性预测和候选位点研究；具体适用标签待确认。不得把候选区域当作湿实验验证结论。
 
-元数据字段以 [README](README.md) 为准。冻结数据定义需 A/B/C 共同确认并关联 PR。
+需要检查长度、C端延伸、物种、partial状态、GvpA/GvpJ冲突和来源文件是否驱动聚类。UMAP图形不作为功能证据。
+
+## 数据来源与许可
+
+最终版本必须记录原始来源、查询/下载日期、数据库版本、许可和SHA-256。许可确认前不在公共仓库重新分发原始序列；Git只提交数据卡、小型清单、划分ID和可复现脚本。
+
+## 版本
+
+冻结时填写 `dataset_version`、`split_version`、输入哈希和变更记录。旧版本不得覆盖。
