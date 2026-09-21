@@ -25,3 +25,7 @@ wandb/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local pilot inputs and generated reports contain source records; review before sharing.
+data/pilot/
+results/pilot_pfam/

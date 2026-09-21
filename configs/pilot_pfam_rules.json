@@ -1,0 +1,15 @@
+{
+  "rule_version": "pf00741-pilot-v1",
+  "signature_database": "Pfam",
+  "signature_accession": "PF00741",
+  "method": "InterProScan5_native_Pfam_postprocessing_plus_conservative_review",
+  "max_sequence_evalue": 0.00001,
+  "max_domain_evalue": 0.00001,
+  "min_hit_length": 30,
+  "min_hmm_coverage": 0.5,
+  "missing_evalue_action": "needs_review",
+  "missing_hmm_coverage_action": "needs_review",
+  "partial_negative_action": "needs_review",
+  "coordinates": "1-based inclusive",
+  "notes": "These are preregistered pilot review rules, not official Pfam GA thresholds. Equality at evalue cutoff is sent to review. Sequence coverage is reported, not used to reject multi-domain proteins. Any uncertain PF00741 match leaves the sequence label blank, even alongside a clear match. No threshold changes based on desired labels."
+}

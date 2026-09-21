@@ -1,5 +1,16 @@
 # GvpA 功能预测与关键位点归因
 
+> M1 更新：EBI 官方条目核实 PF00741 为 Gas vesicle protein 家族，课程材料中的 PF01132 对应 EF-P OB 域。下文保留的课程编号需在正式方案中纠正。当前试标注目标签名固定为 **PF00741**，不等同于实测功能预测。
+
+## Pfam 试扫描准备（本地功能分支）
+
+已实现可复现的分层选样、本地 InterProScan 包装器、保守 XML 解析和标签统计。代码入口为 `scripts/pilot_pfam.py`，操作和固定规则见 [试扫描说明](bioinformatics/PILOT_PFAM.md)。本机未检测到可用扫描器，本轮为 **scan_not_run**；选中30/15/15条，尚未提交，60条标签为空。未训练模型、未上传序列。其余骨架章节中的“未实现”状态不涵盖本次新增的试标注流程。
+
+```bash
+python -m unittest discover -s tests -p test_pilot_pfam.py -v
+python scripts/pilot_pfam.py --help
+```
+
 ## 项目简介
 五人机器学习课程项目，仓库为 [Lithium9767/MLP](https://github.com/Lithium9767/MLP)。构建“预测 → 归因 → 生物学验证 → 候选区域发现”的证据链。
 
