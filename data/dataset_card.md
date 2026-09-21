@@ -23,6 +23,7 @@
 
 ```text
 sequence_id
+internal_id
 accession
 sequence
 sequence_hash
@@ -65,4 +66,4 @@ exclusion_reason
 
 ## 版本
 
-`dataset_version=gvpa-recognition-c7f6f005d717`。`split_version` 仍为 `pending_mmseqs2`；得到真实同源簇前不能开始正式discovery/validation比较。输入和输出哈希见 `results/data_audit/gvpa_v1_audit_summary.json`。
+`dataset_version=gvpa-recognition-c7f6f005d717`，`split_version=homology-8b9005e2d9-s42`。MMseqs2 15-6f452在80%序列一致性、80%覆盖度和 `cov-mode=1` 下得到478个簇。按簇分配后，discovery为1453条/335簇，validation为623条/143簇；primary队列对应1202条和519条。同簇跨集合为0。输入、输出和split哈希见 `results/data_audit/`。

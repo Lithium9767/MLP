@@ -38,20 +38,40 @@ def parse_ratios(value: str) -> dict[str, float]:
     return {name: ratio / total for name, ratio in result.items()}
 
 
-def read_eligible_ids(metadata_path: Path) -> set[str]:
+def read_eligible_ids(metadata_path: Path) -> dict[str, str]:
     with metadata_path.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
-        required = {"sequence_id", "sequence_qc_eligible"}
+        required = {"internal_id", "sequence_id", "sequence_qc_eligible"}
         if not reader.fieldnames or not required.issubset(reader.fieldnames):
             raise ValueError(f"Metadata must contain {sorted(required)}")
-        ids = {
-            row["sequence_id"].strip()
+        pairs = [
+            (row["internal_id"].strip(), row["sequence_id"].strip())
             for row in reader
             if row["sequence_qc_eligible"].strip().casefold() == "true"
-        }
-    if not ids or "" in ids:
+        ]
+    ids = dict(pairs)
+    if not ids or len(ids) != len(pairs) or "" in ids or any(not value for value in ids.values()):
         raise ValueError("No valid eligible sequence IDs found")
     return ids
+
+
+def read_eligible_details(metadata_path: Path) -> dict[str, dict[str, str]]:
+    with metadata_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        required = {
+            "internal_id", "sequence_id", "sequence_qc_eligible",
+            "primary_analysis_eligible", "analysis_cohort",
+        }
+        if not reader.fieldnames or not required.issubset(reader.fieldnames):
+            raise ValueError(f"Metadata must contain {sorted(required)}")
+        rows = [
+            row for row in reader
+            if row["sequence_qc_eligible"].strip().casefold() == "true"
+        ]
+    details = {row["internal_id"].strip(): row for row in rows}
+    if not details or len(details) != len(rows) or "" in details:
+        raise ValueError("Eligible metadata contains missing or duplicate internal IDs")
+    return details
 
 
 def read_clusters(path: Path, expected_ids: set[str]) -> dict[str, list[str]]:
@@ -107,6 +127,7 @@ def assign_clusters(clusters: dict[str, list[str]], ratios: dict[str, float], se
 def write_outputs(
     clusters: dict[str, list[str]],
     assignments: dict[str, str],
+    details: dict[str, dict[str, str]],
     metadata_path: Path,
     cluster_path: Path,
     ratios: dict[str, float],
@@ -116,22 +137,37 @@ def write_outputs(
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = output_dir / "split_manifest.csv"
     with manifest_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["sequence_id", "homology_cluster", "split"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "internal_id", "sequence_id", "analysis_cohort",
+                "primary_analysis_eligible", "homology_cluster", "split",
+            ],
+        )
         writer.writeheader()
         for representative in sorted(clusters):
             for member in clusters[representative]:
                 writer.writerow({
-                    "sequence_id": member,
+                    "internal_id": member,
+                    "sequence_id": details[member]["sequence_id"],
+                    "analysis_cohort": details[member]["analysis_cohort"],
+                    "primary_analysis_eligible": details[member]["primary_analysis_eligible"],
                     "homology_cluster": representative,
                     "split": assignments[representative],
                 })
 
     sequence_counts = Counter()
     cluster_counts = Counter()
+    primary_counts = Counter()
+    cohort_counts: dict[str, Counter[str]] = defaultdict(Counter)
     for representative, members in clusters.items():
         split = assignments[representative]
         sequence_counts[split] += len(members)
         cluster_counts[split] += 1
+        for member in members:
+            cohort_counts[split][details[member]["analysis_cohort"]] += 1
+            if details[member]["primary_analysis_eligible"].casefold() == "true":
+                primary_counts[split] += 1
     cluster_sha = sha256_file(cluster_path)
     summary = {
         "schema_version": "1.0",
@@ -141,6 +177,10 @@ def write_outputs(
         "target_ratios": ratios,
         "sequence_counts": dict(sequence_counts),
         "cluster_counts": dict(cluster_counts),
+        "primary_sequence_counts": dict(primary_counts),
+        "cohort_counts_by_split": {
+            split: dict(sorted(counts.items())) for split, counts in sorted(cohort_counts.items())
+        },
         "total_sequences": sum(sequence_counts.values()),
         "total_clusters": len(clusters),
         "metadata_sha256": sha256_file(metadata_path),
@@ -163,11 +203,12 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
-    expected_ids = read_eligible_ids(args.metadata)
-    clusters = read_clusters(args.clusters_tsv, expected_ids)
+    details = read_eligible_details(args.metadata)
+    clusters = read_clusters(args.clusters_tsv, set(details))
     assignments = assign_clusters(clusters, args.ratios, args.seed)
     summary = write_outputs(
-        clusters, assignments, args.metadata, args.clusters_tsv, args.ratios, args.seed, args.output_dir
+        clusters, assignments, details, args.metadata, args.clusters_tsv,
+        args.ratios, args.seed, args.output_dir
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

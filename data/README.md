@@ -14,6 +14,7 @@ python preprocessing/prepare_gvpa_dataset.py `
 
 ```text
 sequence_id
+internal_id
 accession
 database
 source_url
@@ -45,4 +46,6 @@ analysis_cohort
 exclusion_reason
 ```
 
-每条序列先删除空白并转为大写，再以UTF-8字节计算SHA-256。`sequence_qc_eligible` 用于同源聚类输入，`primary_analysis_eligible` 表示无partial、无类型冲突且通过序列质量检查。当前没有功能标签，缺失值不会转换为负例。真实同源簇和split仍等待MMseqs2。
+每条序列先删除空白并转为大写，再以UTF-8字节计算SHA-256。`internal_id` 是 `GVPA_000001` 格式的无歧义流水线ID，原始accession完整保存在 `sequence_id`；这可避免MMseqs2重写含 `|` 的UniProt ID。`sequence_qc_eligible` 用于同源聚类输入，`primary_analysis_eligible` 表示无partial、无类型冲突且通过序列质量检查。当前没有功能标签，缺失值不会转换为负例。
+
+当前split版本为 `homology-8b9005e2d9-s42`。逐条 `split_manifest.csv` 保存在本地处理目录；公共仓库只提交不含accession的汇总和哈希。

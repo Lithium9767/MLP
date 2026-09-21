@@ -8,7 +8,7 @@ data:
   source_archive: gv.zip
   source_member: gv/recognition/data/gvp/gvpa/GvpA_sequences.json
   dataset_version: gvpa-recognition-c7f6f005d717
-  split_version: pending_mmseqs2
+  split_version: homology-8b9005e2d9-s42
   random_seed: 42
   canonical_amino_acids_only: true
   homology_clustering:

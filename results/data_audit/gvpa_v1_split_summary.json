@@ -1,0 +1,42 @@
+{
+  "cluster_counts": {
+    "discovery": 335,
+    "validation": 143
+  },
+  "cluster_leakage": false,
+  "cohort_counts_by_split": {
+    "discovery": {
+      "primary": 1202,
+      "sensitivity_partial": 7,
+      "sensitivity_partial_and_type_conflict": 17,
+      "sensitivity_type_conflict": 227
+    },
+    "validation": {
+      "primary": 519,
+      "sensitivity_partial": 13,
+      "sensitivity_partial_and_type_conflict": 13,
+      "sensitivity_type_conflict": 78
+    }
+  },
+  "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+  "method": "whole-homology-cluster greedy allocation",
+  "mmseqs_cluster_tsv_sha256": "8b9005e2d9af130224189e1a3baecf3402675751dc14635ad28f435a09d851b6",
+  "primary_sequence_counts": {
+    "discovery": 1202,
+    "validation": 519
+  },
+  "schema_version": "1.0",
+  "seed": 42,
+  "sequence_counts": {
+    "discovery": 1453,
+    "validation": 623
+  },
+  "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+  "split_version": "homology-8b9005e2d9-s42",
+  "target_ratios": {
+    "discovery": 0.7,
+    "validation": 0.3
+  },
+  "total_clusters": 478,
+  "total_sequences": 2076
+}

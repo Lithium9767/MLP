@@ -16,9 +16,9 @@
   "nonstandard_sequence": 2,
   "organism_missing": 8,
   "output_sha256": {
-    "members.csv": "c6e04d1efe56e5d03e4113e0cd93f58e399c895d9bd5e4303cf54e55d1205f82",
-    "metadata.csv": "5cf4200e368721e3849467f76be309e988c5f77b959eb45dbd4d3c624da3cd80",
-    "sequences_for_clustering.fasta": "dea0331cd620bb9e440a3b5f50cf2c9cf1c7792844c7ae68e2847a227d725253"
+    "members.csv": "dd2444a83e39edd70b1dc2e8a9561e582504f50a7e6314a0463c53e6f832295e",
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "sequences_for_clustering.fasta": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122"
   },
   "partial_any_member": 50,
   "partial_representative": 17,
@@ -35,5 +35,6 @@
   "type_conflict": 335,
   "total_original_sequence_records": 17108,
   "unique_sequence_hashes": 2078,
+  "unique_internal_ids": 2078,
   "unique_sequence_ids": 2078
 }

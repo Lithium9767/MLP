@@ -27,8 +27,15 @@
 
 `partial` 必须匹配注释文本中的独立单词。来源文件 `GvpA_not_partial_merged.fasta` 中的字符串不能作为partial证据；这解释了早期简单字符串搜索产生的814/938误计数。
 
-## 当前边界
+## 同源划分
 
-数据审计已经可复现，但M2尚未完成。当前机器未检测到MMseqs2，WSL实例也无法启动，因此 `split_version=pending_mmseqs2`。正式ESM-2发现/验证实验必须等同源簇和split冻结后再运行。
+在WSL Ubuntu 24.04中使用MMseqs2 15-6f452，参数为 `--min-seq-id 0.8 -c 0.8 --cov-mode 1`。第一次运行暴露出MMseqs2会重写8个含 `|` 的UniProt FASTA ID，划分校验因此主动失败。流水线改用 `GVPA_000001` 格式内部ID后重新提取和聚类，原始accession继续保存在metadata中。
 
-生成命令、MMseqs2参数和划分命令见 `preprocessing/README.md`。完整计数与哈希见 `results/data_audit/gvpa_v1_audit_summary.json`。
+最终478个簇完整覆盖2076条序列，冻结 `split_version=homology-8b9005e2d9-s42`：
+
+| 集合 | 全部序列 | primary序列 | 同源簇 |
+| --- | ---: | ---: | ---: |
+| discovery | 1453 | 1202 | 335 |
+| validation | 623 | 519 | 143 |
+
+校验未发现未知ID、缺失ID、重复归属或同簇跨集合。生成命令见 `preprocessing/README.md`，运行参数及结果哈希见 `results/data_audit/`。M2的数据审计与同源划分已完成；PF00741/HMM坐标仍由C后续冻结。

@@ -21,7 +21,7 @@ CANONICAL_AA = frozenset("ACDEFGHIKLMNPQRSTVWY")
 PARTIAL_RE = re.compile(r"\bpartial\b", re.IGNORECASE)
 
 METADATA_FIELDS = [
-    "sequence_id", "accession", "sequence", "sequence_length", "sequence_sha256",
+    "internal_id", "sequence_id", "accession", "sequence", "sequence_length", "sequence_sha256",
     "organism", "description", "source_file", "representative_gene",
     "representative_gvp_types", "member_count", "redundant_member_count", "member_gvp_types",
     "is_partial_representative", "is_partial_any_member", "has_type_conflict",
@@ -31,7 +31,8 @@ METADATA_FIELDS = [
 ]
 
 MEMBER_FIELDS = [
-    "representative_id", "member_id", "organism", "description", "source_file",
+    "representative_internal_id", "representative_sequence_id", "member_id",
+    "organism", "description", "source_file",
     "gene", "gvp_types", "is_partial",
 ]
 
@@ -124,6 +125,7 @@ def build_rows(records: list[dict[str, Any]]) -> tuple[list[dict[str, str]], lis
             if field not in record:
                 raise ValueError(f"record {index} is missing required field {field}")
         sequence_id = str(record["unique_sequence_id"]).strip()
+        internal_id = f"GVPA_{index:06d}"
         sequence = re.sub(r"\s+", "", str(record["sequence"])).upper()
         representative = require_dict(record["representative_annotation"], f"record {index} representative_annotation")
         statistics_record = require_dict(record["cluster_statistics"], f"record {index} cluster_statistics")
@@ -182,6 +184,7 @@ def build_rows(records: list[dict[str, Any]]) -> tuple[list[dict[str, str]], lis
         eligible = not invalid and bool(sequence_id) and bool(sequence) and not duplicate_of
 
         rows.append({
+            "internal_id": internal_id,
             "sequence_id": sequence_id,
             "accession": str(representative.get("id", "")).strip(),
             "sequence": sequence,
@@ -213,7 +216,8 @@ def build_rows(records: list[dict[str, Any]]) -> tuple[list[dict[str, str]], lis
 
         for member in members:
             member_rows.append({
-                "representative_id": sequence_id,
+                "representative_internal_id": internal_id,
+                "representative_sequence_id": sequence_id,
                 "member_id": str(member.get("id", "")).strip(),
                 "organism": str(member.get("organism", "")).strip(),
                 "description": str(member.get("description", "")).strip(),
@@ -246,6 +250,7 @@ def build_rows(records: list[dict[str, Any]]) -> tuple[list[dict[str, str]], lis
         "total_original_sequence_records": sum(int(row["member_count"]) for row in rows),
         "redundant_member_records": len(member_rows),
         "unique_sequence_ids": len({row["sequence_id"] for row in rows}),
+        "unique_internal_ids": len({row["internal_id"] for row in rows}),
         "unique_sequence_hashes": len({row["sequence_sha256"] for row in rows}),
         "sequence_qc_eligible": sum(row["sequence_qc_eligible"] == "true" for row in rows),
         "primary_cohort": cohort_counts["primary"],
@@ -292,7 +297,7 @@ def write_outputs(rows: list[dict[str, str]], member_rows: list[dict[str, str]],
         for row in rows:
             if row["sequence_qc_eligible"] != "true":
                 continue
-            handle.write(f">{row['sequence_id']}\n")
+            handle.write(f">{row['internal_id']}\n")
             sequence = row["sequence"]
             for start in range(0, len(sequence), 80):
                 handle.write(sequence[start:start + 80] + "\n")

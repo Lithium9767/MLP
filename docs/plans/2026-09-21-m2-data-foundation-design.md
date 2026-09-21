@@ -37,6 +37,7 @@ sequences_for_clustering.fasta
 ## 质量规则
 
 - 规范序列为大写并删除空白；主分析只接受20种标准氨基酸。
+- 聚类FASTA使用 `GVPA_000001` 格式内部ID，原始accession保留在元数据中，防止外部工具截断含 `|` 的ID。
 - recognition JSON 的完全重复状态重新核验；重复记录保留审计信息，但不进入主分析 FASTA。
 - `partial` 同时检查代表注释和所有冗余成员注释。
 - 类型冲突检查所有成员的 `gvp_types`，任何非 `GvpA` 类型单独标记。
@@ -48,7 +49,7 @@ sequences_for_clustering.fasta
 
 MMseqs2 建议先以 `min-seq-id=0.8`、覆盖度 `0.8` 生成簇。划分脚本只接受完整且无重复归属的 cluster TSV；主分析中的每个 sequence ID 必须恰好出现一次。簇按大小优先、种子控制的稳定顺序分配至 discovery/validation，目标比例为70/30。同一簇绝不跨集合。
 
-由于当前 Windows 环境未检测到 MMseqs2，代码只冻结命令参数和消费 cluster TSV 的逻辑。没有真实 cluster TSV 时，split 状态必须保持 pending。
+Windows环境未提供原生MMseqs2，因此在WSL Ubuntu 24.04中安装官方apt包MMseqs2 15-6f452并运行。cluster TSV由Windows侧脚本严格校验后生成split；未提供真实cluster TSV时脚本仍会拒绝冻结划分。
 
 ## 验收
 

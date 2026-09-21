@@ -75,10 +75,10 @@ class PrepareDatasetTest(unittest.TestCase):
                 output,
             )
             fasta = (output / "sequences_for_clustering.fasta").read_text()
-            self.assertIn(">a", fasta)
-            self.assertIn(">b", fasta)
-            self.assertNotIn(">c", fasta)
-            self.assertNotIn(">d", fasta)
+            self.assertIn(">GVPA_000001", fasta)
+            self.assertIn(">GVPA_000002", fasta)
+            self.assertNotIn(">GVPA_000003", fasta)
+            self.assertNotIn(">GVPA_000004", fasta)
             self.assertEqual(completed["dataset_version"], "gvpa-recognition-111111111111")
 
     def test_loads_expected_zip_member(self):
@@ -101,9 +101,24 @@ class HomologySplitTest(unittest.TestCase):
     def _metadata(self, root: Path, ids=("a", "b", "c", "d")) -> Path:
         path = root / "metadata.csv"
         with path.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=["sequence_id", "sequence_qc_eligible"])
+            writer = csv.DictWriter(
+                handle,
+                fieldnames=[
+                    "internal_id", "sequence_id", "sequence_qc_eligible",
+                    "primary_analysis_eligible", "analysis_cohort",
+                ],
+            )
             writer.writeheader()
-            writer.writerows({"sequence_id": item, "sequence_qc_eligible": "true"} for item in ids)
+            writer.writerows(
+                {
+                    "internal_id": f"GVPA_{index:06d}",
+                    "sequence_id": item,
+                    "sequence_qc_eligible": "true",
+                    "primary_analysis_eligible": "true",
+                    "analysis_cohort": "primary",
+                }
+                for index, item in enumerate(ids, start=1)
+            )
         return path
 
     def test_whole_clusters_stay_together_and_are_deterministic(self):
@@ -118,13 +133,16 @@ class HomologySplitTest(unittest.TestCase):
     def test_cluster_coverage_and_duplicate_assignment_are_checked(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            expected = read_eligible_ids(self._metadata(root, ("a", "b")))
+            expected = set(read_eligible_ids(self._metadata(root, ("a", "b"))))
             missing = root / "missing.tsv"
-            missing.write_text("r1\ta\n", encoding="utf-8")
+            missing.write_text("r1\tGVPA_000001\n", encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "missing 1 eligible"):
                 read_clusters(missing, expected)
             duplicate = root / "duplicate.tsv"
-            duplicate.write_text("r1\ta\nr2\ta\nr2\tb\n", encoding="utf-8")
+            duplicate.write_text(
+                "r1\tGVPA_000001\nr2\tGVPA_000001\nr2\tGVPA_000002\n",
+                encoding="utf-8",
+            )
             with self.assertRaisesRegex(ValueError, "appears more than once"):
                 read_clusters(duplicate, expected)
 

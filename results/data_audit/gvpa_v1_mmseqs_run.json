@@ -1,0 +1,13 @@
+{
+  "coverage": 0.8,
+  "coverage_mode": 1,
+  "input_fasta_sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+  "input_sequences": 2076,
+  "min_sequence_identity": 0.8,
+  "mmseqs_cluster_tsv_sha256": "8b9005e2d9af130224189e1a3baecf3402675751dc14635ad28f435a09d851b6",
+  "mmseqs_version": "15-6f452",
+  "output_clusters": 478,
+  "platform": "WSL Ubuntu 24.04",
+  "status": "completed",
+  "threads": 4
+}
