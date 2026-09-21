@@ -42,7 +42,7 @@
 - **validation set：** 仅按冻结规则复现候选区域和统计量；
 - **sensitivity cohorts：** partial、类型冲突、主要物种组等。
 
-同源簇不能跨discovery和validation。若16–46、25–55来自论文或recognition既有工作，则它们直接登记为预先冻结的候选，只做验证，不再宣称本项目独立发现。
+同源簇不能跨discovery和validation。参考本科论文《基于生物大模型的气囊蛋白元件识别研究》已经在2078条GvpA数据上提出25–55和16–46，因此二者直接登记为预先冻结候选，只做验证，不再宣称本项目独立发现。论文方法、结果与项目增量见 [论文审计](thesis_method_audit.md)。
 
 ## 5. RQ1—RQ3
 
