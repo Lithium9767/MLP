@@ -1,0 +1,7 @@
+-r requirements.txt
+torch
+transformers
+tqdm
+pyhmmer
+hdbscan
+umap-learn
