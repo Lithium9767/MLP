@@ -1,8 +1,16 @@
 # 数据获取与字段规范
 
-当前没有已下载数据，采集脚本和共享存储地址 TODO。B 负责从经审核的 NCBI/UniProt 来源采集，C 核查许可与标签证据；下载时记录 URL、日期、版本和文件哈希。原始数据存入 data/raw/，只读、不覆盖；处理数据另建版本，位于 data/processed/，均不进入 Git。小型数据卡和划分 ID 可入库。
+当前输入为老师提供的 `gv.zip`，读取其中 `gv/recognition/data/gvp/gvpa/GvpA_sequences.json`。脚本直接读取ZIP成员，不修改或重新打包原文件。输入、成员和输出均记录SHA-256。逐条序列和成员关系位于 `data/processed/`，不进入Git；仓库只保留数据卡和不含序列的审计摘要。
 
-metadata.csv 的预定义字段如下，尚未创建真实样本表：
+运行：
+
+```powershell
+python preprocessing/prepare_gvpa_dataset.py `
+  --input-zip C:\path\to\gv.zip `
+  --output-dir data/processed/gvpa_v1
+```
+
+当前本地数据版本为 `gvpa-recognition-c7f6f005d717`。`metadata.csv` 的冻结字段包括：
 
 ```text
 sequence_id
@@ -12,21 +20,29 @@ source_url
 retrieval_date
 sequence
 sequence_length
-sequence_hash
-valid_residues
+sequence_sha256
 organism
-taxonomy_id
-lineage
-pfam_start
-pfam_end
-label
-label_definition
-label_source
-evidence_level
-duplicate_cluster
-similarity_cluster
-split
+description
+source_file
+representative_gene
+representative_gvp_types
+member_count
+redundant_member_count
+member_gvp_types
+is_partial_representative
+is_partial_any_member
+has_type_conflict
+has_gvpj_member
+source_missing
+organism_missing
+nonstandard_residues
+is_exact_duplicate
+exact_duplicate_of
+is_length_outlier
+sequence_qc_eligible
+primary_analysis_eligible
+analysis_cohort
 exclusion_reason
 ```
 
-sequence_hash 的规范化与哈希算法 TODO；标签证据等级及 Pfam 坐标基准由 B/C 冻结，不擅自填充。缺失或排除样本保留 exclusion_reason，不能把未知标签自动当负例。
+每条序列先删除空白并转为大写，再以UTF-8字节计算SHA-256。`sequence_qc_eligible` 用于同源聚类输入，`primary_analysis_eligible` 表示无partial、无类型冲突且通过序列质量检查。当前没有功能标签，缺失值不会转换为负例。真实同源簇和split仍等待MMseqs2。

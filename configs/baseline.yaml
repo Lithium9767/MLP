@@ -1,33 +1,63 @@
 project:
-  name: gvpa-function-attribution
-  stage: M1
-  route: fallback_supervised_only
-  enabled: false
-  disabled_reason: no_discriminative_natural_gvpa_labels
+  name: gvpa-region-attribution
+  stage: M2
+  route: unsupervised_region_validation
+  enabled: true
 
 data:
-  dataset_version: null
-  split_version: null
-  target_label: null
+  source_archive: gv.zip
+  source_member: gv/recognition/data/gvp/gvpa/GvpA_sequences.json
+  dataset_version: gvpa-recognition-c7f6f005d717
+  split_version: pending_mmseqs2
   random_seed: 42
+  canonical_amino_acids_only: true
+  homology_clustering:
+    tool: mmseqs2
+    min_sequence_identity: 0.8
+    coverage: 0.8
+    coverage_mode: 1
+  split_ratios:
+    discovery: 0.7
+    validation: 0.3
+
+regions:
+  coordinate_system: pf00741_hmm_match_state
+  window_length: 30
+  window_step: 5
+  preregistered_candidates:
+    - start: 16
+      end: 46
+      source: reference_thesis
+    - start: 25
+      end: 55
+      source: reference_thesis
 
 features:
-  type: amino_acid_composition
-  kmer_k: 2
+  model: facebook/esm2_t12_35M_UR50D
+  residue_dimension: 480
+  full_length_pooling: residue_mean_without_special_tokens
+  window_pooling: residue_mean
 
-model:
-  name: logistic_regression
-  class_weight: balanced
+clustering:
+  fit_split: discovery
+  validation_mode: frozen_transform_and_assignment
+  pca_dimensions:
+    - 20
+    - 50
+  method: hdbscan
+  umap_role: visualization_only
 
-evaluation:
-  primary_metric: macro_f1
-  metrics:
-    - macro_f1
-    - roc_auc
-    - pr_auc
-    - mcc
+evidence:
+  conservation: pf00741_hmm_and_mafft_sensitivity
+  structure_primary: pdb_7r1c
+  mutation_usage: post_freeze_validation_only
+  attribution:
+    primary: residue_mask_or_substitution
+    attention_role: sequence_dependency_supplement
+  random_baseline_required: true
 
 reproducibility:
-  deterministic: true
-  save_predictions: true
-  save_config: true
+  deterministic_where_supported: true
+  record_input_hashes: true
+  record_git_commit: true
+  save_failed_runs: true

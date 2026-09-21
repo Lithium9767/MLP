@@ -1,8 +1,10 @@
-# 数据卡（v0.2，待冻结）
+# 数据卡（v0.3，候选数据已审计）
 
 ## 数据对象
 
-主候选来自 `gv.zip` recognition JSON：2078条按完全一致序列合并的天然GvpA代表记录。该数字是候选集规模，不是质量控制后的主分析规模。
+主候选来自 `gv.zip` recognition JSON：2078条按完全一致序列合并的天然GvpA代表记录。数据版本为 `gvpa-recognition-c7f6f005d717`。重新核验得到2078个唯一序列ID和2078个唯一序列哈希。`cluster_statistics` 合计17108条原始记录，其中JSON另列出15030条冗余成员，二者满足 `17108 = 2078 + 15030`。
+
+通过基础序列质量检查、可进入同源聚类的记录为2076条；无partial注释和成员类型冲突的primary队列为1721条。两个含非标准残基 `X` 的序列不进入同源聚类。
 
 ## 研究目标
 
@@ -28,9 +30,11 @@ sequence_length
 organism
 description
 source_file
-is_partial
-valid_residues
-gvp_type_conflict
+is_partial_representative
+is_partial_any_member
+has_type_conflict
+sequence_qc_eligible
+primary_analysis_eligible
 homology_cluster
 analysis_cohort
 exclusion_reason
@@ -38,9 +42,12 @@ exclusion_reason
 
 ## 纳入与排除
 
-- 完全重复合并状态需复核并记录代表关系；
-- 非标准残基进入排除或单独敏感性队列；
-- partial和Gvp类型冲突先标记，不默认删除；
+- 已复核recognition JSON中不存在重复序列或重复序列ID；
+- 2条含非标准残基 `X` 的序列进入序列质量排除队列；
+- 代表注释含partial的有17条，任一原始成员注释含partial的代表簇有50个；
+- 含非GvpA成员类型的代表簇有335个，均包含GvpJ成员；
+- 来源缺失为0条，代表物种缺失为8条；
+- partial只匹配注释中的独立单词，不把来源文件名 `GvpA_not_partial_merged.fasta` 误判为partial；
 - 每个排除样本保留明确原因；
 - 主分析、partial敏感性和类型冲突敏感性分别报告。
 
@@ -58,4 +65,4 @@ exclusion_reason
 
 ## 版本
 
-冻结时填写 `dataset_version`、`split_version`、输入哈希和变更记录。旧版本不得覆盖。
+`dataset_version=gvpa-recognition-c7f6f005d717`。`split_version` 仍为 `pending_mmseqs2`；得到真实同源簇前不能开始正式discovery/validation比较。输入和输出哈希见 `results/data_audit/gvpa_v1_audit_summary.json`。

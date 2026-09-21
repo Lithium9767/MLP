@@ -1,0 +1,39 @@
+{
+  "candidate_records": 2078,
+  "cohort_counts": {
+    "excluded_sequence_qc": 2,
+    "primary": 1721,
+    "sensitivity_partial": 20,
+    "sensitivity_partial_and_type_conflict": 30,
+    "sensitivity_type_conflict": 305
+  },
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "exact_duplicate_sequence": 0,
+  "gvpj_member": 335,
+  "homology_split_status": "pending_mmseqs2",
+  "label_status": "unlabelled_no_function_classes",
+  "redundant_member_records": 15030,
+  "nonstandard_sequence": 2,
+  "organism_missing": 8,
+  "output_sha256": {
+    "members.csv": "c6e04d1efe56e5d03e4113e0cd93f58e399c895d9bd5e4303cf54e55d1205f82",
+    "metadata.csv": "5cf4200e368721e3849467f76be309e988c5f77b959eb45dbd4d3c624da3cd80",
+    "sequences_for_clustering.fasta": "dea0331cd620bb9e440a3b5f50cf2c9cf1c7792844c7ae68e2847a227d725253"
+  },
+  "partial_any_member": 50,
+  "partial_representative": 17,
+  "primary_cohort": 1721,
+  "sequence_qc_eligible": 2076,
+  "source": {
+    "source_member": "gv/recognition/data/gvp/gvpa/GvpA_sequences.json",
+    "source_member_sha256": "c7f6f005d71719a540f7aa4743632f0ee6c03a63624fb4c138c76eae9062a4c1",
+    "source_member_size": 11672023,
+    "source_zip": "gv.zip",
+    "source_zip_sha256": "a22f120dad72010a6540e644f5af550efde5630a49f7e2af03edf535439d52a7"
+  },
+  "source_missing": 0,
+  "type_conflict": 335,
+  "total_original_sequence_records": 17108,
+  "unique_sequence_hashes": 2078,
+  "unique_sequence_ids": 2078
+}
