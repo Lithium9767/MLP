@@ -1,1 +1,2 @@
 experiment_id,owner,status,rq,dataset_version,split_version,config_path,seed,git_commit,metrics_path,artifact_uri,conclusion,limitations
+M2-DATA-AUDIT-001,A,completed_data_audit_split_pending,M2-data-foundation,gvpa-recognition-c7f6f005d717,pending_mmseqs2,configs/baseline.yaml,42,afc2e37d3f28f5bacf3afd5a4f506254e953a7a2,results/data_audit/gvpa_v1_audit_summary.json,data/processed/gvpa_v1/,2078 candidates audited; 2076 sequence-QC eligible; 1721 primary,MMseqs2 unavailable; no discovery/validation split yet
