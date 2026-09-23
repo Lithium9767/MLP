@@ -6,7 +6,7 @@
 
 已从 [EBI InterPro](https://www.ebi.ac.uk/interpro/api/entry/pfam/PF00741?annotation=hmm) 下载真实 `PF00741.24` HMM：SHA-256 `e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f`，39 个 match state，模型自带 GA 阈值 25/25 bits。已从 [RCSB](https://files.rcsb.org/download/7R1C.pdb) 下载真实 PDB 7R1C：SHA-256 `c83776e7091d1342a4c6dbc40fbcc7be2e2beff87b12f1c52c9d6de5be0be870`。两者下载日期为 2026-09-23，下载收据及原始文件保存在被 Git 忽略的 `data/raw/`。
 
-对 RCSB 的作者链 `N` 建立了 1-based 提交序列位置、实验建模残基编号和 PF00741 match state 的逐位映射。88 个提交位置中 65 个有实验建模的 CA，23 个未建模；39 个位置与 39 个 HMM match state 对齐。局部未对齐的建模残基保留记录，不能把 HMM 不覆盖等同于功能缺失。结构参照没有独立提供天然序列功能标签。真实运行绑定干净代码提交 `c219287625a27588958968879644acb8fa13830a`，登记实验 `M2-C-7R1C-001`；逐残基表 SHA-256 为 `c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c`。具体复现命令及逐表口径见 [运行说明](../../bioinformatics/M2_PF00741.md) 和 [可入库结构摘要](../../results/bioinformatics/structure_7r1c_summary.json)。
+对 RCSB 的作者链 `N` 建立了 1-based 提交序列位置、实验建模残基编号和 PF00741 match state 的逐位映射。88 个提交位置中 65 个有实验建模的 CA，23 个未建模；39 个位置与 39 个 HMM match state 对齐。局部未对齐的建模残基保留记录，不能把 HMM 不覆盖等同于功能缺失。结构参照没有独立提供天然序列功能标签。真实运行绑定干净代码提交 `a45930c04b4d66be7d34e0a8139b4de4d953ad97`，登记实验 `M2-C-7R1C-001`；逐残基表 SHA-256 为 `c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c`。具体复现命令及逐表口径见 [运行说明](../../bioinformatics/M2_PF00741.md) 和 [可入库结构摘要](../../results/bioinformatics/structure_7r1c_summary.json)。
 
 ## PR #4 审查与修正
 
