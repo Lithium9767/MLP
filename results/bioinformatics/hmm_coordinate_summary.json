@@ -1,0 +1,97 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "bioinformatics.m2_pf00741",
+    "scan",
+    "--metadata",
+    "data/processed/gvpa_v1/metadata.csv",
+    "--fasta",
+    "data/processed/gvpa_v1/sequences_for_clustering.fasta",
+    "--split-manifest",
+    "data/processed/gvpa_v1/split/split_manifest.csv",
+    "--audit-summary",
+    "results/data_audit/gvpa_v1_audit_summary.json",
+    "--split-summary",
+    "results/data_audit/gvpa_v1_split_summary.json",
+    "--hmm",
+    "data/raw/pfam_m2_20260923/PF00741.hmm",
+    "--hmm-receipt",
+    "data/raw/pfam_m2_20260923/download_receipt.json",
+    "--threads",
+    "1",
+    "--boundary-bits",
+    "2",
+    "--out-dir",
+    "data/processed/m2_c/pf00741_scan_001",
+    "--scan-summary",
+    "results/bioinformatics/pf00741_scan_summary.json",
+    "--coordinate-summary",
+    "results/bioinformatics/hmm_coordinate_summary.json"
+  ],
+  "coordinate_convention": "1-based full natural sequence position; insertion has null HMM match state",
+  "git": {
+    "commit": "c2a88bd5854859a61c778168db045ccdf9d30253",
+    "dirty": true
+  },
+  "hmm": {
+    "accession": "PF00741.24",
+    "ga_domain_bits": 25.0,
+    "ga_sequence_bits": 25.0,
+    "length": 39,
+    "pyhmmer_version": "0.12.3",
+    "sha256": "e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f",
+    "source_url": "https://www.ebi.ac.uk/interpro/api/entry/pfam/PF00741?annotation=hmm"
+  },
+  "hmm_download_receipt_sha256": "17043ed7b1ba554b65b848fa23e9f77a3e1fa613221442a05395d36f90c43b0f",
+  "implementation_sha256": {
+    "coordinates": "aa8d361cf7d97fcef391915ac5598a82f91e34a782fc0ad7a34d0f4c0507725e",
+    "workflow": "cefd1effec3143c2557518b79dbf5f273935c04db0d01a77106e0f09e7c63a5b"
+  },
+  "input": {
+    "audit_summary_sha256": "908ce3dbf0e38731980c166f83b3921956097bc1498aff091e625084aacc449c",
+    "dataset_version": "gvpa-recognition-c7f6f005d717",
+    "fasta_sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+    "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "n_clusters": 478,
+    "n_sequences": 2076,
+    "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "split_summary_sha256": "e192f67a4e5534552cdcdfcb5346a23c4bcc365f13569f534be86fe850e6efb3",
+    "split_version": "homology-8b9005e2d9-s42"
+  },
+  "n_coordinate_rows": 80219,
+  "n_distinct_mapped_sequences": 2076,
+  "n_insertions": 0,
+  "parameters": {
+    "boundary_distance_bits": 2.0,
+    "search": "GA and permissive T=0/domT=0",
+    "threads": 1,
+    "validation_used_for_conservation": false
+  },
+  "per_split_coverage": {
+    "discovery": {
+      "accepted_match_states": 56125,
+      "accepted_residues": 56125,
+      "sequence_residues": 187175
+    },
+    "validation": {
+      "accepted_match_states": 24094,
+      "accepted_residues": 24094,
+      "sequence_residues": 82568
+    }
+  },
+  "purpose": "M2 real PF00741 family/coordinate audit, not functional labels",
+  "raw_output_sha256": {
+    "failures.json": "c226f7db47b65db8f5dc35f171b2ef4e1d03ce228e10589182a47637461a477a",
+    "hmm_coordinate_map.csv": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "per_sequence_status.csv": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183",
+    "raw_hits.jsonl": "6f058c97f1ccffb5220869c34795d5f9beb7adb04ac783cb37c0bd9aaca3d737"
+  },
+  "raw_output_storage": "ignored local/shared directory; request files by hashes",
+  "run_utc": "2026-09-24T02:34:54.226815+00:00",
+  "schema_version": "1.0",
+  "software": {
+    "pyhmmer": "0.12.3",
+    "python": "3.13.9"
+  }
+}
