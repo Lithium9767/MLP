@@ -1,0 +1,72 @@
+{
+  "chain": "N",
+  "command": [
+    "python",
+    "-m",
+    "bioinformatics.m2_pf00741",
+    "structure",
+    "--hmm",
+    "data/raw/pfam_m2_20260923/PF00741.hmm",
+    "--hmm-receipt",
+    "data/raw/pfam_m2_20260923/download_receipt.json",
+    "--pdb",
+    "data/raw/structure_m2_20260923/7R1C.pdb",
+    "--pdb-receipt",
+    "data/raw/structure_m2_20260923/7R1C_download_receipt.json",
+    "--chain",
+    "N",
+    "--threads",
+    "1",
+    "--out-dir",
+    "data/processed/m2_c/7r1c_002",
+    "--summary",
+    "results/bioinformatics/structure_7r1c_summary.json"
+  ],
+  "coordinate_convention": "1-based deposited position; PDB author number only for modeled residues; HMM insertion has no match state",
+  "coordinate_map_filename": "7r1c_residue_hmm_map.csv",
+  "coordinate_map_sha256": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+  "ga_domain_score_bits": 57.071956634521484,
+  "ga_hit_score_bits": 57.40925598144531,
+  "git": {
+    "commit": "a45930c04b4d66be7d34e0a8139b4de4d953ad97",
+    "dirty": false
+  },
+  "hmm": {
+    "accession": "PF00741.24",
+    "ga_domain_bits": 25.0,
+    "ga_sequence_bits": 25.0,
+    "length": 39,
+    "pyhmmer_version": "0.12.3",
+    "sha256": "e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f",
+    "source_url": "https://www.ebi.ac.uk/interpro/api/entry/pfam/PF00741?annotation=hmm"
+  },
+  "hmm_download_receipt_sha256": "135a54ef57e0fd50738a29fe92af23ced1a2e23622c018e40ff2b0d8dd2e022e",
+  "implementation_sha256": {
+    "coordinates": "2a2e36cac549a4a2a64cb7499b4ced73dcb7c42986306ae9d681ff56f4041482",
+    "workflow": "81695fdf9e484e454a6ef7470b2ec39bd6c4bc34117d4b1fc58b7409a7e7399c"
+  },
+  "limitations": [
+    "Only 65 of 88 deposited residues have experimental coordinates",
+    "HMM match states are homology coordinates, not experimental evidence of function",
+    "Secondary structure uses PDB HELIX/SHEET records for modeled residues"
+  ],
+  "n_deposited_residues": 88,
+  "n_distinct_hmm_match_states": 39,
+  "n_hmm_aligned_residues": 39,
+  "n_hmm_insertions": 0,
+  "n_hmm_match_residues": 39,
+  "n_modeled_hmm_aligned_residues": 39,
+  "n_modeled_residues": 65,
+  "n_unmodeled_residues": 23,
+  "pdb_download_receipt_sha256": "d1498b2a576e6f135f180e8696aa494cd891dae29fc9bacb25aed0dbff135d55",
+  "pdb_id": "7R1C",
+  "pdb_sha256": "c83776e7091d1342a4c6dbc40fbcc7be2e2beff87b12f1c52c9d6de5be0be870",
+  "pdb_source_url": "https://files.rcsb.org/download/7R1C.pdb",
+  "purpose": "real 7R1C structural reference mapping, not functional labels",
+  "run_utc": "2026-09-23T05:18:55.122965+00:00",
+  "schema_version": "1.0",
+  "software": {
+    "pyhmmer": "0.12.3",
+    "python": "3.14.3"
+  }
+}
