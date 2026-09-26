@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "M2-DATA-REPRO-B-001",
+  "owner": "B",
+  "status": "completed_with_version_note",
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "source": {
+    "source_path": "gv/gv/recognition/data/gvp/gvpa/GvpA_sequences.json",
+    "source_member_sha256": "c7f6f005d71719a540f7aa4743632f0ee6c03a63624fb4c138c76eae9062a4c1",
+    "archive_sha256": null,
+    "archive_note": "The supplied gv/ directory was used; the original gv.zip archive was not available in the workspace."
+  },
+  "outputs": {
+    "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "members_sha256": "dd2444a83e39edd70b1dc2e8a9561e582504f50a7e6314a0463c53e6f832295e",
+    "clustering_fasta_sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122"
+  },
+  "counts": {
+    "candidate_records": 2078,
+    "sequence_qc_eligible": 2076,
+    "primary": 1721,
+    "homology_clusters": 478
+  },
+  "git_commit": "c1caa58",
+  "limitations": [
+    "The original gv.zip SHA-256 could not be independently checked from the extracted directory.",
+    "MMseqs2 18.8cc5c was available locally; the frozen receipt specifies 15-6f452."
+  ]
+}

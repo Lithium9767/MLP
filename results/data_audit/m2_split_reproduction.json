@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "M2-DATA-REPRO-B-001",
+  "owner": "B",
+  "status": "completed_with_version_note",
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version_reproduced": "homology-3ce9307efa-s42",
+  "frozen_split_version": "homology-8b9005e2d9-s42",
+  "mmseqs2_version": "18.8cc5c",
+  "parameters": {"min_sequence_identity": 0.8, "coverage": 0.8, "coverage_mode": 1, "seed": 42},
+  "mmseqs_cluster_tsv_sha256": "3ce9307efad612a51130eb8614750c2bc65473b11b2e82b9141a3a7a995472fc",
+  "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+  "sequence_counts": {"discovery": 1453, "validation": 623},
+  "primary_sequence_counts": {"discovery": 1202, "validation": 519},
+  "cluster_counts": {"discovery": 335, "validation": 143},
+  "total_clusters": 478,
+  "total_sequences": 2076,
+  "cluster_leakage": false,
+  "comparison": {
+    "counts_match_frozen": true,
+    "split_manifest_hash_matches_frozen": true,
+    "cluster_tsv_hash_matches_frozen": false,
+    "interpretation": "The local MMseqs2 version changes the raw TSV hash, while deterministic split outputs and all frozen counts remain identical."
+  },
+  "git_commit": "c1caa58"
+}

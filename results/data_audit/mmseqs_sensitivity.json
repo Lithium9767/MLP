@@ -1,0 +1,58 @@
+{
+  "status": "completed",
+  "mmseqs_release": "15-6f452",
+  "mmseqs_commit": "6f45232ac8daca14e354ae320a4359056ec524c2",
+  "frozen_split_version": "homology-8b9005e2d9-s42",
+  "frozen_split_replaced": false,
+  "comparison": "Each setting was split with the frozen seed and ratios. Agreement is the fraction of sequences that stay in the same discovery/validation set as the frozen manifest.",
+  "settings": [
+    {
+      "name": "relaxed",
+      "identity": 0.7,
+      "coverage": 0.8,
+      "coverage_mode": 1,
+      "n_clusters": 140,
+      "max_cluster_size": 306,
+      "n_singletons": 53,
+      "n_sequences": 2076,
+      "cluster_tsv_sha256": "da7df2fa0222befc33347721d2c7d33fb6328f257064381a819c716aa33c899f",
+      "split_manifest_sha256": "c5cfd81ecf75d961e56ed8cbb20bd3d18ca99752a36b6c2755b4295b691e9088",
+      "matches_frozen_split_manifest": false,
+      "sequences_with_same_split": 1228,
+      "split_agreement": 0.591522,
+      "cluster_leakage": false
+    },
+    {
+      "name": "main",
+      "identity": 0.8,
+      "coverage": 0.8,
+      "coverage_mode": 1,
+      "n_clusters": 478,
+      "max_cluster_size": 104,
+      "n_singletons": 228,
+      "n_sequences": 2076,
+      "cluster_tsv_sha256": "e7179fbec8d21c95d741866342c95d7dda5e28f4383b24a24993483117ffcaf0",
+      "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+      "matches_frozen_split_manifest": true,
+      "sequences_with_same_split": 2076,
+      "split_agreement": 1.0,
+      "cluster_leakage": false
+    },
+    {
+      "name": "strict",
+      "identity": 0.9,
+      "coverage": 0.8,
+      "coverage_mode": 1,
+      "n_clusters": 1220,
+      "max_cluster_size": 27,
+      "n_singletons": 822,
+      "n_sequences": 2076,
+      "cluster_tsv_sha256": "1ac897ffa633c5960d31b6bd9101eebac1ea01c720be630c9c961b2be7cc293b",
+      "split_manifest_sha256": "1e71357097f7757f6d4bfa3191a4f8be2a3425eb89bd7d757b76c85e3ec4e6b7",
+      "matches_frozen_split_manifest": false,
+      "sequences_with_same_split": 1238,
+      "split_agreement": 0.596339,
+      "cluster_leakage": false
+    }
+  ]
+}
