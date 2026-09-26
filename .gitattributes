@@ -1,0 +1,5 @@
+# These generated artifacts have recorded byte-level SHA256 values.
+# Preserve their exact bytes across Windows/Linux checkouts and GitHub downloads.
+reports/M2/figure_manifest.csv -text
+reports/M2/runs/** -text
+reports/M2/cohort_fix/** -text

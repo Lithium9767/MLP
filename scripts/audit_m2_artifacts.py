@@ -39,6 +39,9 @@ def audit(pdb_candidate: Path | None = None) -> dict:
             normalized = digest(path.read_bytes().replace(b"\r\n", b"\n"))
             row["lf_normalized_sha256_diagnostic_only"] = normalized
             row["lf_matches_expected"] = normalized == expected
+            crlf = digest(path.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+            row["crlf_normalized_sha256_diagnostic_only"] = crlf
+            row["crlf_matches_expected"] = crlf == expected
         rows.append(row)
 
     command = scan["command"]
