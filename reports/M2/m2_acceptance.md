@@ -39,3 +39,14 @@ PR #13/#14 已把技术结果归档进 main，不等于满足工程与协作验�
 作者账号不等于角色映射或真实运行者；README的身份映射仍待确认。不把新的合并后复核伪装成历史合并前Review。B/C旧分支保留，不删除、不重写。
 
 M3可准备代码草稿和计划；上述关闭门槛全部满足、A亲自验收前，不正式启动M3实验。
+
+## 工程交接链接
+
+- [收尾PR #16](https://github.com/Lithium9767/MLP/pull/16)：`docs/15-close-m2`，本报告、README、台账、预检和独立复核模板。
+- [M2计划PR #9](https://github.com/Lithium9767/MLP/pull/9)：`docs/8-m2-team-workplan`，已merge当前main并更新收尾任务，等待真实非作者Review；未合并。
+- [M3计划PR #7](https://github.com/Lithium9767/MLP/pull/7)：`docs/6-m3-team-workplan`，已对齐main，明确待启动；未合并。
+- [ESM-2最小迁移Draft PR #17](https://github.com/Lithium9767/MLP/pull/17)：`feature/5-m3-esm2-foundation`，仅入口、依赖、ESM测试与迁移审计；37项轻量测试通过，未执行模型推理或M3实验。
+- 原PR #4与源分支保留并标注替代关系；没有覆盖M2实现。
+- B/C本地快照：`archive/B-82ea140` = `82ea140d6fc811b5bb37167da927e221d369c609`；`archive/C-80892e2` = `80892e2e2fbbbf6c3ef40cbb91d3c0774135770f`。远端旧分支未删除或重写。
+
+工程准备完成，等待独立复核/最终验收；同时须解决上表图表与证据阻塞。以上PR准备和助手测试均不构成成员签字或M2正式关闭。
