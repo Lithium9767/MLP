@@ -1,7 +1,7 @@
 {
   "kind": "assistant_technical_precheck_not_independent_review",
-  "checked_utc": "2026-09-26T11:07:23.118495+00:00",
-  "checked_sha": "5897ff35d37f80ee3dd61b7c114184e84b1689da",
+  "checked_utc": "2026-09-26T11:08:58.072626+00:00",
+  "checked_sha": "00884333ecdd1bc0b11e4d0abc3c35543deaf45d",
   "working_tree_dirty_at_check": false,
   "command": [
     "python",
@@ -53,7 +53,9 @@
       "shared_uri": null,
       "shared_access": "unverified; no location/access procedure supplied",
       "lf_normalized_sha256_diagnostic_only": "172c7d72e3bdde6efaee68ee366ce32de8484414d2cbeda331a343d536937b49",
-      "lf_matches_expected": false
+      "lf_matches_expected": false,
+      "crlf_normalized_sha256_diagnostic_only": "908ce3dbf0e38731980c166f83b3921956097bc1498aff091e625084aacc449c",
+      "crlf_matches_expected": true
     },
     {
       "artifact": "results/data_audit/gvpa_v1_split_summary.json",
@@ -65,7 +67,9 @@
       "shared_uri": null,
       "shared_access": "unverified; no location/access procedure supplied",
       "lf_normalized_sha256_diagnostic_only": "03776be2845e0ad3d419ec539e0437f374bd31a90bff16aa4ca5bd16821b220e",
-      "lf_matches_expected": false
+      "lf_matches_expected": false,
+      "crlf_normalized_sha256_diagnostic_only": "e192f67a4e5534552cdcdfcb5346a23c4bcc365f13569f534be86fe850e6efb3",
+      "crlf_matches_expected": true
     },
     {
       "artifact": "failures.json",
