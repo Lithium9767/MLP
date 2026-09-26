@@ -1,0 +1,2 @@
+# M2 C profile-HMM scan and 7R1C coordinate mapping.
+pyhmmer==0.12.3
