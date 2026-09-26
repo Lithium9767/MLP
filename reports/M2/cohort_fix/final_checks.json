@@ -1,0 +1,76 @@
+{
+  "kind": "assistant_precheck_not_independent_review",
+  "checked_sha": "1c9b15a75b62e8ee738c188e889cbab2cee50509",
+  "utc": "2026-09-26T11:12:17.028706+00:00",
+  "python": "3.13.12",
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "{'result_missing': 1}\n{'not_submitted': 1}\n{'failed': 1}\n{'parse_failed': 1}\n{'success': 1}\n",
+      "stderr": "test_actual_matplotlib_bars_match_source_categories (test_m2_cohort_figure.CohortFigureTest.test_actual_matplotlib_bars_match_source_categories) ... ok\ntest_existing_run_is_not_overwritten (test_m2_cohort_figure.CohortFigureTest.test_existing_run_is_not_overwritten) ... ok\ntest_nonzero_source_with_zero_rendered_bar_is_rejected (test_m2_cohort_figure.CohortFigureTest.test_nonzero_source_with_zero_rendered_bar_is_rejected) ... ok\ntest_rerun_rejects_dirty_tree_before_touching_inputs (test_m2_cohort_figure.CohortFigureTest.test_rerun_rejects_dirty_tree_before_touching_inputs) ... ok\ntest_unknown_category_is_not_silently_hidden (test_m2_cohort_figure.CohortFigureTest.test_unknown_category_is_not_silently_hidden) ... ok\ntest_cluster_coverage_and_duplicate_assignment_are_checked (test_m2_data_pipeline.HomologySplitTest.test_cluster_coverage_and_duplicate_assignment_are_checked) ... ok\ntest_whole_clusters_stay_together_and_are_deterministic (test_m2_data_pipeline.HomologySplitTest.test_whole_clusters_stay_together_and_are_deterministic) ... ok\ntest_loads_expected_zip_member (test_m2_data_pipeline.PrepareDatasetTest.test_loads_expected_zip_member) ... ok\ntest_missing_required_field_rejected (test_m2_data_pipeline.PrepareDatasetTest.test_missing_required_field_rejected) ... ok\ntest_quality_flags_and_outputs (test_m2_data_pipeline.PrepareDatasetTest.test_quality_flags_and_outputs) ... ok\ntest_b_cluster_leakage_fails (test_m2_release.ReleaseValidationTest.test_b_cluster_leakage_fails) ... ok\ntest_b_reproduction_counts_match_and_record_mmseqs_version (test_m2_release.ReleaseValidationTest.test_b_reproduction_counts_match_and_record_mmseqs_version) ... ok\ntest_clean_manifest_passes (test_m2_release.ReleaseValidationTest.test_clean_manifest_passes) ... ok\ntest_cluster_leakage_flag_fails (test_m2_release.ReleaseValidationTest.test_cluster_leakage_flag_fails) ... ok\ntest_command_exits_nonzero_when_receipt_missing (test_m2_release.ReleaseValidationTest.test_command_exits_nonzero_when_receipt_missing) ... ok\ntest_empty_hash_fails (test_m2_release.ReleaseValidationTest.test_empty_hash_fails) ... ok\ntest_frozen_receipts_pass (test_m2_release.ReleaseValidationTest.test_frozen_receipts_pass) ... ok\ntest_manifest_cluster_leakage_fails (test_m2_release.ReleaseValidationTest.test_manifest_cluster_leakage_fails) ... ok\ntest_missing_hash_fails (test_m2_release.ReleaseValidationTest.test_missing_hash_fails) ... ok\ntest_missing_pf00741_scan_receipt_fails (test_m2_release.ReleaseValidationTest.test_missing_pf00741_scan_receipt_fails) ... ok\ntest_missing_receipt_fails (test_m2_release.ReleaseValidationTest.test_missing_receipt_fails) ... ok\ntest_missing_receipt_field_fails (test_m2_release.ReleaseValidationTest.test_missing_receipt_field_fails) ... ok\ntest_boundary_and_missing_score_review (test_pilot_pfam.Parser.test_boundary_and_missing_score_review) ... ok\ntest_exact_signature_required (test_pilot_pfam.Parser.test_exact_signature_required) ... ok\ntest_mismatch_and_invalid_coordinates (test_pilot_pfam.Parser.test_mismatch_and_invalid_coordinates) ... ok\ntest_missing_hmm_length_review (test_pilot_pfam.Parser.test_missing_hmm_length_review) ... ok\ntest_missing_matches_not_negative (test_pilot_pfam.Parser.test_missing_matches_not_negative) ... ok\ntest_missing_protein_not_negative (test_pilot_pfam.Parser.test_missing_protein_not_negative) ... ok\ntest_mixed_database_rejected (test_pilot_pfam.Parser.test_mixed_database_rejected) ... ok\ntest_not_submitted_and_failed_blank (test_pilot_pfam.Parser.test_not_submitted_and_failed_blank) ... ok\ntest_preserve_all_locations (test_pilot_pfam.Parser.test_preserve_all_locations) ... ok\ntest_summary_rejects_unsubmitted_negative (test_pilot_pfam.Parser.test_summary_rejects_unsubmitted_negative) ... ok\ntest_truncated_xml_blank (test_pilot_pfam.Parser.test_truncated_xml_blank) ... ok\ntest_verified_empty_matches_negative (test_pilot_pfam.Parser.test_verified_empty_matches_negative) ... ok\ntest_no_overwrite (test_pilot_pfam.Selection.test_no_overwrite) ... ok\ntest_qc_empty_illegal_partial (test_pilot_pfam.Selection.test_qc_empty_illegal_partial) ... ok\ntest_reject_wrong_target (test_pilot_pfam.Selection.test_reject_wrong_target) ... ok\ntest_schema_rejected (test_pilot_pfam.Selection.test_schema_rejected) ... ok\ntest_seeded_selection_dedup (test_pilot_pfam.Selection.test_seeded_selection_dedup) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 0.421s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "scripts/validate_m2_release.py",
+        "--manifest",
+        "data/processed/gvpa_v1/split/split_manifest.csv",
+        "--b-data",
+        "results/data_audit/m2_data_reproduction.json",
+        "--b-split",
+        "results/data_audit/m2_split_reproduction.json",
+        "--structure",
+        "results/bioinformatics/structure_7r1c_summary.json",
+        "--pf00741-scan",
+        "results/bioinformatics/pf00741_scan_summary.json",
+        "--hmm-coordinates",
+        "results/bioinformatics/hmm_coordinate_summary.json"
+      ],
+      "exit_code": 0,
+      "stdout": "M2 release validation passed\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "origin/main...HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "artifact_hash_checks": [
+    {
+      "path": "reports/M2/figures/cohort_counts.png",
+      "expected": "cafd11ab1db91fd5020060c48b838cfb5e4b54e23ea7fb246796bbef3ad12021",
+      "actual_file_sha256": "cafd11ab1db91fd5020060c48b838cfb5e4b54e23ea7fb246796bbef3ad12021",
+      "git_blob_sha256": "cafd11ab1db91fd5020060c48b838cfb5e4b54e23ea7fb246796bbef3ad12021"
+    },
+    {
+      "path": "reports/M2/runs/M2-E-FIGURES-002/cohort_counts.csv",
+      "expected": "058e481ca2ae7d1d0f4ee9b50bc9c2c47d2e007c57b2178a929d8b31cbb3ce83",
+      "actual_file_sha256": "058e481ca2ae7d1d0f4ee9b50bc9c2c47d2e007c57b2178a929d8b31cbb3ce83",
+      "git_blob_sha256": "058e481ca2ae7d1d0f4ee9b50bc9c2c47d2e007c57b2178a929d8b31cbb3ce83"
+    },
+    {
+      "path": "reports/M2/figure_manifest.csv",
+      "expected": "14379528ccab0aa5e90abd7c799252a0c4ec0c77e9862a6f56e43840a6edb098",
+      "actual_file_sha256": "14379528ccab0aa5e90abd7c799252a0c4ec0c77e9862a6f56e43840a6edb098",
+      "git_blob_sha256": "14379528ccab0aa5e90abd7c799252a0c4ec0c77e9862a6f56e43840a6edb098"
+    }
+  ]
+}

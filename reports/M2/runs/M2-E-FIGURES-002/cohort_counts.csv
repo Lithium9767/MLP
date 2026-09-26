@@ -1,0 +1,6 @@
+analysis_cohort,label,count
+primary,primary,1721
+sensitivity_partial,partial,20
+sensitivity_type_conflict,type conflict,305
+sensitivity_partial_and_type_conflict,partial+type,30
+excluded_sequence_qc,excluded,2

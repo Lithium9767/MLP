@@ -1,0 +1,57 @@
+{
+  "experiment_id": "M2-E-FIGURES-002",
+  "executor": "Codex engineering assistant; not independent B/C review",
+  "run_utc": "2026-09-26T11:05:57.054650+00:00",
+  "git_commit": "9c4c1f717e27d90aadbeec4cbe347de0a71e218f",
+  "dirty_at_start": false,
+  "command": [
+    "python",
+    "scripts/rerun_m2_cohort.py",
+    "--metadata",
+    "data/processed/gvpa_v1/metadata.csv",
+    "--audit-summary",
+    "results/data_audit/gvpa_v1_audit_summary.json",
+    "--run-id",
+    "M2-E-FIGURES-002"
+  ],
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version": "homology-8b9005e2d9-s42",
+  "seed": null,
+  "software": {
+    "python": "3.13.12",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "matplotlib": "3.10.8"
+  },
+  "input_sha256": {
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "audit_summary.json": "172c7d72e3bdde6efaee68ee366ce32de8484414d2cbeda331a343d536937b49"
+  },
+  "implementation_sha256": {
+    "rerun_m2_cohort.py": "06cb05fa0120e2ed040197ea744fed5be865e41bbf8464f08c6972b74e7aa385",
+    "m2_visual_summary.py": "7b5d3369414d256ef72ce0dfcb6761d487bd30f09569667e71ec23b8ca03a944"
+  },
+  "cohort_counts": {
+    "primary": 1721,
+    "sensitivity_type_conflict": 305,
+    "sensitivity_partial_and_type_conflict": 30,
+    "sensitivity_partial": 20,
+    "excluded_sequence_qc": 2
+  },
+  "previous_figure_sha256": "4094f1eea4db3276290a6433fca472d97f06803f787a15ba4ec3075b63d49df5",
+  "output_sha256": {
+    "reports/M2/figures/cohort_counts.png": "cafd11ab1db91fd5020060c48b838cfb5e4b54e23ea7fb246796bbef3ad12021",
+    "reports/M2/runs/M2-E-FIGURES-002/cohort_counts.csv": "058e481ca2ae7d1d0f4ee9b50bc9c2c47d2e007c57b2178a929d8b31cbb3ce83",
+    "reports/M2/figure_manifest.csv": "14379528ccab0aa5e90abd7c799252a0c4ec0c77e9862a6f56e43840a6edb098"
+  },
+  "checks": {
+    "all_frozen_cohorts_match": true,
+    "rendered_bars_match_source": true,
+    "exported_counts_match_source": true,
+    "figure_manifest_hash_matches": true
+  },
+  "limitations": [
+    "Only cohort_counts.png regenerated; other six figures not revalidated",
+    "Old M2-E-FIGURES-001 execution commit remains unknown",
+    "Assistant precheck is not independent review or A acceptance"
+  ]
+}

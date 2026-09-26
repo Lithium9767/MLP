@@ -26,6 +26,13 @@ EXPERIMENT_ID = "M2-E-FIGURES-001"
 LIMITATION = "HMM occupancy and PF00741 coverage are homology coordinates, not functional proof."
 FONT_SIZES = {"label": 9.5, "tick": 8, "legend": 8.5, "title": 9.5}
 FIGSIZE = (3.4, 2.5)
+COHORT_LABELS = {
+    "primary": "primary",
+    "sensitivity_partial": "partial",
+    "sensitivity_type_conflict": "type conflict",
+    "sensitivity_partial_and_type_conflict": "partial+type",
+    "excluded_sequence_qc": "excluded",
+}
 
 
 def configure_style() -> None:
@@ -99,7 +106,7 @@ def save_figure(fig, path: Path) -> None:
     plt.close(fig)
 
 
-def save_bar(path: Path, labels: list[str], values: list[int], title: str, ylabel: str) -> None:
+def save_bar(path: Path, labels: list[str], values: list[int], title: str, ylabel: str) -> list[float]:
     fig, ax = plt.subplots(figsize=FIGSIZE)
     ax.bar(range(len(labels)), values, color="#1f4e79")
     ax.set_xticks(range(len(labels)))
@@ -110,7 +117,8 @@ def save_bar(path: Path, labels: list[str], values: list[int], title: str, ylabe
     fig.canvas.draw()
     slot = ax.get_window_extent().width / max(len(labels), 1) * 0.92
     widest = max(artist.get_window_extent(fig.canvas.get_renderer()).width for artist in tick_labels)
-    if widest > slot:
+    horizontal = widest > slot
+    if horizontal:
         ax.cla()
         ax.barh(range(len(labels)), values, color="#1f4e79")
         ax.set_yticks(range(len(labels)))
@@ -124,11 +132,32 @@ def save_bar(path: Path, labels: list[str], values: list[int], title: str, ylabe
         style_axes(ax)
         fig.tight_layout()
     fit_title(fig, ax, title)
+    plotted = [patch.get_width() if horizontal else patch.get_height() for patch in ax.patches]
+    if plotted != values:
+        plt.close(fig)
+        raise ValueError("Rendered bars disagree with requested values")
     save_figure(fig, path)
+    return plotted
 
 
 def cohort_counts(metadata: list[dict[str, str]]) -> Counter[str]:
     return Counter(row["analysis_cohort"] for row in metadata)
+
+
+def render_cohort_figure(metadata: list[dict[str, str]], path: Path) -> list[dict[str, object]]:
+    counts = cohort_counts(metadata)
+    if not counts or set(counts) - set(COHORT_LABELS):
+        raise ValueError("Empty metadata or unknown analysis_cohort")
+    rows = [{"analysis_cohort": key, "label": label, "count": counts[key]}
+            for key, label in COHORT_LABELS.items()]
+    plotted = save_bar(path, [row["label"] for row in rows], [row["count"] for row in rows],
+                       f"GvpA analysis cohorts (n={len(metadata)})", "Sequences")
+    # Compare actual matplotlib bar lengths to an independent source-row count.
+    for row, value in zip(rows, plotted, strict=True):
+        source_count = sum(item["analysis_cohort"] == row["analysis_cohort"] for item in metadata)
+        if value != source_count:
+            raise ValueError(f"Rendered/source cohort mismatch: {row['analysis_cohort']}")
+    return rows
 
 
 def cluster_sizes(cluster_tsv: Path) -> list[int]:
@@ -256,8 +285,7 @@ def main() -> None:
         raise SystemExit("PF00741 accepted count disagrees with the scan summary")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    labels = ["primary", "partial", "type conflict", "partial+type", "excluded"]
-    save_bar(args.out_dir / "cohort_counts.png", labels, [counts[label] for label in labels], "GvpA analysis cohorts (n=2078)", "Sequences")
+    render_cohort_figure(metadata, args.out_dir / "cohort_counts.png")
 
     lengths = [int(row["sequence_length"]) for row in metadata]
     fig, ax = plt.subplots(figsize=FIGSIZE)
