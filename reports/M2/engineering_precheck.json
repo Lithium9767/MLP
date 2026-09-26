@@ -1,0 +1,144 @@
+{
+  "kind": "assistant_technical_precheck_not_independent_review",
+  "baseline_sha": "5891c2f7a6eb79e48dd7b75175a3af8176e410a2",
+  "python": "3.12.11",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "artifacts": [
+    {
+      "artifact": "gv.zip",
+      "expected_sha256": "a22f120dad72010a6540e644f5af550efde5630a49f7e2af03edf535439d52a7",
+      "actual_sha256": "a22f120dad72010a6540e644f5af550efde5630a49f7e2af03edf535439d52a7",
+      "status": "match",
+      "location_hint": "gv.zip",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/gvpa_v1/members.csv",
+      "expected_sha256": "dd2444a83e39edd70b1dc2e8a9561e582504f50a7e6314a0463c53e6f832295e",
+      "actual_sha256": "dd2444a83e39edd70b1dc2e8a9561e582504f50a7e6314a0463c53e6f832295e",
+      "status": "match",
+      "location_hint": "data/processed/gvpa_v1/members.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/gvpa_v1/metadata.csv",
+      "expected_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+      "actual_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+      "status": "match",
+      "location_hint": "data/processed/gvpa_v1/metadata.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/gvpa_v1/sequences_for_clustering.fasta",
+      "expected_sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+      "actual_sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+      "status": "match",
+      "location_hint": "data/processed/gvpa_v1/sequences_for_clustering.fasta",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/gvpa_v1/split/split_manifest.csv",
+      "expected_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+      "actual_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+      "status": "match",
+      "location_hint": "data/processed/gvpa_v1/split/split_manifest.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/gvpa_v1/mmseqs_80_80_v2/gvpa_cluster.tsv",
+      "expected_sha256": "8b9005e2d9af130224189e1a3baecf3402675751dc14635ad28f435a09d851b6",
+      "actual_sha256": "8b9005e2d9af130224189e1a3baecf3402675751dc14635ad28f435a09d851b6",
+      "status": "match",
+      "location_hint": "data/processed/gvpa_v1/mmseqs_80_80_v2/gvpa_cluster.tsv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/m2_c/pf00741_scan_001/failures.json",
+      "expected_sha256": "c226f7db47b65db8f5dc35f171b2ef4e1d03ce228e10589182a47637461a477a",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/processed/m2_c/pf00741_scan_001/failures.json",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/m2_c/pf00741_scan_001/hmm_coordinate_map.csv",
+      "expected_sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/processed/m2_c/pf00741_scan_001/hmm_coordinate_map.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/m2_c/pf00741_scan_001/per_sequence_status.csv",
+      "expected_sha256": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/processed/m2_c/pf00741_scan_001/per_sequence_status.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/m2_c/pf00741_scan_001/raw_hits.jsonl",
+      "expected_sha256": "6f058c97f1ccffb5220869c34795d5f9beb7adb04ac783cb37c0bd9aaca3d737",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/processed/m2_c/pf00741_scan_001/raw_hits.jsonl",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/raw/pfam_m2_20260923/PF00741.hmm",
+      "expected_sha256": "e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/raw/pfam_m2_20260923/PF00741.hmm",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/raw/structure_m2_20260923/7R1C.pdb",
+      "expected_sha256": "c83776e7091d1342a4c6dbc40fbcc7be2e2beff87b12f1c52c9d6de5be0be870",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/raw/structure_m2_20260923/7R1C.pdb",
+      "shared_uri": null,
+      "access_status": "unverified"
+    },
+    {
+      "artifact": "data/processed/m2_c/7r1c_002/7r1c_residue_hmm_map.csv",
+      "expected_sha256": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+      "actual_sha256": null,
+      "status": "unverified_missing",
+      "location_hint": "data/processed/m2_c/7r1c_002/7r1c_residue_hmm_map.csv",
+      "shared_uri": null,
+      "access_status": "unverified"
+    }
+  ],
+  "split_counts": {
+    "validation": 623,
+    "discovery": 1453
+  },
+  "duplicate_ids": 0,
+  "id_intersection": 0,
+  "leaking_clusters": 0,
+  "cohorts": {
+    "primary": 1721,
+    "sensitivity_type_conflict": 305,
+    "sensitivity_partial_and_type_conflict": 30,
+    "sensitivity_partial": 20,
+    "excluded_sequence_qc": 2
+  },
+  "length_range": [
+    59,
+    177
+  ],
+  "shared_storage_status": "unverified: only local paths or generic ignored local/shared directory recorded"
+}

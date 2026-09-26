@@ -16,7 +16,7 @@
 
 ### 标签可行性结论
 
-当前开发分支报告：NCBI 注释对样本缺乏功能差异；UniProt 覆盖有限且功能描述高度同质；PF00741 对 2078 条全部命中，PF01132 全部未命中。以上全量计数仍需在统一环境中独立复跑并记录数据库、软件、阈值和输入哈希。
+历史数据库调查未发现可用的天然序列功能差异标签。当前可追溯的 M2 [PF00741 扫描摘要](results/bioinformatics/pf00741_scan_summary.json)记录：2076 条通过序列 QC 的输入全部 accepted（PF00741.24，GA 阈值）。这不是对全部 2078 条候选的功能分类；原始输出与运行环境仍待独立复核。
 
 因此当前数据没有可用于天然序列功能分类的可靠 `y`：
 
@@ -113,7 +113,7 @@ python -m unittest discover -s tests -p test_pilot_pfam.py -v
 python scripts/pilot_pfam.py --help
 ```
 
-入口为 `scripts/pilot_pfam.py`，规则见 `configs/pilot_pfam_rules.json`，操作说明见 [PILOT_PFAM.md](bioinformatics/PILOT_PFAM.md)。本地60条试样仍为 `scan_not_run`；开发分支的全量结果不能替代独立复跑。
+入口为 `scripts/pilot_pfam.py`，规则见 `configs/pilot_pfam_rules.json`，操作说明见 [PILOT_PFAM.md](bioinformatics/PILOT_PFAM.md)。60 条试样的历史 `scan_not_run` 状态不代表 M2 全量扫描未运行；全量扫描及坐标结果已随 PR #13 进入 main，但不能替代独立复核。
 
 ## 五人分工
 
@@ -163,11 +163,11 @@ MLP/
 - 已纠正 PF01132/PF00741 编号并完成标签可行性方向判断；
 - 已从真实 `gv.zip` 冻结候选数据版本 `gvpa-recognition-c7f6f005d717`：2078条候选、2076条可进入同源聚类、1721条primary队列；
 - 已用MMseqs2 15-6f452按80%一致性/80%覆盖率形成478个同源簇，并冻结 `homology-8b9005e2d9-s42`：discovery 1453条/335簇，validation 623条/143簇，同簇泄漏为0；
-- 数据审计与同源划分脚本共22项测试通过；
-- 已有数据审计、Pfam/HMM、ESM-2聚类、保守性、attention和7R1C结果散落在开发分支；
-- `main` 中已提交可复现的60条Pfam试扫描准备工具，但真实扫描尚未在本地运行；
-- 尚未完成统一环境中的全流程独立复跑、同源分组的发现/验证隔离、突变表逐条审计和残基扰动实验；
-- 开发分支结果在合并前均视为初步结果，不作为最终生物学结论。
+- PR #13/#14 已归档 B/C/D 技术结果和 E 图表；C 扫描与坐标技术成果已合并，独立复核未完成；
+- 2026-09-26 助手技术预检：34 项测试和 release validator 通过，实际 split 无跨集合 ID/簇泄漏；这不是组员独立审查；
+- 图表抽查发现 `cohort_counts.png` 四个非 primary 类误显示为 0；E 运行提交未知，PF00741 原始输出和共享访问尚未验证；
+- **M2 待验收，M3 尚未正式启动。** 关闭门槛见 [验收报告](reports/M2/m2_acceptance.md)，复核任务见 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)；
+- 突变表逐条审计、残基扰动及 M3 表示学习仍属于后续任务，历史开发结果不作为最终生物学结论。
 
 ## 主要风险
 
@@ -183,7 +183,9 @@ MLP/
 - [ ] A向教师确认“无监督功能区域识别”是否满足课程目标。
 - [x] B冻结候选数据清单、质量字段和输入/输出哈希。
 - [x] B用MMseqs2生成同源簇并冻结discovery/validation划分。
-- [ ] C独立复跑PF00741并冻结HMM/序列/结构坐标映射。
+- [x] C的PF00741扫描与HMM/序列/结构坐标技术成果已随PR #13归档。
+- [ ] 未参与相关改动的B/C完成合并后独立复核，A完成最终验收（Issue #15）。
+- [ ] E修正队列图、按干净提交重跑并补齐运行证据；C补充原始输出共享访问。
 - [ ] D在验证集复现全长与窗口表示结果并完成参数敏感性。
 - [ ] E实现至少一种残基遮挡/扰动方法及随机区域基线。
-- [ ] A整合B、C、lrf开发分支，通过PR逐项验收，不直接整分支覆盖`main`。
+- [ ] A审查M2收尾与计划PR；M3仅准备ESM-2最小迁移草稿。B/C旧分支保留，不整体合并。

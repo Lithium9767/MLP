@@ -1,22 +1,41 @@
-# M2 验收
+# M2 验收：待独立复核与最终验收
 
-数据版本 `gvpa-recognition-c7f6f005d717`。划分版本 `homology-8b9005e2d9-s42`。本报告汇总已经进入 `main` 的 B/C/D 结果和 E 的图表抽查。PF00741 命中不是功能标签。
+核实日期：2026-09-26。基线 `5891c2f7a6eb79e48dd7b75175a3af8176e410a2`，即历史 5891c2f。数据 `gvpa-recognition-c7f6f005d717`；划分 `homology-8b9005e2d9-s42`。
 
-| 关闭条件 | 状态 | 证据 |
+PR #13/#14 已把技术结果归档进 main，不等于满足工程与协作验收。PF00741 命中表示家族坐标，不是功能标签。任务：[M2 post-merge independent audit #15](https://github.com/Lithium9767/MLP/issues/15)。
+
+| 关闭条件 | 当前状态 | 证据或剩余动作 |
 | --- | --- | --- |
-| 数据审计可复现 | 完成 | `results/data_audit/m2_data_reproduction.json`：2078 / 2076 / 1721，输出哈希与冻结审计一致 |
-| MMseqs2 同源划分可复现 | 完成 | 478 簇。`split_manifest.csv` 哈希与冻结划分一致。MMseqs2 `15-6f452` 的原始 cluster TSV 哈希不同，已记入复现说明 |
-| 簇泄漏为 0 | 完成 | 冻结 split 与 B 的复现 receipt 均为 `cluster_leakage=false` |
-| PF00741 全量扫描 | 完成 | `results/bioinformatics/pf00741_scan_summary.json`：2076 条 `accepted`，discovery 1453，validation 623 |
-| HMM 与 7R1C 坐标 | 完成 | `hmm_coordinate_summary.json`；7R1C 链 N，88 个提交残基，65 个建模，39 个 match state |
-| 正式运行有 receipt | 完成 | 审计、划分、扫描、结构、敏感性 JSON 均含哈希或版本 |
-| 台账与结果一致 | 完成 | `experiments/registry.csv` 已去掉 `split_pending`，并登记 C/D/E |
-| 自动验收通过 | 完成 | `scripts/validate_m2_release.py` 对已发布 receipt 退出码为 0。测试见 `tests/test_m2_release.py` |
-| 图表与数字一致 | 完成 | `reports/M2/figures/` 与 `reports/M2/manual_spot_check.md`，由 `scripts/m2_visual_summary.py` 生成 |
-| 原始大文件不入库 | 完成 | 序列、PDB、HMM 和 MMseqs2 中间文件留在 `data/processed/`、`data/raw/`、`work/` |
-| 敏感性不覆盖主划分 | 完成 | `results/data_audit/mmseqs_sensitivity.json`。identity 0.8 的 manifest 与冻结划分一致；0.7 与 0.9 只作对照 |
+| 真实独立复核报告进入 main | 待完成 | [independent_review.md](independent_review.md) 仅为模板；B/C身份、独立性待A核实 |
+| 最终待验收提交全部测试通过 | 基线预检通过，最终待复核 | 34 tests、validator退出0；每次后续变更须绑定最终完整SHA重新验证 |
+| README状态准确 | 本收尾分支已修正，待合并 | 区分全量扫描、60条试样及独立复核 |
+| E实验运行commit准确补齐 | 阻塞 | 结果归档666de2b已核实；run commit未知，未冒充回填 |
+| 验收报告更新 | 本收尾分支已更新，待合并 | 本文件不代替A验收 |
+| PR #9非作者审查并合并/认可的替代PR | 待完成 | #9仍open，无Review；与main对齐后等待真实审查 |
+| 原始输出共享位置、访问与哈希可追溯 | 阻塞 | [shared_artifacts.json](shared_artifacts.json)：位置待补，7份本地文件缺失未验证 |
+| 图表与源数据一致 | 阻塞 | cohort_counts四类显示0，实际20/305/30/2；E需修复重跑 |
+| 正式扫描代码来源可复现 | 待补证据 | C receipt dirty=true；已核对两个实现文件hash，仍需完整变更清单或干净重跑 |
+| A在Issue留下真实最终验收评论 | 待完成 | 助手不代签、不提交冒名Review |
 
-仍需人工完成、不能由这份报告代替的两项：
+## 技术结果与预检范围
 
-- 本验收提交的 PR 需要一名非作者审查。
-- A 在审查通过并合并后关闭 M2。
+- 候选2078、QC可用2076、primary1721；478簇，discovery1453/335簇、validation623/143簇。
+- 本地六份输入/划分文件hash匹配；实际manifest跨集合ID和簇交集为0。原始cluster TSV复现差异已有记录，但不能仅凭版本差异断言全部原因。
+- PF00741摘要报告2076 accepted；结构摘要报告7R1C N链88个提交残基、65个已建模残基和39个match states。原始扫描/坐标文件本轮缺失，数字未从原始输出独立重算。
+- D敏感性结果已归档；不替换冻结主划分。E七张图已归档，但发现一张确定错误，不能维持“全部数字一致”的旧结论。
+- 命令、实测结果、局限详见 [engineering_precheck.md](engineering_precheck.md)，该记录不是B/C独立复核。
+
+## PR核实
+
+| PR | 作者 | 状态/Review | 本轮处理原则 |
+| --- | --- | --- | --- |
+| #4 | ngocnamd93-spec | open；fengbujue777请求修改 | 不整体合并；另准备ESM-2最小迁移草稿；保留原分支 |
+| #7 | ngocnamd93-spec | open；无Review | M2关闭前待启动，不能据计划宣称已做实验 |
+| #9 | ngocnamd93-spec | open；无Review | 对齐main、保留验收要求，等真实非作者审查 |
+| #11 | fengbujue777 | closed、未合并 | C实现及结构摘要由#13整合，不重复合并 |
+| #13 | Lithium9767 | merged；无Review | B/C/D归档；需合并后独立复核 |
+| #14 | Lithium9767 | merged；无Review | E归档；需图表修复和来源补证 |
+
+作者账号不等于角色映射或真实运行者；README的身份映射仍待确认。不把新的合并后复核伪装成历史合并前Review。B/C旧分支保留，不删除、不重写。
+
+M3可准备代码草稿和计划；上述关闭门槛全部满足、A亲自验收前，不正式启动M3实验。
