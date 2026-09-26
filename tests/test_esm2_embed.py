@@ -68,5 +68,3 @@ class ESM2InputTest(unittest.TestCase):
             self.assertEqual(result.returncode, 2)
             self.assertIn("Validation is locked", result.stderr)
             self.assertEqual(list(Path(directory).iterdir()), [])
-
-
