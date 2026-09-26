@@ -1,5 +1,7 @@
 # 实验台账
-registry.csv 当前只有表头，没有实验结果。每次正式实验记录一行，experiment_id 唯一；复跑分配新的运行编号。
+registry.csv 已包含 M2 实验记录。每次正式实验记录一行，experiment_id 唯一；复跑分配新的运行编号。
+
+`git_commit` 表示实际运行代码的完整提交，不是结果归档提交。无法确认时留空，并在 limitations 中记录 `run_commit=unknown` 和已核实的 `archive_commit`；不得把结果提交回填为运行提交。工作区 dirty 时还需变更清单或代码哈希，单一 HEAD 不能完整重建运行环境。M2-E-FIGURES-001 因运行来源未知且队列图有误，状态为 `pending_provenance_and_figure_fix`。owner 中现有 A–E 是职责角色，尚不构成实际运行者身份核验。
 
 - 实验运行前先提交代码并确认工作区干净，保存运行时完整 Git commit。
 - 每次实验绑定配置、种子、数据版本、划分版本和 Git commit。
