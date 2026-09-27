@@ -1,0 +1,74 @@
+{
+  "B_input_zip_sha256": "ac6366962bf5e14872127c1383fe27dc62097cd5fa6e0861b598697ce85e9632",
+  "access_status": "local package ready; team shared URI and independent download verification pending",
+  "archive_bytes": 1177773,
+  "archive_name": "MLP_C_M2_scan_002_handoff.zip",
+  "archive_sha256": "7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e",
+  "files": [
+    {
+      "bytes": 432135,
+      "name": "B_input/gvpa_v1_reproduction.zip",
+      "sha256": "ac6366962bf5e14872127c1383fe27dc62097cd5fa6e0861b598697ce85e9632"
+    },
+    {
+      "bytes": 23,
+      "name": "C_scan_002/raw/failures.json",
+      "sha256": "c226f7db47b65db8f5dc35f171b2ef4e1d03ce228e10589182a47637461a477a"
+    },
+    {
+      "bytes": 9247404,
+      "name": "C_scan_002/raw/hmm_coordinate_map.csv",
+      "sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d"
+    },
+    {
+      "bytes": 373363,
+      "name": "C_scan_002/raw/per_sequence_status.csv",
+      "sha256": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183"
+    },
+    {
+      "bytes": 1994082,
+      "name": "C_scan_002/raw/raw_hits.jsonl",
+      "sha256": "6f058c97f1ccffb5220869c34795d5f9beb7adb04ac783cb37c0bd9aaca3d737"
+    },
+    {
+      "bytes": 3766,
+      "name": "C_scan_002/scan_summary.json",
+      "sha256": "befbebcc8358a35292839b2d32375684effee14faba868f9bfc6ce94ffacb781"
+    },
+    {
+      "bytes": 3759,
+      "name": "C_scan_002/coordinate_summary.json",
+      "sha256": "71e04b8e41d7d1a1e4cae56dfb9213849c51e465ae335bb22e6e6353987d2df6"
+    },
+    {
+      "bytes": 19327,
+      "name": "reference/PF00741.hmm",
+      "sha256": "e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f"
+    },
+    {
+      "bytes": 472,
+      "name": "reference/PF00741_download_receipt.json",
+      "sha256": "135a54ef57e0fd50738a29fe92af23ced1a2e23622c018e40ff2b0d8dd2e022e"
+    },
+    {
+      "bytes": 309582,
+      "name": "reference/7R1C.pdb",
+      "sha256": "c83776e7091d1342a4c6dbc40fbcc7be2e2beff87b12f1c52c9d6de5be0be870"
+    },
+    {
+      "bytes": 280,
+      "name": "reference/7R1C_download_receipt.json",
+      "sha256": "d1498b2a576e6f135f180e8696aa494cd891dae29fc9bacb25aed0dbff135d55"
+    },
+    {
+      "bytes": 2501,
+      "name": "reference/7r1c_residue_hmm_map.csv",
+      "sha256": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c"
+    }
+  ],
+  "purpose": "C M2 clean real PF00741 scan handoff; local archive, not a shared URI",
+  "run_commit": "1b7b249f986713a3b4c8343b898486be822fc16f",
+  "run_dirty": false,
+  "schema_version": "1.0",
+  "shared_uri": null
+}

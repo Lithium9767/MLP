@@ -1,6 +1,6 @@
 # M2 C：PF00741、HMM 与 7R1C 审计
 
-状态（更新于 2026-09-27）：**结构映射和 2076 条真实序列扫描的摘要已进入 main；四份扫描原始输出及其固定共享位置仍未取得，扫描 receipt 记录 dirty=true，M2 独立复核未完成。** 关联 [Issue #10](https://github.com/Lithium9767/MLP/issues/10)、[后续审计 Issue #15](https://github.com/Lithium9767/MLP/issues/15) 和 [M2 工作计划](https://github.com/Lithium9767/MLP/blob/main/docs/plans/2026-09-23-m2-team-workplan.md)。本报告区分 C 已亲自运行的结构映射和由 PR #13 归档的全量扫描，不替 A 或独立复核人验收。
+状态（更新于 2026-09-27）：**C 已从干净提交亲自完成 2076 条真实序列全量扫描，四份原始输出和结构参照均已在本地打包，摘要与运行收据提交到本分支；固定共享 URI、非作者独立核验及 A 的 M2 验收仍待完成。** 关联 [Issue #10](https://github.com/Lithium9767/MLP/issues/10)、[后续审计 Issue #15](https://github.com/Lithium9767/MLP/issues/15) 和 [M2 工作计划](https://github.com/Lithium9767/MLP/blob/main/docs/plans/2026-09-23-m2-team-workplan.md)。这次运行不冒充 PR #13 的历史 dirty 运行，也不替 A 或独立复核人验收。
 
 ## 输入、版本与结构结果
 
@@ -19,25 +19,26 @@
 
 C 从 PR #4 选择性保留比对列与 PDB 的解析思想，建立独立的 [严格运行入口](../../bioinformatics/m2_pf00741.py)：先核对冻结输入哈希、完整序列和 split，再分别做 GA 与宽松搜索，保留多域、每条状态、插入/缺失、分组覆盖和来源收据。结构映射使用完整 88 位提交序列，未建模位置标记清楚。测试和真实 7R1C 运行已验证该入口；PR #4 仍需作者修改或 A 指定经审查的等价入口。
 
-## B 交接与后续全量扫描
+## B 输入与 C 的干净全量扫描
 
 [B 的复现报告](https://github.com/Lithium9767/MLP/blob/feature/m2-1-data-reproduction/reports/M2/data_reproduction_review.md)给出 2078 条候选、2076 条 QC 合格、1721 条 primary、478 个簇和与冻结结果一致的 split manifest SHA-256。其报告注明本地使用 MMseqs2 `18.8cc5c`，而最初冻结记录为 `15-6f452`；原始 cluster TSV 哈希不同，split manifest 哈希相同。C 不把版本差异当成完全同版本复现。
 
-**公共 Git 中只有小型摘要，没有 2076 条序列的三个输入文件。** 2026-09-23 的 C 工作区没有收到实际文件，因此 C 分支未运行全量扫描。随后 [PR #13](https://github.com/Lithium9767/MLP/pull/13) 将真实扫描的 [摘要](../../results/bioinformatics/pf00741_scan_summary.json) 和 [坐标摘要](../../results/bioinformatics/hmm_coordinate_summary.json) 归档到 main：2076 条均为 `accepted`，discovery 1453、validation 623，失败 0、多命中 0；摘要中的三个输入 SHA-256 与冻结记录一致。该归档不等于本轮已独立取得并核验原始文件。
+2026-09-27 收到 B 的 `gvpa_v1_reproduction.zip`，ZIP SHA-256 为 `ac6366962bf5e14872127c1383fe27dc62097cd5fa6e0861b598697ce85e9632`。从 ZIP 中实际读取并核对三份文件；哈希均与冻结记录完全一致，未使用测试数据或重新下载的替代序列：
 
 冻结输入哈希：
 
-- B 本地 `data/processed/gvpa_v1_reproduction/metadata.csv`，SHA-256 应为 `62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e`；
-- `sequences_for_clustering.fasta`，SHA-256 应为 `4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122`；
-- `split_manifest.csv`，SHA-256 应为 `0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c`；
-- B 的实际运行 receipt、对应目录位置或带哈希的共享路径，供 C/B 交叉核对。
+- `data/processed/gvpa_v1_reproduction/metadata.csv`：`62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e`；
+- `sequences_for_clustering.fasta`：`4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122`；
+- `split/split_manifest.csv`：`0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c`。
 
-扫描入口在 HMM 计算前检查数量、ID、序列、划分及哈希；但正式扫描摘要记录代码提交 `c2a88bd5854859a61c778168db045ccdf9d30253` 和 `dirty=true`。该提交尚不包含两个 C 实现文件。现存实现文件字节哈希与 receipt 相符，**原运行时工作区的完整变更及四份原始输出仍不可核验**。详见 [工程预检](cohort_fix/verification.md)；不能把摘要哈希或本地替代文件当成原始输出核验。
+扫描入口在 HMM 计算前检查数量、ID、序列、划分及哈希。C 在代码提交 `1b7b249f986713a3b4c8343b898486be822fc16f`、工作区干净时执行新编号 `pf00741_scan_002`；新 [扫描收据](../../results/bioinformatics/pf00741_scan_002_summary.json)记录 `dirty=false`、Python 3.14.3、PyHMMER 0.12.3、PF00741.24、GA 25/25 bits、完整命令与输入/输出哈希。真实结果：2076 条 `accepted`、0 失败、0 多命中；discovery 1453、validation 623。[坐标收据](../../results/bioinformatics/hmm_coordinate_002_summary.json)记录 80,219 行坐标、2076 条映射序列、0 插入，并分别汇总两组覆盖。此命中只说明 PF00741 家族坐标，不是功能正负标签。
 
-当前 C 工作区实际可取得且 SHA-256 匹配的文件：`PF00741.hmm`、`7R1C.pdb`、`7r1c_residue_hmm_map.csv` 以及结构运行的下载收据。四份扫描输出 `failures.json`、`hmm_coordinate_map.csv`、`per_sequence_status.csv`、`raw_hits.jsonl` 和三个 B 输入仍不在本工作区；全部远端分支也未提交这些被 Git 忽略的文件。共享存储的固定 URI 和访问说明仍为空，见 [交付清单](shared_artifacts.json)。
+四份新生成的原始输出 `failures.json`、`hmm_coordinate_map.csv`、`per_sequence_status.csv`、`raw_hits.jsonl` 均已实际读取并计算 SHA-256；四项哈希**逐一等于** PR #13 的历史摘要记录。这证明新干净运行复现了相同字节的输出；不证明旧运行的完整 dirty 工作区来源已查明。两份结构参照和 HMM 原始文件也已核验。
 
-上述五份本地可用文件已整理为工作区外的 `MLP_C_M2_reference_artifacts_20260927.zip`，内含逐文件哈希清单；ZIP SHA-256 为 `abf265a989b25199d8781791b46081bcaa6b8d9a9c539b6850cded1510ac3387`。这是结构参照交接包，**不包含四份扫描原始输出，也不是固定共享 URI**；需由团队上传到实际共享位置并由复核人自行下载核验。
+原始 B 输入 ZIP、四份扫描输出、两份新摘要、HMM/PDB、下载收据和结构逐残基表已整理到工作区外的 `MLP_C_M2_scan_002_handoff.zip`，ZIP SHA-256 为 `7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e`。归档已重新打开并逐项核对实际字节；[交接清单](c_scan_002_handoff.json)列出每个文件的长度和 SHA-256。**目前只有本地交接包，尚无固定共享 URI 或非作者下载核验**；原始序列和大输出不进入普通 Git。旧的结构-only ZIP 保留为历史包，不再作为完整 C 交接。
+
+PR #13 的旧扫描收据记录 `c2a88bd5854859a61c778168db045ccdf9d30253` 和 `dirty=true`；该提交尚不包含两个 C 实现文件。旧运行时工作区的完整变更仍未取得，见 [工程预检](cohort_fix/verification.md)。本次干净运行提供独立、可复查的替代证据，不改写旧收据。
 
 ## 验收和限制
 
-本分支恢复了原 C 测试，覆盖冻结交接检查、2076 条合成序列端到端扫描、GA/边界/多命中状态、插入位、不一致残基与 PDB `SEQRES` 完整性；并核对真实 7R1C 的 88/65/39 数量关系及逐表哈希。2026-09-27 运行 `python -m pytest tests -q -p no:cacheprovider`：**45 passed、2 subtests passed**。合成测试无生物学发现。main 已归档的真实扫描摘要不能替代四份原始输出的独立核验；复核人须从固定共享位置取件、实测哈希，或在取得冻结输入后从干净提交重新运行并保留新编号。validation 只可做冻结后覆盖/质量汇总，不得进入后续候选区域或保守性参数选择。
+本分支恢复了原 C 测试，覆盖冻结交接检查、2076 条合成序列端到端扫描、GA/边界/多命中状态、插入位、不一致残基与 PDB `SEQRES` 完整性；并核对真实 7R1C 的 88/65/39 数量关系及逐表哈希。2026-09-27 运行 `python -m pytest tests -q -p no:cacheprovider`：**45 passed、2 subtests passed**。合成测试无生物学发现。新扫描使用真实 B 输入且输出已实际核对；M2 最终验收仍需要非作者从共享位置下载文件复核、检查图表及 A 亲自确认。validation 只可做冻结后覆盖/质量汇总，不得进入后续候选区域或保守性参数选择。
