@@ -1,6 +1,6 @@
 {
   "B_input_zip_sha256": "ac6366962bf5e14872127c1383fe27dc62097cd5fa6e0861b598697ce85e9632",
-  "access_status": "local package ready; team shared URI and independent download verification pending",
+  "access_status": "public GitHub Release download verified by C; independent team download verification pending",
   "archive_bytes": 1177773,
   "archive_name": "MLP_C_M2_scan_002_handoff.zip",
   "archive_sha256": "7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e",
@@ -66,9 +66,9 @@
       "sha256": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c"
     }
   ],
-  "purpose": "C M2 clean real PF00741 scan handoff; local archive, not a shared URI",
+  "purpose": "C M2 clean real PF00741 scan handoff for independent team review",
   "run_commit": "1b7b249f986713a3b4c8343b898486be822fc16f",
   "run_dirty": false,
   "schema_version": "1.0",
-  "shared_uri": null
+  "shared_uri": "https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip"
 }

@@ -1,6 +1,6 @@
 # M2 C：PF00741、HMM 与 7R1C 审计
 
-状态（更新于 2026-09-27）：**C 已从干净提交亲自完成 2076 条真实序列全量扫描，四份原始输出和结构参照均已在本地打包，摘要与运行收据提交到本分支；固定共享 URI、非作者独立核验及 A 的 M2 验收仍待完成。** 关联 [Issue #10](https://github.com/Lithium9767/MLP/issues/10)、[后续审计 Issue #15](https://github.com/Lithium9767/MLP/issues/15) 和 [M2 工作计划](https://github.com/Lithium9767/MLP/blob/main/docs/plans/2026-09-23-m2-team-workplan.md)。这次运行不冒充 PR #13 的历史 dirty 运行，也不替 A 或独立复核人验收。
+状态（更新于 2026-09-27）：**C 已从干净提交亲自完成 2076 条真实序列全量扫描，四份原始输出和结构参照已打包并作为 GitHub Release 附件共享，摘要与运行收据提交到本分支；非作者独立核验及 A 的 M2 验收仍待完成。** 关联 [Issue #10](https://github.com/Lithium9767/MLP/issues/10)、[后续审计 Issue #15](https://github.com/Lithium9767/MLP/issues/15) 和 [M2 工作计划](https://github.com/Lithium9767/MLP/blob/main/docs/plans/2026-09-23-m2-team-workplan.md)。这次运行不冒充 PR #13 的历史 dirty 运行，也不替 A 或独立复核人验收。
 
 ## 输入、版本与结构结果
 
@@ -35,7 +35,7 @@ C 从 PR #4 选择性保留比对列与 PDB 的解析思想，建立独立的 [�
 
 四份新生成的原始输出 `failures.json`、`hmm_coordinate_map.csv`、`per_sequence_status.csv`、`raw_hits.jsonl` 均已实际读取并计算 SHA-256；四项哈希**逐一等于** PR #13 的历史摘要记录。这证明新干净运行复现了相同字节的输出；不证明旧运行的完整 dirty 工作区来源已查明。两份结构参照和 HMM 原始文件也已核验。
 
-原始 B 输入 ZIP、四份扫描输出、两份新摘要、HMM/PDB、下载收据和结构逐残基表已整理到工作区外的 `MLP_C_M2_scan_002_handoff.zip`，ZIP SHA-256 为 `7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e`。归档已重新打开并逐项核对实际字节；[交接清单](c_scan_002_handoff.json)列出每个文件的长度和 SHA-256。**目前只有本地交接包，尚无固定共享 URI 或非作者下载核验**；原始序列和大输出不进入普通 Git。旧的结构-only ZIP 保留为历史包，不再作为完整 C 交接。
+原始 B 输入 ZIP、四份扫描输出、两份新摘要、HMM/PDB、下载收据和结构逐残基表已整理为 [GitHub Release 交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)，ZIP SHA-256 为 `7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e`。C 已从公开链接重新下载并核对实际字节；[交接清单](c_scan_002_handoff.json)列出每个文件的长度和 SHA-256。**非作者下载核验仍待完成**；原始序列和大输出不进入 PR #19 的 Git 提交。Release 附件是公开的，数据卡要求的来源与再分发条件仍需团队确认。旧的结构-only ZIP 保留为历史包，不再作为完整 C 交接。
 
 PR #13 的旧扫描收据记录 `c2a88bd5854859a61c778168db045ccdf9d30253` 和 `dirty=true`；该提交尚不包含两个 C 实现文件。旧运行时工作区的完整变更仍未取得，见 [工程预检](cohort_fix/verification.md)。本次干净运行提供独立、可复查的替代证据，不改写旧收据。
 
