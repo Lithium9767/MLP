@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "status": "verified_automated_input_integrity",
+  "verified_utc": "2026-09-29T13:32:08.146207+00:00",
+  "archive": {
+    "sha256": "d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6",
+    "bytes": 516909
+  },
+  "nested_archive": {
+    "sha256": "5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c",
+    "bytes": 406690
+  },
+  "frozen_dataset_version": "gvpa-recognition-c7f6f005d717",
+  "frozen_split_version": "homology-8b9005e2d9-s42",
+  "frozen_input_sha256": {
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "sequences_for_clustering.fasta": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+    "split_manifest.csv": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c"
+  },
+  "manifests": {
+    "discovery_primary_manifest.csv": {
+      "sha256": "057cb1dfa04d2f30f2f639fcd20758864ac91d624c50869dbb9d2260a10521e6",
+      "rows": 1202
+    },
+    "validation_primary_manifest.csv": {
+      "sha256": "d85aeac2cb29069c9c954b967c6deb2a424ce222e657ec4b58accada788f1c41",
+      "rows": 519
+    },
+    "sensitivity_manifest.csv": {
+      "sha256": "b31e599df958b6c8c3e82ac01b0467f17fb2570d9742fe3df5e776747feb44fc",
+      "rows": 355
+    }
+  },
+  "split_records": 2076,
+  "homology_clusters": 478,
+  "cluster_leakage": false,
+  "scope_note": "Automated local ZIP check only; it does not establish a fixed shared location, independent human handoff acceptance, or an M3 experiment result.",
+  "verifier_sha256": "d43989088d17a8d01b40fb89526dcfb5e8a525a29c8ad6711bd51ee9c1f8b904",
+  "frozen_summary_sha256": {
+    "gvpa_v1_audit_summary.json": "908ce3dbf0e38731980c166f83b3921956097bc1498aff091e625084aacc449c",
+    "gvpa_v1_split_summary.json": "e192f67a4e5534552cdcdfcb5346a23c4bcc365f13569f534be86fe850e6efb3"
+  }
+}

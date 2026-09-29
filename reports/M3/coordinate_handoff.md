@@ -9,6 +9,14 @@
 - 五份被引用的 M2 小型 JSON 收据原先记录 CRLF 字节哈希，但 Git 的自动换行可能让检出副本变成 LF。此分支通过 `.gitattributes -text` 将其**原有工作副本字节**按记录哈希存入 Git；只修复跨平台字节一致性，不改 JSON 字段、运行结果或历史审核状态。
 - `python -m scripts.m3_verify_pr19_handoff --out <新收据路径>` 可重新下载核验；不要把自动核验写成 M2 正式验收。引用的冻结数据版本为 `gvpa-recognition-c7f6f005d717`，划分版本为 `homology-8b9005e2d9-s42`。
 
+## 新收到的 B M3 数据包
+
+B 交付的 `m3_b_handoff.zip` 已作本地只读核验；完整 ZIP SHA-256 为 `d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6`，内层 `m3_b_handoff_bundle.zip` 为 `5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c`。外层三份 manifest 与内层副本逐字节相同。自动核验细节和每份输入哈希见 [B 包核验收据](b_handoff_verification.json)；复核入口为 `python -m scripts.m3_verify_b_handoff --zip <B 包路径> --out <新收据路径>`。该收据只证明**收到的这一份本地文件**完整，不是 B 本人的签收或 A 的正式验收。
+
+三份清单包含 [discovery primary](../../data/splits/m3/discovery_primary_manifest.csv) 1,202、[validation primary](../../data/splits/m3/validation_primary_manifest.csv) 519、[sensitivity](../../data/splits/m3/sensitivity_manifest.csv) 355，合计 2,076 个唯一 ID；每条记录的序列哈希、长度、队列、划分及同源簇与 M2 冻结数据一致，478 个同源簇不跨 discovery/validation。本分支只收录这三份**不含原始序列**的字节级副本，供 D 按收据 SHA 取得清单。内层 `metadata.csv`、`sequences_for_clustering.fasta`、`split_manifest.csv` 的 SHA-256 与上面 C 已核验的 M2 冻结输入完全相同，因此 **C 坐标索引无需迁移或重扫**。这属于 B→C 输入兼容性检查，不是用 validation 挑选窗口、调整参数或验证候选。
+
+新包没有 B 自带的运行收据、完整性检查脚本或固定团队共享 URI；目前也没有其他组员实际下载该新包的核验记录。现在可用本分支的三份 manifest 配合 PR #19 Release 中同 SHA 的 M2 原始三文件重建输入，但这不能冒充 B 原包的独立下载签收或 A 的正式验收。包内有 validation 全序列；正式 validation 窗口核对仍须等待 A 冻结候选和评价规则。
+
 ## 已核实坐标与覆盖
 
 `PF00741.24` 有 39 个 HMM match state。天然序列 `raw_position`、窗口边界采用 **1-based 闭区间**；HMM match state 是另一套同源坐标。M2 原始扫描有 2,076 条 QC 合格序列、80,219 行接受域逐残基映射；primary 队列 discovery 1,202、validation 519。入口同时锁定 B 冻结文件、三份 M2 收据的字节 SHA、收据中的 HMM/PDB 来源 SHA 及逐表 SHA；不能只同步修改某个本地收据来替换来源。完整输入、原始表、结构表哈希与数量的启动前复核见 [coordinate_summary.json](../../results/M3/coordinate_summary.json)。这些是 M2 坐标完整性事实，不是 M3 的发现或验证结果。
