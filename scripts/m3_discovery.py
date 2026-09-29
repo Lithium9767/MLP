@@ -58,10 +58,11 @@ def checked_inputs(args, config):
                       (args.coordinates, 'coordinates_sha256')]:
         if sha256_file(path) != config[key]:
             raise ValueError(f'Frozen input hash mismatch: {path}')
-    records = read_embedding_records(args.metadata, args.split_manifest)
-    if len(records) != config['expected_primary_discovery']:
+    records = read_embedding_records(args.metadata, args.split_manifest, primary_only=not args.include_sensitivity)
+    expected = 1453 if args.include_sensitivity else config['expected_primary_discovery']
+    if len(records) != expected:
         raise ValueError('Unexpected discovery primary count')
-    if any(r.split != 'discovery' or r.analysis_cohort != 'primary' for r in records):
+    if any(r.split != 'discovery' or (not args.include_sensitivity and r.analysis_cohort != 'primary') for r in records):
         raise ValueError('Discovery primary only')
     return records
 
@@ -96,6 +97,7 @@ def window_rows(records, embeddings, mappings, width, step):
             states = sorted({mappings[record.internal_id].get(p) for p in range(start, end+1)} - {None})
             mapped = sum(mappings[record.internal_id].get(p) is not None for p in range(start, end+1))
             rows.append({'internal_id': record.internal_id, 'sequence_sha256': record.sequence_sha256,
+                         'analysis_cohort': record.analysis_cohort,
                          'split': 'discovery', 'raw_start': start, 'raw_end': end, 'window_length': width,
                          'sequence_length': len(record.sequence), 'normalized_start': (start-1)/len(record.sequence),
                          'hmm_states': ';'.join(map(str, states)), 'mapped_fraction': mapped/width})
@@ -160,7 +162,7 @@ def embed(args, config, records):
         for r in batch:
             p=cache/(r.sequence_sha256+'.npz')
             manifests.append({'internal_id':r.internal_id,'sequence_sha256':r.sequence_sha256,
-                              'split':'discovery','analysis_cohort':'primary','sequence_length':len(r.sequence),
+                              'split':'discovery','analysis_cohort':r.analysis_cohort,'sequence_length':len(r.sequence),
                               'embedding_path':str(p.resolve()),'embedding_sha256':sha256_file(p),'dimension':480})
         print(f'EMBED {min(offset+len(batch),len(selected))}/{len(selected)}',flush=True)
     write_csv(args.output_dir/'embedding_manifest.csv',manifests)
@@ -294,12 +296,51 @@ def analyze(args,config,records):
             'software':{n:importlib.metadata.version(n) for n in ['numpy','scikit-learn','hdbscan','umap-learn','matplotlib']}}
 
 
+def cohort(args,config,records):
+    import numpy as np
+    import joblib,hdbscan
+    from sklearn.metrics import adjusted_rand_score
+    if not args.include_sensitivity or args.discovery_dir is None:raise ValueError('Cohort transfer requires all discovery cohorts and a primary discovery result')
+    frozen=json.loads((args.discovery_dir/'candidate_freeze_proposal.json').read_text())
+    artifact=args.discovery_dir/'frozen_transform_proposal.joblib'
+    if sha256_file(artifact)!=frozen['transform_sha256']:raise ValueError('Primary transform hash mismatch')
+    manifests=read_csv(args.embeddings/'embedding_manifest.csv')
+    if len(manifests)!=len(records) or {m['internal_id'] for m in manifests}!={r.internal_id for r in records}:raise ValueError('Sensitivity embedding identities mismatch')
+    embeddings={}
+    for m in manifests:
+        if m['split']!='discovery' or sha256_file(Path(m['embedding_path']))!=m['embedding_sha256']:raise ValueError('Sensitivity hash/split mismatch')
+        with np.load(m['embedding_path'],allow_pickle=False) as z:embeddings[m['internal_id']]=z['residue_embedding']
+    mapping=checked_coordinates(args.coordinates,records)
+    rows,vectors,_=window_rows(records,embeddings,mapping,30,5)
+    model=joblib.load(artifact)
+    labels,strength=hdbscan.approximate_predict(model['clusterer'],model['pca'].transform(vectors))
+    result=[]
+    for name in sorted({r.analysis_cohort for r in records}):
+        index=[i for i,row in enumerate(rows) if row['analysis_cohort']==name]
+        counts=Counter(int(labels[i]) for i in index)
+        result.append({'analysis_cohort':name,'n_sequences':sum(r.analysis_cohort==name for r in records),
+                       'n_windows':len(index),'noise_fraction':counts[-1]/len(index),
+                       'mean_mapped_fraction':float(np.mean([rows[i]['mapped_fraction'] for i in index])),
+                       'cluster_counts':json.dumps(dict(sorted(counts.items()))),
+                       'interpretation':'fixed primary transform transfer on discovery only; no refitting or functional labels'})
+    write_csv(args.output_dir/'cohort_sensitivity.csv',result)
+    original={(r['internal_id'],int(r['raw_start'])):int(r['cluster']) for r in read_csv(args.discovery_dir/'candidate_windows.csv')}
+    primary_index=[i for i,row in enumerate(rows) if row['analysis_cohort']=='primary']
+    ari=float(adjusted_rand_score([original[(rows[i]['internal_id'],rows[i]['raw_start'])] for i in primary_index],[int(labels[i]) for i in primary_index]))
+    return {'n_sequences':len(records),'n_windows':len(rows),'cohorts':result,'validation_used':False,'refit':False,
+            'primary_fit_vs_approximate_assignment_ARI':ari,
+            'primary_transform_sha256':sha256_file(artifact),
+            'software':{n:importlib.metadata.version(n) for n in ['numpy','scikit-learn','hdbscan']}}
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('stage',choices=['embed','analyze']);p.add_argument('--config',type=Path,default=ROOT/'configs/m3_discovery.json')
+    p.add_argument('stage',choices=['embed','analyze','cohort']);p.add_argument('--config',type=Path,default=ROOT/'configs/m3_discovery.json')
     for name in ['metadata','split-manifest','coordinates','output-dir']:p.add_argument('--'+name,type=Path,required=True)
     p.add_argument('--model-dir',type=Path);p.add_argument('--embeddings',type=Path);p.add_argument('--limit',type=int)
     p.add_argument('--batch-size',type=int,default=8);p.add_argument('--threads',type=int,default=4)
+    p.add_argument('--include-sensitivity',action='store_true')
+    p.add_argument('--discovery-dir',type=Path)
     args=p.parse_args();config=json.loads(args.config.read_text());args.output_dir.mkdir(parents=True,exist_ok=True)
     if (args.output_dir/'run_receipt.json').exists():raise ValueError('Use a new experiment output directory')
     provenance=clean_provenance(args.config);started=time.monotonic()
@@ -307,7 +348,8 @@ def main():
         if config['fit_split']!='discovery' or not config['primary_only']:raise ValueError('Discovery primary only')
         if args.batch_size<1 or args.threads<1 or (args.limit is not None and args.limit<1):raise ValueError('Positive counts required')
         records=checked_inputs(args,config)
-        result=embed(args,config,records) if args.stage=='embed' else analyze(args,config,records)
+        if args.stage=='analyze' and args.include_sensitivity:raise ValueError('Never refit primary discovery with sensitivity cohorts')
+        result=embed(args,config,records) if args.stage=='embed' else cohort(args,config,records) if args.stage=='cohort' else analyze(args,config,records)
         files={str(path.relative_to(args.output_dir)):sha256_file(path) for path in args.output_dir.rglob('*') if path.is_file()}
         write_json(args.output_dir/'run_receipt.json',{'status':'completed','stage':args.stage,'provenance':provenance,
                   'config':config,'result':result,'seconds':time.monotonic()-started,'outputs_sha256':files})
