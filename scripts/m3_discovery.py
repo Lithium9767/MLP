@@ -167,6 +167,8 @@ def embed(args, config, records):
         print(f'EMBED {min(offset+len(batch),len(selected))}/{len(selected)}',flush=True)
     write_csv(args.output_dir/'embedding_manifest.csv',manifests)
     return {'n_sequences':len(selected),'eligible_parent_count':len(records),'software':versions,
+            'primary_only':not args.include_sensitivity,
+            'analysis_cohort_counts':dict(Counter(r.analysis_cohort for r in selected)),
             'device':'cpu','threads':args.threads,'layer':model.config.num_hidden_layers,
             'model_id':config['model_id'],'revision':config['model_revision'],'model_files':receipt['files'],
             'max_repeat_difference':max_repeat_difference,'fresh_repeat_test':repeated,
