@@ -1,0 +1,4 @@
+# Optional ESM-2 backend only. Record resolved versions before a formal run.
+-r requirements.txt
+torch
+transformers
