@@ -13,3 +13,5 @@
 PF00741可用于身份、同源坐标和候选区域验证，不作为当前天然GvpA的监督标签。MAFFT未实际运行前不得写成已完成结果。
 
 本地试扫描工具见 [PILOT_PFAM.md](PILOT_PFAM.md)。
+
+M2 的干净扫描 002 及公开原始交接包见 [M2 C 运行说明](M2_PF00741.md)。M3 启动前的窗口坐标接口已在 [m3_window_coordinates.py](m3_window_coordinates.py)；批量校验/映射入口为 `python -m scripts.m3_coordinate_handoff`，明确保留未对齐、插入、多域、低覆盖和 7R1C 未建模状态。使用方法、来源哈希和剩余的冻结后交接见 [M3 C 坐标交接](../reports/M3/coordinate_handoff.md)。这不是候选发现或 validation 结果。
