@@ -1,0 +1,7 @@
+owner,task,status,evidence
+A,scope and prospective parameter matrix,prepared,docs/plans/2026-09-29-m3-a-d-execution.md; configs/m3_discovery.json
+A,registry and provenance,completed,experiments/registry.csv; reports/M3/runs/
+A,teacher confirmation and genuine non-author review,pending_real_people,not fabricated
+D,full-length and window representations,completed_discovery,M3-D-EMBED-001; M3-D-DISCOVERY-001
+D,parameter confounds baselines and cohort sensitivity,completed_diagnostics_limits_remain,M3-D-DISCOVERY-001; M3-D-COHORT-001
+A/D,candidate freeze and validation,proposal_and_gated_code_ready_not_approved_not_run,candidate_freeze_proposal.json; scripts/m3_validate_frozen.py

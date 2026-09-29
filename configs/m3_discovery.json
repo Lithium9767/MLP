@@ -1,0 +1,23 @@
+{
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version": "homology-8b9005e2d9-s42",
+  "fit_split": "discovery",
+  "primary_only": true,
+  "expected_primary_discovery": 1202,
+  "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+  "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+  "coordinates_sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+  "model_id": "facebook/esm2_t12_35M_UR50D",
+  "model_revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+  "residue_dimension": 480,
+  "seed": 42,
+  "window_lengths": [25, 30, 35],
+  "window_step": 5,
+  "pca_dimensions": [20, 50],
+  "min_cluster_sizes": [50, 100],
+  "min_samples": 10,
+  "main_parameters": {"window_length": 30, "pca_dimension": 20, "min_cluster_size": 50},
+  "random_baseline_repeats": 50,
+  "validation_unlock": "requires frozen candidates and explicit A confirmation",
+  "interpretation": "Clusters and HMM concentration are candidate evidence, not functional proof"
+}

@@ -1,0 +1,121 @@
+{
+  "status": "completed",
+  "stage": "cohort",
+  "provenance": {
+    "commit": "eb2292e41e638d8efd33c8bc84bbfb71e9368d22",
+    "dirty": false,
+    "config_sha256": "4e23dd7a594a87710e52e73c95951722ef1286ec893825d66e758970daa5346c",
+    "command": [
+      "scripts/m3_discovery.py",
+      "cohort",
+      "--include-sensitivity",
+      "--metadata",
+      "data/processed/m2_handoff_received/unpacked/B_input/gvpa_v1_reproduction/metadata.csv",
+      "--split-manifest",
+      "data/processed/m2_handoff_received/unpacked/B_input/gvpa_v1_reproduction/split/split_manifest.csv",
+      "--coordinates",
+      "data/processed/m2_handoff_received/unpacked/C_scan_002/raw/hmm_coordinate_map.csv",
+      "--embeddings",
+      "data/processed/m3/M3-D-COHORT-EMBED-001",
+      "--discovery-dir",
+      "data/processed/m3/M3-D-DISCOVERY-001",
+      "--output-dir",
+      "data/processed/m3/M3-D-COHORT-001"
+    ],
+    "utc": "2026-09-29T12:00:02.036697+00:00",
+    "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "config": {
+    "dataset_version": "gvpa-recognition-c7f6f005d717",
+    "split_version": "homology-8b9005e2d9-s42",
+    "fit_split": "discovery",
+    "primary_only": true,
+    "expected_primary_discovery": 1202,
+    "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "coordinates_sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "model_id": "facebook/esm2_t12_35M_UR50D",
+    "model_revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "residue_dimension": 480,
+    "seed": 42,
+    "window_lengths": [
+      25,
+      30,
+      35
+    ],
+    "window_step": 5,
+    "pca_dimensions": [
+      20,
+      50
+    ],
+    "min_cluster_sizes": [
+      50,
+      100
+    ],
+    "min_samples": 10,
+    "main_parameters": {
+      "window_length": 30,
+      "pca_dimension": 20,
+      "min_cluster_size": 50
+    },
+    "random_baseline_repeats": 50,
+    "validation_unlock": "requires frozen candidates and explicit A confirmation",
+    "interpretation": "Clusters and HMM concentration are candidate evidence, not functional proof"
+  },
+  "result": {
+    "n_sequences": 1453,
+    "n_windows": 29611,
+    "cohorts": [
+      {
+        "analysis_cohort": "primary",
+        "n_sequences": 1202,
+        "n_windows": 24581,
+        "noise_fraction": 0.306863024287051,
+        "mean_mapped_fraction": 0.35188831482310184,
+        "cluster_counts": "{\"-1\": 7543, \"0\": 50, \"1\": 107, \"2\": 14665, \"3\": 2216}",
+        "interpretation": "fixed primary transform transfer on discovery only; no refitting or functional labels"
+      },
+      {
+        "analysis_cohort": "sensitivity_partial",
+        "n_sequences": 7,
+        "n_windows": 131,
+        "noise_fraction": 0.45038167938931295,
+        "mean_mapped_fraction": 0.3796437659033079,
+        "cluster_counts": "{\"-1\": 59, \"2\": 53, \"3\": 19}",
+        "interpretation": "fixed primary transform transfer on discovery only; no refitting or functional labels"
+      },
+      {
+        "analysis_cohort": "sensitivity_partial_and_type_conflict",
+        "n_sequences": 17,
+        "n_windows": 300,
+        "noise_fraction": 0.31666666666666665,
+        "mean_mapped_fraction": 0.402,
+        "cluster_counts": "{\"-1\": 95, \"2\": 143, \"3\": 62}",
+        "interpretation": "fixed primary transform transfer on discovery only; no refitting or functional labels"
+      },
+      {
+        "analysis_cohort": "sensitivity_type_conflict",
+        "n_sequences": 227,
+        "n_windows": 4599,
+        "noise_fraction": 0.6151337247227658,
+        "mean_mapped_fraction": 0.35832427339276657,
+        "cluster_counts": "{\"-1\": 2829, \"0\": 5, \"2\": 1305, \"3\": 460}",
+        "interpretation": "fixed primary transform transfer on discovery only; no refitting or functional labels"
+      }
+    ],
+    "validation_used": false,
+    "refit": false,
+    "primary_fit_vs_approximate_assignment_ARI": 0.9998519497244232,
+    "primary_transform_sha256": "a1c61e11eacfd341c4e8daf590374c557b10dcd34f5f672544c1f2d2eb261d9a",
+    "software": {
+      "numpy": "2.4.4",
+      "scikit-learn": "1.8.0",
+      "hdbscan": "0.8.44"
+    }
+  },
+  "seconds": 13.753139899999951,
+  "outputs_sha256": {
+    "cohort_sensitivity.csv": "ea16eb2bdd0f4dcaf56ed8dca898205e7801ce43d69c66c7176692792b88af74"
+  }
+}

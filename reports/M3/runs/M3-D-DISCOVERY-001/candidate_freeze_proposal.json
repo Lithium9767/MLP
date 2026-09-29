@@ -1,0 +1,17 @@
+{
+  "status": "proposed_not_A_approved",
+  "fit_split": "discovery",
+  "parameters": {
+    "window_length": 30,
+    "pca_dimension": 20,
+    "min_cluster_size": 50
+  },
+  "candidate_table_sha256": "f3d6be2e3a8c255b6a0c82ec378b6b45a8da912b16c022600c1f629ebfb29756",
+  "transform_sha256": "a1c61e11eacfd341c4e8daf590374c557b10dcd34f5f672544c1f2d2eb261d9a",
+  "validation_enabled": false,
+  "limits": [
+    "Candidate clusters are not functional proof",
+    "No validation inference before A approves this concrete freeze proposal",
+    "Random diagnostics are exploratory with overlapping windows"
+  ]
+}
