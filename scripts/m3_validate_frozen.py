@@ -24,6 +24,10 @@ def approved_artifacts(discovery,approval_path):
         raise ValueError('Invalid discovery-only freeze source')
     for name,key in [('candidate_regions.csv','candidate_table_sha256'),('frozen_transform_proposal.joblib','transform_sha256')]:
         if sha256_file(discovery/name)!=frozen[key]:raise ValueError('Frozen artifacts changed after approval')
+    selected=approval.get('selected_clusters')
+    available={int(row['cluster']) for row in read_csv(discovery/'candidate_regions.csv')}
+    if not isinstance(selected,list) or not selected or not set(selected)<=available:
+        raise ValueError('A must explicitly select existing clusters for frozen validation')
     return approval,frozen,run
 
 
@@ -86,6 +90,7 @@ def main():
         write_csv(args.output_dir/'validation_windows.csv',[dict(row,cluster=int(label),strength=float(score)) for row,label,score in zip(rows,labels,strength)])
         comparisons=[]
         for candidate in read_csv(args.discovery_dir/'candidate_regions.csv'):
+            if int(candidate['cluster']) not in approval['selected_clusters']:continue
             cluster=int(candidate['cluster']);indices=np.flatnonzero(labels==cluster)
             start=candidate['majority_hmm_start'];end=candidate['majority_hmm_end'];fraction=[]
             if start and end:

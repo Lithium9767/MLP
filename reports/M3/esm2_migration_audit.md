@@ -1,3 +1,11 @@
+# M3 A/D 迁移与运行审计
+
+2026-09-29：以main355424f为基线复用#17中的四个文件，并增补固定revision的正式运行、全长上下文窗口、PCA/HDBSCAN、基线、混杂与敏感性、批准锁。#17历史记录保留；本分支扩展其入口，未整体合并#4或覆盖M2实现。正式运行优先使用scripts/m3_discovery.py；features/esm2_embed.py是保留的旧入口，不具备本次正式收据的完整规范。
+
+M2已关闭，真实ESM/聚类运行已完成，详见m3_summary.md与runs/。下方是原#17迁移时快照，其中“Draft/未运行/待M2关闭”已过时；未编造历史Review。M3仍按CONTRIBUTING要求真实非作者审查，不沿用M2的审核例外。
+
+---
+
 # ESM-2 最小迁移审计（M3草稿，不启动实验）
 
 任务：[Issue #5](https://github.com/Lithium9767/MLP/issues/5)。原PR：[PR #4](https://github.com/Lithium9767/MLP/pull/4)，源提交 `e87550ca662154152e1cf21bebc0e9d6b4871b92`。新分支从main `5891c2f7a6eb79e48dd7b75175a3af8176e410a2` 建立，没有整体合并旧分支。

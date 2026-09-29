@@ -1,0 +1,5 @@
+analysis_cohort,n_sequences,n_windows,noise_fraction,mean_mapped_fraction,cluster_counts,interpretation
+primary,1202,24581,0.306863024287051,0.35188831482310184,"{""-1"": 7543, ""0"": 50, ""1"": 107, ""2"": 14665, ""3"": 2216}",fixed primary transform transfer on discovery only; no refitting or functional labels
+sensitivity_partial,7,131,0.45038167938931295,0.3796437659033079,"{""-1"": 59, ""2"": 53, ""3"": 19}",fixed primary transform transfer on discovery only; no refitting or functional labels
+sensitivity_partial_and_type_conflict,17,300,0.31666666666666665,0.402,"{""-1"": 95, ""2"": 143, ""3"": 62}",fixed primary transform transfer on discovery only; no refitting or functional labels
+sensitivity_type_conflict,227,4599,0.6151337247227658,0.35832427339276657,"{""-1"": 2829, ""0"": 5, ""2"": 1305, ""3"": 460}",fixed primary transform transfer on discovery only; no refitting or functional labels

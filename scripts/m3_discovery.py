@@ -199,7 +199,7 @@ def candidate_table(rows, labels, config):
     output=[]
     for label in sorted(set(labels)-{-1}):
         ids=np.flatnonzero(labels==label); values=incidence[ids].mean(axis=0)
-        best=int(values.argmax())+1;groups=Counter((rows[i]['sequence_length']//20,int(rows[i]['normalized_start']*5)) for i in ids)
+        best=int(values.argmax())+1 if values.max()>0 else '';groups=Counter((rows[i]['sequence_length']//20,int(rows[i]['normalized_start']*5)) for i in ids)
         null=[]
         for _ in range(config['random_baseline_repeats']):
             sampled=[]

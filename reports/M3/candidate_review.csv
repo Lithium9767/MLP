@@ -1,0 +1,5 @@
+cluster,review_status,dominant_hmm_state,interpretation
+0,exploratory_not_A_frozen,,"HMM-unmapped; not a HMM-localized candidate. Raw state=1 is all-zero argmax placeholder, corrected in derived interpretation."
+1,exploratory_not_A_frozen,21,Mapped span16-39; observed concentration below matched-random p95; not strong enrichment.
+2,exploratory_not_A_frozen,31,Diffuse large cluster; no majority HMM span; not a specific localized region.
+3,exploratory_not_A_frozen,25,Exploratory mapped span14-39; above random diagnostic p95; length/parameter confounding unresolved.

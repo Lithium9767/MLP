@@ -5,10 +5,15 @@ import unittest
 from pathlib import Path
 import numpy as np
 from features.esm2_embed import SequenceRecord
-from scripts.m3_discovery import checked_coordinates, window_rows
+from scripts.m3_discovery import checked_coordinates, window_rows, candidate_table
 
 
 class DiscoveryCoordinateTests(unittest.TestCase):
+    def test_unmapped_cluster_does_not_invent_hmm_state_one(self):
+        rows=[{'internal_id':str(i),'hmm_states':'','sequence_length':40,'normalized_start':0.,'mapped_fraction':0.} for i in range(2)]
+        result=candidate_table(rows,np.array([0,0]),{'seed':42,'random_baseline_repeats':2})
+        self.assertEqual(result[0]['dominant_hmm_state'],'')
+        self.assertEqual(result[0]['mean_mapped_fraction'],0)
     def record(self):
         seq='ACDEFGHIKLMNPQRSTVWY'*2
         return SequenceRecord('a','seq',seq,hashlib.sha256(seq.encode()).hexdigest(),'discovery','primary')
