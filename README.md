@@ -1,5 +1,11 @@
 # GvpA 潜在功能区域识别与关键位点证据整合
 
+## 2026-09-29 最终验收决定（当前有效）
+
+负责人 A 已在会话亲自确认：“我确认M2验收了”。助手按其明确指令转录此决定，未代签或新增虚假 Review。验收基线为 `567b941e9c80eda5901b094fee1baf72a7e6a730`，确认记录见 [Issue #15](https://github.com/Lithium9767/MLP/issues/15#issuecomment-5889226612)，该任务已关闭。
+
+**M2 已验收，M3 可以推进。** PR #17 已从 Draft 转为待审，PR #7 计划可继续审查；尚未合并 M3 代码或执行 M3 正式实验。旧 dirty 来源、E001 未知运行 SHA 和复现摘要差异等限制继续保留。下方“等待 A/未验收”的文字属于确认前记录，由本节覆盖。
+
 五人机器学习课程项目，公共仓库为 [Lithium9767/MLP](https://github.com/Lithium9767/MLP)。当前主线不再给天然 GvpA 强行构造功能正负标签，而是利用蛋白语言模型分析无标签序列中的局部模式，再用进化、实验突变和结构证据验证候选区域。
 
 > M1 事实核查：官方数据库中 **PF00741** 是 Gas vesicle protein family；课程材料中的 PF01132 对应 EF-P OB domain。PF00741 只能证明家族身份，不能同时充当监督标签和独立验证证据。
@@ -165,7 +171,7 @@ MLP/
 - C 的 [Release 交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)已实际下载，整包及 12 个文件哈希匹配；2076 accepted、80219 坐标残基逐行核对、7R1C 88/65/39 已重算。
 - #19 待审提交的完整测试为 45 passed、2 subtests passed，M2 validator 通过；后续最终提交仍须绑定 SHA 检查。
 - 队列图为 1721/20/305/30/2；旧 E001 运行 SHA 仍未知，其他六图的诊断重绘不是原运行的字节复现。
-- **已取消强制 B/C 独立复核；M2 工程准备完成，等待 A 本人最终验收。M3 尚未正式启动，#17 保持 Draft。** 规则见 [CONTRIBUTING](CONTRIBUTING.md)，证据与关闭条件见 [验收报告](reports/M2/m2_acceptance.md) 和 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
+- **已取消强制 B/C 独立复核；M2 已由 A 确认验收。M3 可以启动，#17 已转为待审，尚未运行正式实验。** 规则见 [CONTRIBUTING](CONTRIBUTING.md)，证据与关闭条件见 [验收报告](reports/M2/m2_acceptance.md) 和 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
 - B 复现包中的两份摘要不是 C 原扫描摘要；实际三份冻结输入哈希一致，不改变原 split。限制见技术核验报告。
 
 ## 主要风险
@@ -183,7 +189,7 @@ MLP/
 - [x] B冻结候选数据清单、质量字段和输入/输出哈希。
 - [x] B用MMseqs2生成同源簇并冻结discovery/validation划分。
 - [x] C的PF00741扫描与HMM/序列/结构坐标技术成果已随PR #13归档。
-- [ ] A 本人根据实际技术核验和已记录限制，在 Issue #15 确认最终验收；B/C 独立报告可选。
+- [x] A 已亲自确认 M2 验收，决定转录至 Issue #15；B/C 独立报告可选。
 - [x] C 交接包固定 Release 地址、实测哈希与全部坐标核对完成；旧 dirty 来源仍保留为历史限制。
 - [ ] A 确认旧 E001 来源未知等限制的处理，不将归档 SHA 冒充运行 SHA。
 - [ ] D在验证集复现全长与窗口表示结果并完成参数敏感性。
