@@ -4,7 +4,7 @@
 
 ## 已收到的内容
 
-本机收到 `m3_b_handoff.zip`，外层 SHA-256 为 `d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6`。内层包 SHA-256 为 `5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c`。两层均可读取且 CRC 检查通过；外层三份 manifest 与内层同名文件逐字节相同。完整六文件哈希见[运行收据](runs/M3-B-HANDOFF-CHECK-001/run_receipt.json)。包仅在本机读取，未将序列或大文件提交 Git。
+本机收到 `m3_b_handoff.zip`，外层 SHA-256 为 `d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6`。内层包 SHA-256 为 `5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c`。两层均可读取且 CRC 检查通过；外层三份 manifest 与内层同名文件逐字节相同。完整六文件哈希见[最新运行收据](runs/M3-B-HANDOFF-CHECK-002/run_receipt.json)；[001 收据](runs/M3-B-HANDOFF-CHECK-001/run_receipt.json)保留为修复重复 ZIP 成员检测前的历史运行。包仅在本机读取，未将序列或大文件提交 Git。
 
 | 检查项 | 实测结果 |
 | --- | --- |
@@ -19,11 +19,11 @@
 实际命令（在仓库根目录）：
 
 ```powershell
-python scripts/verify_m3_b_handoff.py --bundle ..\..\m3_b_handoff.zip --receipt reports/M3/runs/M3-B-HANDOFF-CHECK-001/run_receipt.json
+python scripts/verify_m3_b_handoff.py --bundle ..\..\m3_b_handoff.zip --receipt reports/M3/runs/M3-B-HANDOFF-CHECK-002/run_receipt.json
 python -m unittest discover -s tests -p test_m3_b_handoff.py -v
 ```
 
-正式预检从干净提交 `3167fe440e9224690e50010fafff0c5f7070fd07` 执行，收据中的 `run_commit` 指向该提交，不指向后续归档提交。脚本核对 ZIP 内容、M2 冻结哈希、逐条序列哈希、manifest 分区、同源簇隔离；没有运行 validation 模型或据此选择候选区域。四项本任务测试通过，覆盖哈希不符、manifest 错配和同源簇泄漏。
+最新预检从干净提交 `f414e319775dfc15d88c0ec67d4cc146014881eb` 执行，收据中的 `run_commit` 指向该提交，不指向后续归档提交。脚本核对 ZIP 内容、重复成员、M2 冻结哈希、逐条序列哈希、manifest 分区、同源簇隔离；没有运行 validation 模型或据此选择候选区域。五项本任务测试通过，覆盖重复 ZIP 成员、哈希不符、manifest 错配和同源簇泄漏。详细审查见[助手技术复核](b_assistant_review.md)。
 
 `python scripts/validate_m2_release.py` 通过。尝试执行 `python -m unittest discover -s tests -v` 时，本机 Python 环境缺少 `matplotlib` 和 `pytest`，两个既有测试模块在导入阶段失败；这不构成全量测试通过的证据。应在装有 `requirements.txt` 与 M2 C 依赖的环境中重跑并保存真实结果。
 
