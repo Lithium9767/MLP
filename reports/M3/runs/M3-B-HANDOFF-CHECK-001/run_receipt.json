@@ -1,0 +1,53 @@
+{
+  "outer_zip_sha256": "d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6",
+  "inner_zip_sha256": "5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c",
+  "inner_file_sha256": {
+    "discovery_primary_manifest.csv": "057cb1dfa04d2f30f2f639fcd20758864ac91d624c50869dbb9d2260a10521e6",
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "sensitivity_manifest.csv": "b31e599df958b6c8c3e82ac01b0467f17fb2570d9742fe3df5e776747feb44fc",
+    "sequences_for_clustering.fasta": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+    "split_manifest.csv": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "validation_primary_manifest.csv": "d85aeac2cb29069c9c954b967c6deb2a424ce222e657ec4b58accada788f1c41"
+  },
+  "checks": {
+    "metadata_rows": 2078,
+    "split_rows": 2076,
+    "metadata_cohorts": {
+      "excluded_sequence_qc": 2,
+      "primary": 1721,
+      "sensitivity_partial": 20,
+      "sensitivity_partial_and_type_conflict": 30,
+      "sensitivity_type_conflict": 305
+    },
+    "split_counts": {
+      "discovery": 1453,
+      "validation": 623
+    },
+    "cluster_counts": {
+      "discovery": 335,
+      "validation": 143
+    },
+    "cross_split_clusters": 0,
+    "manifest_rows": {
+      "discovery_primary_manifest.csv": 1202,
+      "validation_primary_manifest.csv": 519,
+      "sensitivity_manifest.csv": 355
+    },
+    "fasta_records": 2076
+  },
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version": "homology-8b9005e2d9-s42",
+  "status": "assistant_technical_precheck_passed_pending_B_attestation",
+  "run_commit": "3167fe440e9224690e50010fafff0c5f7070fd07",
+  "dirty": false,
+  "run_utc": "2026-09-30T10:46:38.033775+00:00",
+  "python": "3.12.11",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "command": "python scripts/verify_m3_b_handoff.py --bundle <local-bundle-path> --receipt <receipt-path>",
+  "bundle_filename": "m3_b_handoff.zip",
+  "limitations": [
+    "Package creator and B's independent check are unverified",
+    "Original large-file shared-storage URI and access rights are unverified",
+    "Validation sequences were checked for integrity only; no M3 model validation ran"
+  ]
+}
