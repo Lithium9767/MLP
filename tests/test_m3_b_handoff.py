@@ -1,5 +1,8 @@
 import hashlib
+import io
 import unittest
+import warnings
+import zipfile
 from unittest.mock import patch
 
 from scripts import verify_m3_b_handoff as handoff
@@ -63,6 +66,17 @@ class HandoffCheckTest(unittest.TestCase):
         self.manifests["discovery_primary_manifest.csv"][0]["split"] = "validation"
         with self.assertRaisesRegex(ValueError, "Manifest/split mismatch"):
             self._check()
+
+    def test_duplicate_zip_member_rejected(self):
+        buffer = io.BytesIO()
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+            with zipfile.ZipFile(buffer, "w") as archive:
+                archive.writestr("same.csv", "one")
+                archive.writestr("same.csv", "two")
+        with zipfile.ZipFile(io.BytesIO(buffer.getvalue())) as archive:
+            with self.assertRaisesRegex(ValueError, "Duplicate ZIP member"):
+                handoff.checked_zip_members(archive, {"same.csv"}, "fixture")
 
     def _check(self):
         return handoff.check_rows(self.metadata, self.split, self.manifests, self.fasta)

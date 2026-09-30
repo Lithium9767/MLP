@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the frozen M3 B handoff without extracting or using validation data.
+"""Check the frozen M3 B handoff without extraction or model validation.
 
 This is an engineering check. It cannot establish who prepared the package or
 substitute for B's own handoff and a non-author review.
@@ -72,6 +72,12 @@ def unique(rows: list[dict[str, str]], name: str) -> dict[str, dict[str, str]]:
     indexed = {row["internal_id"]: row for row in rows}
     require(len(indexed) == len(rows), f"Duplicate internal_id: {name}")
     return indexed
+
+
+def checked_zip_members(archive: zipfile.ZipFile, expected: set[str], label: str) -> None:
+    names = [item.filename for item in archive.infolist() if not item.is_dir()]
+    require(len(names) == len(set(names)), f"Duplicate ZIP member: {label}")
+    require(set(names) == expected, f"Unexpected {label} ZIP members: {set(names) ^ expected}")
 
 
 def parse_fasta(data: bytes) -> dict[str, str]:
@@ -162,13 +168,11 @@ def check_rows(metadata: list[dict[str, str]], split: list[dict[str, str]],
 def verify_bundle(path: Path) -> dict:
     with zipfile.ZipFile(path) as outer:
         expected_outer = {INNER} | {f"m3_b_handoff/{name}" for name in TABLES}
-        files = {item.filename for item in outer.infolist() if not item.is_dir()}
-        require(files == expected_outer, f"Unexpected outer ZIP members: {files ^ expected_outer}")
+        checked_zip_members(outer, expected_outer, "outer")
         require(outer.testzip() is None, "Outer ZIP CRC failure")
         inner_bytes = outer.read(INNER)
         with zipfile.ZipFile(io.BytesIO(inner_bytes)) as inner:
-            members = {item.filename for item in inner.infolist() if not item.is_dir()}
-            require(members == INNER_FILES, f"Unexpected inner ZIP members: {members ^ INNER_FILES}")
+            checked_zip_members(inner, INNER_FILES, "inner")
             require(sum(item.file_size for item in inner.infolist()) < 10_000_000, "Excessive uncompressed size")
             require(inner.testzip() is None, "Inner ZIP CRC failure")
             data = {name: inner.read(name) for name in INNER_FILES}
