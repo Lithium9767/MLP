@@ -1,17 +1,17 @@
-# M3 C：窗口、PF00741 与 7R1C 坐标交接（启动前）
+# M3 C：窗口、PF00741 与 7R1C 坐标交接
 
-状态：**启动前技术接口已就绪；尚未运行 ESM-2、候选发现或 validation 候选验证。** 本文件是 C 的交接，不代替 A 对 M2/M3 的验收或组员的人工独立 Review。M2 旧运行 `dirty=true` 的历史记录不改写；本交接复用 PR #19 的干净 run 002。
+状态：**C 的窗口接口和冻结来源已就绪，正在交付完整 discovery primary 窗口网格的坐标；候选冻结后生物学核对及 validation 映射待 A 冻结。** 本文件是 C 的交接，不代替 A 对 M3 的验收或组员的人工独立 Review。M2 已由 A 验收，PR #19 已合并；旧运行 `dirty=true` 的历史记录不改写，本交接复用干净 run 002。
 
 ## 可取得的冻结来源
 
-- [PR #19](https://github.com/Lithium9767/MLP/pull/19) 的 C 原始扫描包位于 [公开 Release](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)；完整 ZIP SHA-256 是 `7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e`，逐文件清单在 [M2 交接清单](../M2/c_scan_002_handoff.json)。自动化下载与 13 个 ZIP 成员、内层 B 输入三文件的校验见 [核验收据](pr19_handoff_verification.json)。该收据标注 `assistant_automated`，**不是非作者组员签字**；PR #19 当前仍待审/待合并。
+- [PR #19](https://github.com/Lithium9767/MLP/pull/19) 的 C 原始扫描包位于 [公开 Release](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)；完整 ZIP SHA-256 是 `7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e`，逐文件清单在 [M2 交接清单](../M2/c_scan_002_handoff.json)。自动化下载与 13 个 ZIP 成员、内层 B 输入三文件的校验见 [核验收据](pr19_handoff_verification.json)。该收据标注 `assistant_automated`，**不是非作者组员签字**；M2 验收决定另见 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
 - 本机 B 冻结输入实际位于 `data/processed/gvpa_v1_reproduction/`；不使用旧文档中的 `gvpa_v1/` 路径。M2 scan 002 的 `per_sequence_status.csv` 和 `hmm_coordinate_map.csv` 位于被 Git 忽略的 `data/processed/m2_c/pf00741_scan_002/`。逐位 7R1C 表位于 `data/processed/m2_c/7r1c_002/7r1c_residue_hmm_map.csv`。从 Release 获取后必须按清单复核 SHA-256，不在 Git 提交原始序列或大坐标表。
 - 五份被引用的 M2 小型 JSON 收据原先记录 CRLF 字节哈希，但 Git 的自动换行可能让检出副本变成 LF。此分支通过 `.gitattributes -text` 将其**原有工作副本字节**按记录哈希存入 Git；只修复跨平台字节一致性，不改 JSON 字段、运行结果或历史审核状态。
 - `python -m scripts.m3_verify_pr19_handoff --out <新收据路径>` 可重新下载核验；不要把自动核验写成 M2 正式验收。引用的冻结数据版本为 `gvpa-recognition-c7f6f005d717`，划分版本为 `homology-8b9005e2d9-s42`。
 
 ## 新收到的 B M3 数据包
 
-B 交付的 `m3_b_handoff.zip` 已作本地只读核验；完整 ZIP SHA-256 为 `d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6`，内层 `m3_b_handoff_bundle.zip` 为 `5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c`。外层三份 manifest 与内层副本逐字节相同。自动核验细节和每份输入哈希见 [B 包核验收据](b_handoff_verification.json)；复核入口为 `python -m scripts.m3_verify_b_handoff --zip <B 包路径> --out <新收据路径>`。该收据只证明**收到的这一份本地文件**完整，不是 B 本人的签收或 A 的正式验收。
+B 交付的 `m3_b_handoff.zip` 已作本地只读核验；2026-10-05 用户明确提供微信收到的文件并确认它是 B 的交付，实际 ZIP 与先前收到的包字节一致。完整 ZIP SHA-256 为 `d4d5a53c78c10eb4bfc61008ec17eae225b9cab6305c69b7ed194de7d63307a6`，内层 `m3_b_handoff_bundle.zip` 为 `5bb7649e1c8f6de6830e71dc7d024157e7055257cf3add28f22d78f067ada18c`。外层三份 manifest 与内层副本逐字节相同。自动核验细节和每份输入哈希见 [B 包核验收据](b_handoff_verification.json)；复核入口为 `python -m scripts.m3_verify_b_handoff --zip <B 包路径> --out <新收据路径>`。用户确认交付方不等于确认 B 独立重跑的命令、环境或运行 SHA；未知来源不补造。
 
 三份清单包含 [discovery primary](../../data/splits/m3/discovery_primary_manifest.csv) 1,202、[validation primary](../../data/splits/m3/validation_primary_manifest.csv) 519、[sensitivity](../../data/splits/m3/sensitivity_manifest.csv) 355，合计 2,076 个唯一 ID；每条记录的序列哈希、长度、队列、划分及同源簇与 M2 冻结数据一致，478 个同源簇不跨 discovery/validation。本分支只收录这三份**不含原始序列**的字节级副本，供 D 按收据 SHA 取得清单。内层 `metadata.csv`、`sequences_for_clustering.fasta`、`split_manifest.csv` 的 SHA-256 与上面 C 已核验的 M2 冻结输入完全相同，因此 **C 坐标索引无需迁移或重扫**。这属于 B→C 输入兼容性检查，不是用 validation 挑选窗口、调整参数或验证候选。
 
@@ -55,4 +55,12 @@ evaluation_rules_sha256: <64 位小写 SHA-256>
 
 ## 尚待后续交接
 
-现在没有 D 的实际候选窗口，也没有 A 的候选冻结记录，所以不生成候选逐窗口大表，不计算发现用保守性，不对 validation 作候选核对。D 交付候选后，C 先对 discovery 窗口做坐标/覆盖检查并交 A 冻结；冻结后再按相同接口处理 validation 与生物学证据。任何保守性用于发现时仅从 discovery 计算，不能偷看 validation。结构、PF00741 及同源位置都不是独立功能标签。
+C 可先交付完整 discovery 网格，D 无需为坐标接口重新运行 ESM-2。实际簇标签、入选窗口和候选定义仍由 D 提供；A 的具体候选及评价规则冻结记录尚未取得，所以不对 validation 作候选核对。冻结后再按同一接口处理 validation 与生物学证据。任何保守性用于发现时仅从 discovery 计算，不能偷看 validation。结构、PF00741 及同源位置都不是独立功能标签。
+
+## 完整 discovery 网格交接
+
+入口为 `python -m scripts.m3_discovery_coordinate_grid --window-length 30 --step 5 --out-dir <新目录>`；25/35 aa 敏感性网格用同一入口单独输出。枚举规则与 D 的 PR #22 提交 `79009c83c191a77144181346693b5c2f82e514fc` 中 `features.esm2_embed.iter_windows` 一致：`range(0, length-width+1, 5)`，转换为 1-based 闭区间，不追加不满长的末端窗口。仅处理 1202 条 discovery primary；不进行候选筛选、保守性计算或 validation 窗口映射。
+
+输出 `windows.csv`、`window_coordinate_map.csv`、`residue_coordinate_map.csv` 与 `mapping_receipt.json`。公开逐残基表省略天然/结构参照的氨基酸字母，保留位置、状态、覆盖和编号；有序列需求时复用已核验的 B 输入。D 的 `raw_start/raw_end` 与 C 的 `start_1based/end_1based_inclusive` 均为 1-based 闭区间，以 `(internal_id, start, end)` 连接，要求唯一匹配，并核对序列 SHA。不要按表格行号或聚类编号连接。
+
+0.8 覆盖只标记低覆盖，所有窗口均保留；空 HMM state 不补成 state 1。未建模的全部 23 个 7R1C 提交位点保留在原始结构表和摘要中，即使不属于 39 个对齐 HMM 状态，也不丢弃。D/E 可使用窗口/残基表做映射与覆盖抽查；候选选择和冻结后的生物学结论仍由对应负责人记录。

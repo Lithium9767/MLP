@@ -21,4 +21,6 @@ results/M3/coordinate_summary.json -text whitespace=trailing-space,space-before-
 # B M3 public manifests are byte-for-byte copies of the verified handoff ZIP.
 data/splits/m3/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 scripts/m3_verify_b_handoff.py -text
+scripts/m3_discovery_coordinate_grid.py -text
+reports/M3/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M3/b_handoff_verification.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
