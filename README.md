@@ -1,5 +1,11 @@
 # GvpA 潜在功能区域识别与关键位点证据整合
 
+## 2026-09-29 最终验收决定（当前有效）
+
+负责人 A 已在会话亲自确认：“我确认M2验收了”。助手按其明确指令转录此决定，未代签或新增虚假 Review。验收基线为 `567b941e9c80eda5901b094fee1baf72a7e6a730`，确认记录见 [Issue #15](https://github.com/Lithium9767/MLP/issues/15#issuecomment-5889226612)，该任务已关闭。
+
+**M2 已验收，M3 可以推进。** PR #17 已从 Draft 转为待审，PR #7 计划可继续审查；尚未合并 M3 代码或执行 M3 正式实验。旧 dirty 来源、E001 未知运行 SHA 和复现摘要差异等限制继续保留。下方“等待 A/未验收”的文字属于确认前记录，由本节覆盖。
+
 五人机器学习课程项目，公共仓库为 [Lithium9767/MLP](https://github.com/Lithium9767/MLP)。当前主线不再给天然 GvpA 强行构造功能正负标签，而是利用蛋白语言模型分析无标签序列中的局部模式，再用进化、实验突变和结构证据验证候选区域。
 
 > M1 事实核查：官方数据库中 **PF00741** 是 Gas vesicle protein family；课程材料中的 PF01132 对应 EF-P OB domain。PF00741 只能证明家族身份，不能同时充当监督标签和独立验证证据。
@@ -16,7 +22,7 @@
 
 ### 标签可行性结论
 
-历史数据库调查未发现可用的天然序列功能差异标签。当前可追溯的 M2 [PF00741 扫描摘要](results/bioinformatics/pf00741_scan_summary.json)记录：2076 条通过序列 QC 的输入全部 accepted（PF00741.24，GA 阈值）。这不是对全部 2078 条候选的功能分类；原始输出与运行环境仍待独立复核。
+历史数据库调查未发现可用的天然序列功能差异标签。当前可追溯的 M2 [PF00741 扫描摘要](results/bioinformatics/pf00741_scan_summary.json)记录：2076 条通过序列 QC 的输入全部 accepted（PF00741.24，GA 阈值）。这不是对全部 2078 条候选的功能分类；C 的干净重跑及原始交接已通过助手技术核验，见 [核验报告](reports/M2/a_acceptance_precheck.md)；最终由 A 本人验收。
 
 因此当前数据没有可用于天然序列功能分类的可靠 `y`：
 
@@ -113,7 +119,7 @@ python -m unittest discover -s tests -p test_pilot_pfam.py -v
 python scripts/pilot_pfam.py --help
 ```
 
-入口为 `scripts/pilot_pfam.py`，规则见 `configs/pilot_pfam_rules.json`，操作说明见 [PILOT_PFAM.md](bioinformatics/PILOT_PFAM.md)。60 条试样的历史 `scan_not_run` 状态不代表 M2 全量扫描未运行；全量扫描及坐标结果已随 PR #13 进入 main，但不能替代独立复核。
+入口为 `scripts/pilot_pfam.py`，规则见 `configs/pilot_pfam_rules.json`，操作说明见 [PILOT_PFAM.md](bioinformatics/PILOT_PFAM.md)。60 条试样的历史 `scan_not_run` 状态不代表 M2 全量扫描未运行；全量扫描及坐标结果已随 PR #13 进入 main，原始交接及干净重跑已在 PR #19 中补齐；技术核验不等于 A 的最终验收。
 
 ## 五人分工
 
@@ -160,15 +166,13 @@ MLP/
 
 ## 当前状态
 
-- 已纠正 PF01132/PF00741 编号并完成标签可行性方向判断；
-- 已从真实 `gv.zip` 冻结候选数据版本 `gvpa-recognition-c7f6f005d717`：2078条候选、2076条可进入同源聚类、1721条primary队列；
-- 已用MMseqs2 15-6f452按80%一致性/80%覆盖率形成478个同源簇，并冻结 `homology-8b9005e2d9-s42`：discovery 1453条/335簇，validation 623条/143簇，同簇泄漏为0；
-- PR #13/#14 已归档 B/C/D 技术结果和 E 图表；C 扫描与坐标技术成果已合并，独立复核未完成；
-- 2026-09-26 助手技术预检：34 项测试和 release validator 通过，实际 split 无跨集合 ID/簇泄漏；这不是组员独立审查；
-- 图表抽查发现的四个误显示为0的问题已在[修复PR #18](https://github.com/Lithium9767/MLP/pull/18)重跑修正为20/305/30/2，primary=1721；该修复已合并，E 的其他六图仍待独立复核；
-- C 已使用哈希匹配的 B 冻结输入，从干净提交重跑 2076 条 PF00741 扫描，四份原始输出在本地交接包中且哈希与旧摘要完全相同；固定共享访问和非作者下载核验仍待完成；
-- **M2 待验收，M3 尚未正式启动。** 关闭门槛见 [验收报告](reports/M2/m2_acceptance.md)，复核任务见 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)；
-- 突变表逐条审计、残基扰动及 M3 表示学习仍属于后续任务，历史开发结果不作为最终生物学结论。
+- 已冻结 2078 条候选、2076 条 QC 可用、1721 条 primary；478 同源簇，discovery 1453、validation 623，实际清单 ID/簇交集均为 0。
+- PR #9/#16/#18/#19 已合并；#19 干净扫描运行 SHA 为 `1b7b249f986713a3b4c8343b898486be822fc16f`，保留旧 dirty 收据。
+- C 的 [Release 交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)已实际下载，整包及 12 个文件哈希匹配；2076 accepted、80219 坐标残基逐行核对、7R1C 88/65/39 已重算。
+- #19 待审提交的完整测试为 45 passed、2 subtests passed，M2 validator 通过；后续最终提交仍须绑定 SHA 检查。
+- 队列图为 1721/20/305/30/2；旧 E001 运行 SHA 仍未知，其他六图的诊断重绘不是原运行的字节复现。
+- **已取消强制 B/C 独立复核；M2 已由 A 确认验收。M3 可以启动，#17 已转为待审，尚未运行正式实验。** 规则见 [CONTRIBUTING](CONTRIBUTING.md)，证据与关闭条件见 [验收报告](reports/M2/m2_acceptance.md) 和 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
+- B 复现包中的两份摘要不是 C 原扫描摘要；实际三份冻结输入哈希一致，不改变原 split。限制见技术核验报告。
 
 ## 主要风险
 
@@ -185,8 +189,9 @@ MLP/
 - [x] B冻结候选数据清单、质量字段和输入/输出哈希。
 - [x] B用MMseqs2生成同源簇并冻结discovery/validation划分。
 - [x] C的PF00741扫描与HMM/序列/结构坐标技术成果已随PR #13归档。
-- [ ] 未参与相关改动的B/C完成合并后独立复核，A完成最终验收（Issue #15）。
-- [ ] E复核其他六图；C将新干净扫描交接包放到固定共享位置并由非作者核验。旧dirty运行保持历史记录，不用新运行冒充其原始工作区。
+- [x] A 已亲自确认 M2 验收，决定转录至 Issue #15；B/C 独立报告可选。
+- [x] C 交接包固定 Release 地址、实测哈希与全部坐标核对完成；旧 dirty 来源仍保留为历史限制。
+- [ ] A 确认旧 E001 来源未知等限制的处理，不将归档 SHA 冒充运行 SHA。
 - [ ] D在验证集复现全长与窗口表示结果并完成参数敏感性。
 - [ ] E实现至少一种残基遮挡/扰动方法及随机区域基线。
-- [ ] A审查M2收尾与计划PR；M3仅准备ESM-2最小迁移草稿。B/C旧分支保留，不整体合并。
+- [x] M2 收尾与计划 PR 已按负责人授权合并；M3 仅有迁移草稿。B/C 旧分支保留。
