@@ -1,5 +1,31 @@
 # M3 C：窗口、PF00741 与 7R1C 坐标交接
 
+## 2026-10-05 更新：D 实际候选窗口已整合
+
+用户提供的 `M3-D-DISCOVERY-001-candidate-windows-for-C.zip` 已核验，ZIP SHA-256 为 `556983b96299089ca3535f83fbe88fa7ec75b3d8b8fa42a895b3515b18560cc3`。实际 `candidate_windows.csv` SHA-256 为 `d8b82d04cdee709507567a7e626e69f985592537a2580bc60485224d0fbec328`，与 D 原始运行收据一致；D 的干净运行提交是 `dc066b76c637cdb1b90b7c8490e28ad81c4cff52`。无需等待 PR #22 合并即可复用这一固定输出。
+
+C 已从干净提交运行 `scripts/m3_candidate_coordinate_handoff.py`，整合全部 24,581 个窗口和 737,430 行逐残基坐标。每个窗口的 ID、序列哈希、队列、起止位置、长度、HMM 状态及映射比例均核对；结果与此前逐行审计的 30 aa 坐标网格完全一致，保留 D 的簇及概率。17,039 个窗口属于簇 0–3，其余 7,542 个为噪声（簇 -1），全部保留，不把噪声当候选。
+
+| D 簇 | 窗口数 | 涉及序列数 | mapped | low_match_coverage | unmapped |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 0 | 50 | 31 | 0 | 0 | 50 |
+| 1 | 107 | 11 | 50 | 46 | 11 |
+| 2 | 14666 | 863 | 3509 | 5572 | 5585 |
+| 3 | 2216 | 265 | 1112 | 953 | 151 |
+| -1（噪声） | 7542 | 1061 | 580 | 1448 | 5514 |
+
+簇 0 没有 HMM 状态或结构位置，不能将汇总中 all-zero argmax 产生的 state 1 占位解释成定位。簇 1 的 D 汇总跨度 16–39 对应 7R1C author chain N 的 26–49；簇 3 的汇总跨度 14–39 对应 24–49；这是汇总区间的编号对应，**不代表每个簇内窗口都覆盖该区间**。逐窗口范围以实际坐标表为准。簇 2 仍为分散大簇，没有多数定位区间。保留 D 的随机诊断、混杂与尚未冻结的解释限制，不写成功能证明。
+
+- [下载候选坐标交付包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M3_candidate_coordinates_001.zip)：ZIP SHA-256 `6b06159fe0a3c0ea01e2e1d34e41ff3d4fed6cbefb0cf1719f63596e34662473`。
+- `candidate_window_coordinate_map.csv`：给 D/E 的窗口级整合表，含 `d_cluster`、概率、覆盖状态、HMM 状态、插入/缺失与未对齐标记。
+- `candidate_residue_coordinate_map.csv`：逐残基位置、簇、HMM 状态及 7R1C 编号/建模状态；不含序列字母。
+- `reference_7r1c_positions.csv`：保留全部 88 个提交位置，包括 23 个未建模位置；另含 D 原始表、原始运行收据与解释说明。
+- [C 运行收据](runs/M3-C-CANDIDATE-001/mapping_receipt.json)、[逐行复核](runs/M3-C-CANDIDATE-001/verification.json)、[下载包 manifest](c_candidate_handoff_manifest.json)：给 A 核验来源、运行提交和逐文件哈希。自动核验不代替成员 Review。
+
+本次仓库测试入口 `python -m pytest -q tests`：100 项通过、4 个 subtests 通过；原有 PyHMMER 重扫测试因环境缺依赖跳过 1 项。
+
+**现在不再缺 D 的窗口表，discovery 阶段 C 的实际候选坐标交付已完成。** A 确认冻结候选与评价规则后，再开展清单第 8 项的冻结后证据核对及需要的 validation 坐标交接；本次没有打开 validation 窗口、计算保守性或运行 ESM-2。以下网格交付记录保留作来源记录，其“待 D 提供窗口”描述已由本次更新解除。
+
 状态（2026-10-05）：**C 已完成冻结来源核验、窗口接口及三套完整 discovery primary 网格的实际坐标交接；候选冻结后生物学核对及 validation 映射待 A 冻结。** 本文件是 C 的交接，不代替 A 对 M3 的验收或组员的人工独立 Review。M2 已由 A 验收，PR #19 已合并；旧运行 `dirty=true` 的历史记录不改写，本交接复用干净 run 002。
 
 ## 可取得的冻结来源
