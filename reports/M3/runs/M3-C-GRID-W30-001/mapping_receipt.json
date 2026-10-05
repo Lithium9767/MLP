@@ -1,0 +1,87 @@
+{
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version": "homology-8b9005e2d9-s42",
+  "m2_scan_run_commit": "1b7b249f986713a3b4c8343b898486be822fc16f",
+  "m2_scan_receipt_sha256": "befbebcc8358a35292839b2d32375684effee14faba868f9bfc6ce94ffacb781",
+  "m2_coordinate_receipt_sha256": "71e04b8e41d7d1a1e4cae56dfb9213849c51e465ae335bb22e6e6353987d2df6",
+  "m2_structure_receipt_sha256": "81d3e3cc793d30d7fbad4ba71dd91a58eff58ded086f315f4a22b8565a478ffc",
+  "input_and_raw_table_sha256": {
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "sequences_for_clustering.fasta": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+    "split_manifest.csv": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "per_sequence_status.csv": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183",
+    "hmm_coordinate_map.csv": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "7r1c_residue_hmm_map.csv": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c"
+  },
+  "n_qc_eligible_sequences": 2076,
+  "n_primary_discovery": 1202,
+  "n_primary_validation": 519,
+  "n_m2_coordinate_rows": 80219,
+  "n_7r1c_deposited_residues": 88,
+  "n_7r1c_modeled_residues": 65,
+  "n_7r1c_unmodeled_residues": 23,
+  "n_7r1c_hmm_match_states": 39,
+  "schema_version": "1.0",
+  "experiment_id": "M3-C-GRID-W30-001",
+  "run_utc": "2026-10-05T05:39:24.765513+00:00",
+  "git": {
+    "commit": "ea90c3ee415f44208a7ee3452397ad41ec9906e8",
+    "dirty": false
+  },
+  "command": [
+    "E:\\机器学习大作业\\MLP\\scripts\\m3_discovery_coordinate_grid.py",
+    "--window-length",
+    "30",
+    "--step",
+    "5",
+    "--out-dir",
+    "data/processed/m3_c/discovery_grid_w30_001"
+  ],
+  "python": "3.14.3",
+  "purpose": "Complete discovery-primary coordinate grid; not selected candidates",
+  "window_length": 30,
+  "window_step": 5,
+  "coordinate_convention": "natural/window 1-based inclusive; HMM 1-39; 7R1C author N",
+  "join_key": [
+    "internal_id",
+    "start_1based",
+    "end_1based_inclusive"
+  ],
+  "d_equivalent_join_key": [
+    "internal_id",
+    "raw_start",
+    "raw_end"
+  ],
+  "d_reference_commit": "79009c83c191a77144181346693b5c2f82e514fc",
+  "window_policy": "start0 in range(0, sequence_length-width+1, step); no padded tail",
+  "n_primary_discovery_with_windows": 1202,
+  "n_primary_discovery_shorter_than_window": 0,
+  "n_windows": 24581,
+  "n_residue_rows": 737430,
+  "coverage_status_counts": {
+    "low_match_coverage": 8019,
+    "mapped": 5251,
+    "unmapped": 11311
+  },
+  "residue_status_counts": {
+    "unaligned": 477937,
+    "match": 259493
+  },
+  "technical_min_match_fraction": 0.8,
+  "candidate_selection_performed": false,
+  "validation_windows_mapped": 0,
+  "sequence_residues_in_published_tables": false,
+  "script_sha256": "48f6da72013ccb34ddbe3304797557639bd26ca6483fed76133ad7f163f4f114",
+  "mapping_module_sha256": "c05e7d8670c669f96d8dbafb59c747750e698fc6e3d4c418c1b7a93a07cc0818",
+  "output_sha256": {
+    "windows.csv": "c10d900ce3d730960eb0ae6eae141ac7091f7d71868f0bf415014bab95d154d3",
+    "window_coordinate_map.csv": "7750a2222872f8b7d1f9b65d19d6fb3608b0078b325546d42df3b1ef6b449f1e",
+    "residue_coordinate_map.csv": "af437b4cce588e2494d3f30677fb1a610f40973278ab78e7e064e7be0a310256"
+  },
+  "limits": [
+    "Coverage threshold only marks technical quality, not candidate acceptance",
+    "HMM/PDB correspondence is homologous position, not a functional label",
+    "Cluster labels/candidate selection require D's actual per-window results",
+    "Validation and post-freeze biological checks await A's real freeze record"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "bundle_name": "MLP_C_M3_candidate_coordinates_001.zip",
+  "bytes": 3875368,
+  "sha256": "6b06159fe0a3c0ea01e2e1d34e41ff3d4fed6cbefb0cf1719f63596e34662473",
+  "contents": {
+    "experiment_id": "M3-C-CANDIDATE-001",
+    "files": {
+      "candidate_residue_coordinate_map.csv": {
+        "bytes": 90271995,
+        "sha256": "37368c22b67b298075feca816fd5b6b9d8ed8611966381accb28c63fa9036947"
+      },
+      "candidate_review.csv": {
+        "bytes": 575,
+        "sha256": "7cce20c4903e6f5690863c5dbe7ca7b0c559c7b029a6c196d64b2bf563161153"
+      },
+      "candidate_windows.csv": {
+        "bytes": 4132294,
+        "sha256": "d8b82d04cdee709507567a7e626e69f985592537a2580bc60485224d0fbec328"
+      },
+      "candidate_window_coordinate_map.csv": {
+        "bytes": 8710925,
+        "sha256": "af1da8102b36eecb722f2ec675e76225516ebdca0b4eb6eb0eb412b3efdbd594"
+      },
+      "HANDOFF.txt": {
+        "bytes": 813,
+        "sha256": "ce608dfd5e27467f5bfcf56f874f9267288d428e1b79f7494d87164906abaef4"
+      },
+      "mapping_receipt.json": {
+        "bytes": 9124,
+        "sha256": "359310fcbaeda9f8445b31d754d6433a98f20b1780953026b02fa81ae6dca53f"
+      },
+      "reference_7r1c_positions.csv": {
+        "bytes": 2317,
+        "sha256": "9e2ec9636ac3b6f9efe556b1d2fb8fd49aee6a7b2270cc7d22d7ed81b5a28e0b"
+      },
+      "run_receipt.json": {
+        "bytes": 4008,
+        "sha256": "df9eacdfc61f0909e1b7110a97ea8c0ee1a6aa8a703379951f482190ef9bd3a9"
+      },
+      "verification.json": {
+        "bytes": 899,
+        "sha256": "2fb1b1efd5eb82ea44ec5bebc3ef229e8b0493270e1bd7f2d82b0ec0d68866db"
+      }
+    },
+    "sequence_letters_included": false,
+    "candidate_freeze_status": "exploratory_not_A_frozen",
+    "validation_used": false,
+    "coordinate_convention": "1-based inclusive natural windows; PF00741.24 match states; 7R1C author chain N",
+    "source_d_run_commit": "dc066b76c637cdb1b90b7c8490e28ad81c4cff52",
+    "code_commit": "66d468b0a7e79562a4d35aec94296946131edc25"
+  },
+  "download_url": "https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M3_candidate_coordinates_001.zip",
+  "asset_id": 612583078,
+  "download_verified": true,
+  "download_http_status": 200,
+  "download_sha256": "6b06159fe0a3c0ea01e2e1d34e41ff3d4fed6cbefb0cf1719f63596e34662473",
+  "verification_kind": "assistant_automated_actual_public_download"
+}

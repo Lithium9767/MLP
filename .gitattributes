@@ -3,3 +3,24 @@
 reports/M2/figure_manifest.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/cohort_fix/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# Existing M2 receipts were published with byte-level CRLF hashes.
+results/data_audit/gvpa_v1_audit_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+results/data_audit/gvpa_v1_split_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+results/bioinformatics/pf00741_scan_002_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+results/bioinformatics/hmm_coordinate_002_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+results/bioinformatics/structure_7r1c_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# M3 C receipts pin byte-level SHA-256 of these source and output files.
+bioinformatics/m3_window_coordinates.py -text
+scripts/m3_coordinate_handoff.py -text
+scripts/m3_verify_pr19_handoff.py -text
+reports/M3/pr19_handoff_verification.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+results/M3/coordinate_summary.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# B M3 public manifests are byte-for-byte copies of the verified handoff ZIP.
+data/splits/m3/*.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
+scripts/m3_verify_b_handoff.py -text
+scripts/m3_discovery_coordinate_grid.py -text
+reports/M3/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+reports/M3/b_handoff_verification.json -text whitespace=trailing-space,space-before-tab,cr-at-eol

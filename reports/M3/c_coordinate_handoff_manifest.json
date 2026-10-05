@@ -1,0 +1,87 @@
+{
+  "archive_name": "MLP_C_M3_coordinate_handoff_001.zip",
+  "archive_bytes": 10919524,
+  "archive_sha256": "93f2ecc3a6bf83f59349c49517a28f4bf816bc8c8055230c279559eccb9cbeeb",
+  "shared_uri": "https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M3_coordinate_handoff_001.zip",
+  "access_status": "public Release upload and actual download verified by C",
+  "contents": {
+    "schema_version": "1.0",
+    "purpose": "Sequence-free discovery primary coordinate handoff; no selected candidates/validation",
+    "files": [
+      {
+        "name": "w25/windows.csv",
+        "bytes": 974252,
+        "sha256": "05bf448641a17fb133f2ff4660805dcfa281689bf6a8dbc86ca0a60088701944"
+      },
+      {
+        "name": "w25/window_coordinate_map.csv",
+        "bytes": 5902845,
+        "sha256": "98dcaa924030bce73831a0b9c140e2abbf71fcac5e6a062c87b215a5300dd4eb"
+      },
+      {
+        "name": "w25/residue_coordinate_map.csv",
+        "bytes": 77212275,
+        "sha256": "2be98ec79f17701e7a839916ac8bfe83c03d11d9bca9e6f3dce96df99b6b90b2"
+      },
+      {
+        "name": "w25/mapping_receipt.json",
+        "bytes": 3770,
+        "sha256": "060fa7f648e318cfcf305556ad51e34233590ddfcbc4c8024a1b66c3dad33b45"
+      },
+      {
+        "name": "w30/windows.csv",
+        "bytes": 928048,
+        "sha256": "c10d900ce3d730960eb0ae6eae141ac7091f7d71868f0bf415014bab95d154d3"
+      },
+      {
+        "name": "w30/window_coordinate_map.csv",
+        "bytes": 6040110,
+        "sha256": "7750a2222872f8b7d1f9b65d19d6fb3608b0078b325546d42df3b1ef6b449f1e"
+      },
+      {
+        "name": "w30/residue_coordinate_map.csv",
+        "bytes": 88570865,
+        "sha256": "af437b4cce588e2494d3f30677fb1a610f40973278ab78e7e064e7be0a310256"
+      },
+      {
+        "name": "w30/mapping_receipt.json",
+        "bytes": 3770,
+        "sha256": "876d7242634990f63cd788c2285308bc741b0a796f0564a8e52387c123beb14f"
+      },
+      {
+        "name": "w35/windows.csv",
+        "bytes": 881874,
+        "sha256": "dd667acb9cdd139df45495bb356de6e60bb897595b0da8351de9b62020879c65"
+      },
+      {
+        "name": "w35/window_coordinate_map.csv",
+        "bytes": 6020505,
+        "sha256": "d648976f0ada2bd8768a36a480afc06f082c3225c5bba7c1e1268dff32077d2a"
+      },
+      {
+        "name": "w35/residue_coordinate_map.csv",
+        "bytes": 98242100,
+        "sha256": "3502a5eb09f0e8f68b69e5b6af4b9b59291e7715169780ff4be5edcf53f19a89"
+      },
+      {
+        "name": "w35/mapping_receipt.json",
+        "bytes": 3770,
+        "sha256": "f1833bb397a74d421771ba1cfbe878768f8cf8e55e7bcbb3c7490a14b779071a"
+      },
+      {
+        "name": "reference_7r1c_positions.csv",
+        "bytes": 2317,
+        "sha256": "9e2ec9636ac3b6f9efe556b1d2fb8fd49aee6a7b2270cc7d22d7ed81b5a28e0b"
+      },
+      {
+        "name": "coordinate_grid_verification.json",
+        "bytes": 896,
+        "sha256": "a32eab7a61261001fcd34a55062a36dbbf8817241eb64638bbe5734a288c445c"
+      }
+    ]
+  },
+  "contains_sequence_letters": false,
+  "candidate_freeze_status": "awaiting_A_real_freeze",
+  "human_review_status": "pending",
+  "download_verified_sha256": "93f2ecc3a6bf83f59349c49517a28f4bf816bc8c8055230c279559eccb9cbeeb"
+}

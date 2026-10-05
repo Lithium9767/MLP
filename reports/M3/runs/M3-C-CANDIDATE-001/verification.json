@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "reviewer": "assistant_automated",
+  "not_a_member_review": true,
+  "n_windows": 24581,
+  "n_residue_rows": 737430,
+  "checks": [
+    "Every output coordinate field equals previously independently audited W30 grid",
+    "Every D cluster and probability preserved",
+    "All D input hashes, boundaries, HMM states and fractions checked by run",
+    "Noise and unaligned/low-coverage rows preserved",
+    "No sequence letters in public residue table"
+  ],
+  "validation_used": false,
+  "cluster_residue_counts": {
+    "2": 439980,
+    "-1": 226260,
+    "0": 1500,
+    "3": 66480,
+    "1": 3210
+  },
+  "outputs_sha256": {
+    "candidate_window_coordinate_map.csv": "af1da8102b36eecb722f2ec675e76225516ebdca0b4eb6eb0eb412b3efdbd594",
+    "candidate_residue_coordinate_map.csv": "37368c22b67b298075feca816fd5b6b9d8ed8611966381accb28c63fa9036947"
+  },
+  "tests": {
+    "command": "python -m pytest -q tests",
+    "passed": 100,
+    "skipped": 1,
+    "subtests_passed": 4,
+    "skip_reason": "Existing M2 PyHMMER rescan test unavailable in Windows Python environment",
+    "unscoped_collection_note": "pytest without tests path also collected ignored outputs/b_review_82ea140 checkout and dependency cache; two unrelated missing preprocessing modules prevented collection. Official repository tests directory passed."
+  }
+}

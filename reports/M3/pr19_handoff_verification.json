@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "status": "verified",
+  "verified_utc": "2026-09-29T10:48:20.159045+00:00",
+  "reviewer_type": "assistant_automated",
+  "release_url": "https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip",
+  "manifest_path": "reports/M2/c_scan_002_handoff.json",
+  "manifest_sha256": "2a33ac2d1a8ec6bb310a1258b0210ab61c34b1201984aec214fdf81137108ed4",
+  "implementation_sha256": "dcd75bd012ecb06b377d4f3726e18215df23db19704b7cf63f173c4d4bdeab5c",
+  "python_version": "3.14.3",
+  "archive": {
+    "bytes": 1177773,
+    "sha256": "7c65d1d4ca33918e14aed1d01e0b45b002a90e6e47a55562064ffb382698691e",
+    "status": "match"
+  },
+  "outer_members": [
+    {
+      "name": "B_input/gvpa_v1_reproduction.zip",
+      "bytes": 432135,
+      "sha256": "ac6366962bf5e14872127c1383fe27dc62097cd5fa6e0861b598697ce85e9632",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/raw/failures.json",
+      "bytes": 23,
+      "sha256": "c226f7db47b65db8f5dc35f171b2ef4e1d03ce228e10589182a47637461a477a",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/raw/hmm_coordinate_map.csv",
+      "bytes": 9247404,
+      "sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/raw/per_sequence_status.csv",
+      "bytes": 373363,
+      "sha256": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/raw/raw_hits.jsonl",
+      "bytes": 1994082,
+      "sha256": "6f058c97f1ccffb5220869c34795d5f9beb7adb04ac783cb37c0bd9aaca3d737",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/scan_summary.json",
+      "bytes": 3766,
+      "sha256": "befbebcc8358a35292839b2d32375684effee14faba868f9bfc6ce94ffacb781",
+      "status": "match"
+    },
+    {
+      "name": "C_scan_002/coordinate_summary.json",
+      "bytes": 3759,
+      "sha256": "71e04b8e41d7d1a1e4cae56dfb9213849c51e465ae335bb22e6e6353987d2df6",
+      "status": "match"
+    },
+    {
+      "name": "reference/PF00741.hmm",
+      "bytes": 19327,
+      "sha256": "e44f933c618426c2d0465657a64f1890f50feaeaea626ecb0b8dedb734f38c2f",
+      "status": "match"
+    },
+    {
+      "name": "reference/PF00741_download_receipt.json",
+      "bytes": 472,
+      "sha256": "135a54ef57e0fd50738a29fe92af23ced1a2e23622c018e40ff2b0d8dd2e022e",
+      "status": "match"
+    },
+    {
+      "name": "reference/7R1C.pdb",
+      "bytes": 309582,
+      "sha256": "c83776e7091d1342a4c6dbc40fbcc7be2e2beff87b12f1c52c9d6de5be0be870",
+      "status": "match"
+    },
+    {
+      "name": "reference/7R1C_download_receipt.json",
+      "bytes": 280,
+      "sha256": "d1498b2a576e6f135f180e8696aa494cd891dae29fc9bacb25aed0dbff135d55",
+      "status": "match"
+    },
+    {
+      "name": "reference/7r1c_residue_hmm_map.csv",
+      "bytes": 2501,
+      "sha256": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+      "status": "match"
+    },
+    {
+      "name": "manifest.json",
+      "bytes": 2218,
+      "sha256": "483ed7a43f9d9f5244bc409ffe10173928cb4687808d4242c0d6498f3116d8b9",
+      "status": "match"
+    }
+  ],
+  "frozen_b_inputs": [
+    {
+      "name": "gvpa_v1_reproduction/metadata.csv",
+      "bytes": 1041627,
+      "sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+      "status": "match"
+    },
+    {
+      "name": "gvpa_v1_reproduction/sequences_for_clustering.fasta",
+      "bytes": 300688,
+      "sha256": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+      "status": "match"
+    },
+    {
+      "name": "gvpa_v1_reproduction/split/split_manifest.csv",
+      "bytes": 137073,
+      "sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+      "status": "match"
+    }
+  ],
+  "scope_note": "Automated public download and byte/hash verification only; not a non-author human review, PR approval, or M2/M3 acceptance."
+}

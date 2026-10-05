@@ -1,0 +1,87 @@
+{
+  "dataset_version": "gvpa-recognition-c7f6f005d717",
+  "split_version": "homology-8b9005e2d9-s42",
+  "m2_scan_run_commit": "1b7b249f986713a3b4c8343b898486be822fc16f",
+  "m2_scan_receipt_sha256": "befbebcc8358a35292839b2d32375684effee14faba868f9bfc6ce94ffacb781",
+  "m2_coordinate_receipt_sha256": "71e04b8e41d7d1a1e4cae56dfb9213849c51e465ae335bb22e6e6353987d2df6",
+  "m2_structure_receipt_sha256": "81d3e3cc793d30d7fbad4ba71dd91a58eff58ded086f315f4a22b8565a478ffc",
+  "input_and_raw_table_sha256": {
+    "metadata.csv": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "sequences_for_clustering.fasta": "4ff33c04be1d28f42ef5afa7d67261229d19c8e301784ea59750030196e8b122",
+    "split_manifest.csv": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "per_sequence_status.csv": "f336bf43a2e6467f5e2685d8e4e229b3faf7f999c4f39678d40e77ce0f455183",
+    "hmm_coordinate_map.csv": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "7r1c_residue_hmm_map.csv": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c"
+  },
+  "n_qc_eligible_sequences": 2076,
+  "n_primary_discovery": 1202,
+  "n_primary_validation": 519,
+  "n_m2_coordinate_rows": 80219,
+  "n_7r1c_deposited_residues": 88,
+  "n_7r1c_modeled_residues": 65,
+  "n_7r1c_unmodeled_residues": 23,
+  "n_7r1c_hmm_match_states": 39,
+  "schema_version": "1.0",
+  "run_utc": "2026-09-29T10:49:20.418574+00:00",
+  "purpose": "M3 C complete discovery-primary grid coordinate handoff; not candidate selection or validation",
+  "coordinate_convention": "natural/window 1-based inclusive; HMM match states 1-39; 7R1C author chain N",
+  "coverage_policy": "Unaligned/inserted/ambiguous and unmodeled reference positions remain explicit; min_match_fraction only flags technical coverage",
+  "implementation_sha256": "b95ceccaf19f039b8e27e9b9edf57e93f6ff783462af40d95e768d641d663c0d",
+  "mapping_module_sha256": "c05e7d8670c669f96d8dbafb59c747750e698fc6e3d4c418c1b7a93a07cc0818",
+  "validation_freeze_sha256": null,
+  "candidate_selection_performed": false,
+  "validation_used_for_parameter_selection": false,
+  "window_mapping_status": "discovery_candidates_integrated",
+  "discovery_grid_runs": [
+    {
+      "width": 25,
+      "windows": 25783,
+      "residue_rows": 644575,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 30,
+      "windows": 24581,
+      "residue_rows": 737430,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 35,
+      "windows": 23379,
+      "residue_rows": 818265,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    }
+  ],
+  "coordinate_run_commit": "ea90c3ee415f44208a7ee3452397ad41ec9906e8",
+  "validation_windows_mapped": 0,
+  "candidate_integration": {
+    "experiment_id": "M3-C-CANDIDATE-001",
+    "code_commit": "66d468b0a7e79562a4d35aec94296946131edc25",
+    "d_run_commit": "dc066b76c637cdb1b90b7c8490e28ad81c4cff52",
+    "d_zip_sha256": "556983b96299089ca3535f83fbe88fa7ec75b3d8b8fa42a895b3515b18560cc3",
+    "n_windows": 24581,
+    "n_sequences": 1202,
+    "n_residue_rows": 737430,
+    "n_clustered_windows": 17039,
+    "cluster_window_counts": {
+      "2": 14666,
+      "-1": 7542,
+      "0": 50,
+      "3": 2216,
+      "1": 107
+    },
+    "outputs_sha256": {
+      "candidate_window_coordinate_map.csv": "af1da8102b36eecb722f2ec675e76225516ebdca0b4eb6eb0eb412b3efdbd594",
+      "candidate_residue_coordinate_map.csv": "37368c22b67b298075feca816fd5b6b9d8ed8611966381accb28c63fa9036947"
+    },
+    "receipt_path": "reports/M3/runs/M3-C-CANDIDATE-001/mapping_receipt.json",
+    "validation_used": false,
+    "A_candidate_freeze_confirmed": false
+  }
+}
