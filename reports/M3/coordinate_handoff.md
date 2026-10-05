@@ -1,6 +1,6 @@
 # M3 C：窗口、PF00741 与 7R1C 坐标交接
 
-状态：**C 的窗口接口和冻结来源已就绪，正在交付完整 discovery primary 窗口网格的坐标；候选冻结后生物学核对及 validation 映射待 A 冻结。** 本文件是 C 的交接，不代替 A 对 M3 的验收或组员的人工独立 Review。M2 已由 A 验收，PR #19 已合并；旧运行 `dirty=true` 的历史记录不改写，本交接复用干净 run 002。
+状态（2026-10-05）：**C 已完成冻结来源核验、窗口接口及三套完整 discovery primary 网格的实际坐标交接；候选冻结后生物学核对及 validation 映射待 A 冻结。** 本文件是 C 的交接，不代替 A 对 M3 的验收或组员的人工独立 Review。M2 已由 A 验收，PR #19 已合并；旧运行 `dirty=true` 的历史记录不改写，本交接复用干净 run 002。
 
 ## 可取得的冻结来源
 
@@ -64,3 +64,31 @@ C 可先交付完整 discovery 网格，D 无需为坐标接口重新运行 ESM-
 输出 `windows.csv`、`window_coordinate_map.csv`、`residue_coordinate_map.csv` 与 `mapping_receipt.json`。公开逐残基表省略天然/结构参照的氨基酸字母，保留位置、状态、覆盖和编号；有序列需求时复用已核验的 B 输入。D 的 `raw_start/raw_end` 与 C 的 `start_1based/end_1based_inclusive` 均为 1-based 闭区间，以 `(internal_id, start, end)` 连接，要求唯一匹配，并核对序列 SHA。不要按表格行号或聚类编号连接。
 
 0.8 覆盖只标记低覆盖，所有窗口均保留；空 HMM state 不补成 state 1。未建模的全部 23 个 7R1C 提交位点保留在原始结构表和摘要中，即使不属于 39 个对齐 HMM 状态，也不丢弃。D/E 可使用窗口/残基表做映射与覆盖抽查；候选选择和冻结后的生物学结论仍由对应负责人记录。
+
+### 实际生成结果与下载
+
+三次运行均从干净提交 `ea90c3ee415f44208a7ee3452397ad41ec9906e8` 执行，未重新扫描 HMM 或运行 ESM-2。每套均覆盖 1202 条 discovery primary，步长 5；窗口总数逐项等于 D 的 PR #22 参数敏感性表。完整网格的覆盖分布不是候选集的覆盖结论。
+
+| 窗口长度 | 窗口数 | 逐残基行数 | mapped | low_match_coverage | unmapped |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 25 | 25783 | 644575 | 5949 | 7400 | 12434 |
+| 30 | 24581 | 737430 | 5251 | 8019 | 11311 |
+| 35 | 23379 | 818265 | 4642 | 8527 | 10210 |
+
+- [25 aa 运行收据](runs/M3-C-GRID-W25-001/mapping_receipt.json)、[30 aa 运行收据](runs/M3-C-GRID-W30-001/mapping_receipt.json)、[35 aa 运行收据](runs/M3-C-GRID-W35-001/mapping_receipt.json)记录命令、环境、实际运行 SHA、输入和输出哈希。
+- [逐行核验记录](coordinate_grid_verification.json)：2,200,270 行全部与 M2 原始天然残基/HMM 表及 7R1C 参照表核对；窗口 ID/范围/长度、逐位连续性、HMM 状态与参考编号、输出 SHA 全部一致。原始参照的 88 位和 23 个未建模位点均保留。该核验为助手自动核验，不是成员署名 Review。
+- [本次 B 包核验](b_handoff_verification_20261005.json)、[本次 M2 Release 实际下载核验](pr19_handoff_verification_20261005.json)保存 2026-10-05 的真实检查；旧收据保留。
+- [下载 M3 坐标交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M3_coordinate_handoff_001.zip)，ZIP SHA-256：`93f2ecc3a6bf83f59349c49517a28f4bf816bc8c8055230c279559eccb9cbeeb`。附件沿用现有 C Release，不增加分支或 tag；大 CSV 不进入 Git。文件清单与大小见 [交接 manifest](c_coordinate_handoff_manifest.json)。下载后先核对 ZIP SHA，再按内层 `manifest.json` 逐项核对。
+
+### C 清单完成边界
+
+1. #19 原始扫描的实际下载、哈希证据已完成。
+2. 沿用 M2 实现与 run 002，无重复迁移或重扫。
+3. 天然位置到 PF00741 状态映射及源表核对已完成。
+4. 任意给定窗口接口及三套完整 discovery 网格已交付。
+5. partial/敏感性入口、插入、缺失、未对齐、低覆盖、多域规则已实现并测试；主网格不混入敏感性队列。
+6. 7R1C 已/未建模编号交接完成，包内完整的 `reference_7r1c_positions.csv` 不含序列字母。
+7. 本次不计算保守性；未将 validation 信息用于发现或选参。
+8. 冻结前技术接口与坐标大表已完成；冻结后的生物学证据核对未完成，需 A 的真实候选/评价规则冻结记录以及 D 的具体入选窗口。尚未生成 validation 窗口，也不把本次完整网格当成已选候选。
+
+当前验证：91 项测试通过、4 个 subtests 通过；1 项已有 M2 重扫测试因本 Windows Python 未安装 PyHMMER 而跳过。所有 M3 坐标/交接测试均执行，未用跳过的测试证明新扫描。M2 原始扫描已通过冻结哈希复用。PR 与 M3 最终验收由团队另行审查。

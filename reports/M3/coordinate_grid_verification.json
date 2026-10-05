@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "reviewer_type": "assistant_automated",
+  "checks": [
+    {
+      "width": 25,
+      "windows": 25783,
+      "residue_rows": 644575,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 30,
+      "windows": 24581,
+      "residue_rows": 737430,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 35,
+      "windows": 23379,
+      "residue_rows": 818265,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    }
+  ],
+  "structure_positions": 88,
+  "structure_unmodeled": 23,
+  "scope": "Source-table coordinate/ID/hash audit; not independent human review or candidate validation"
+}

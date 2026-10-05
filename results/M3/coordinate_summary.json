@@ -23,7 +23,7 @@
   "n_7r1c_hmm_match_states": 39,
   "schema_version": "1.0",
   "run_utc": "2026-09-29T10:49:20.418574+00:00",
-  "purpose": "M3 C prelaunch coordinate handoff, not ESM discovery or validation",
+  "purpose": "M3 C complete discovery-primary grid coordinate handoff; not candidate selection or validation",
   "coordinate_convention": "natural/window 1-based inclusive; HMM match states 1-39; 7R1C author chain N",
   "coverage_policy": "Unaligned/inserted/ambiguous and unmodeled reference positions remain explicit; min_match_fraction only flags technical coverage",
   "implementation_sha256": "b95ceccaf19f039b8e27e9b9edf57e93f6ff783462af40d95e768d641d663c0d",
@@ -31,5 +31,33 @@
   "validation_freeze_sha256": null,
   "candidate_selection_performed": false,
   "validation_used_for_parameter_selection": false,
-  "window_mapping_status": "not_run_prelaunch"
+  "window_mapping_status": "discovery_grid_completed",
+  "discovery_grid_runs": [
+    {
+      "width": 25,
+      "windows": 25783,
+      "residue_rows": 644575,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 30,
+      "windows": 24581,
+      "residue_rows": 737430,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    },
+    {
+      "width": 35,
+      "windows": 23379,
+      "residue_rows": 818265,
+      "all_source_coordinates_checked": true,
+      "all_output_hashes_checked": true,
+      "validation_windows": 0
+    }
+  ],
+  "coordinate_run_commit": "ea90c3ee415f44208a7ee3452397ad41ec9906e8",
+  "validation_windows_mapped": 0
 }
