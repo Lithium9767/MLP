@@ -8,4 +8,5 @@ A/D,candidate freeze and validation,proposal_and_gated_code_ready_not_approved_n
 A/D,cluster 3 length-confound audit,completed_discovery_diagnostic_no_freeze,reports/M3/runs/M3-D-ROBUST-001/run_receipt.json; reports/M3/candidate_freeze_decision.md
 C,candidate coordinate handoff,assistant_package_precheck_passed_PR25_pending_review,reports/M3/c_handoff_technical_check.md; PR #25
 B,source generation and shared-storage provenance,pending_member_attestation,Issue #24; Draft PR #23
-E,residue perturbation and random baseline,pending_frozen_candidate,no E results recorded
+E,coordinate statistics and visualizations,assistant_reproduced_coordinate_only_pending_method_fix_and_E_PR,reports/M3/e_handoff_technical_check.md; local E ZIP; no E run SHA
+E,residue perturbation and matched random baseline,pending_frozen_candidate,no formal perturbation results recorded
