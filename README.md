@@ -1,5 +1,9 @@
 # GvpA 潜在功能区域识别与关键位点证据整合
 
+## M3 中期前状态（2026-10-07）
+
+M2 已验收；M3 的 discovery 表示与探索性聚类已运行，候选尚未冻结，validation 未运行。新增[长度混杂审计](reports/M3/candidate_freeze_decision.md)发现 cluster 3 很大程度受序列长度影响，不能当作已验证的功能区域。[中期前冲刺清单](docs/plans/2026-10-07-m3-midterm-sprint.md)列出 A/B/C/D/E 的并行交付与冻结后的验证路径；[C 交接预检](reports/M3/c_handoff_technical_check.md)仅为助手技术核验，不代替真实成员 Review。M3 尚未验收，下方早期状态记录保留其当时背景。
+
 ## M3 A/D 当前进度（2026-09-29）
 
 A的工程统筹材料已建立，D完成1202条discovery主队列表示、24581窗口、12组参数及251条敏感性队列的固定模型迁移。实际结果与限制见[阶段报告](reports/M3/m3_summary.md)。55项测试及2项子测试通过，完整命令与环境见[工程验证](reports/M3/engineering_checks.md)。
