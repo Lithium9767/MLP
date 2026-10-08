@@ -1,0 +1,25 @@
+{
+  "artifact": "M3 midterm v2",
+  "prepared_date": "2026-10-08",
+  "evidence_commit": "7bb22fcdb30363e7b0116dd0291835cb07f9b13b",
+  "shown_slides": 9,
+  "hidden_backup_slides": 3,
+  "files": [
+    {
+      "path": "GvpA_M3_midterm_v2.pptx",
+      "size_bytes": 155468,
+      "sha256": "ad5774f0fd34cbb03639d826281d45d79586c380c8673a2c358de9ac2a220d87"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 3397,
+      "sha256": "9d28a97e1d7190512a9f35728d4665c3569066e8802b80cb0d91dda17f9256a6"
+    },
+    {
+      "path": "speaker_notes_v2.md",
+      "size_bytes": 9274,
+      "sha256": "4c0dc1c99d15ff215e91511e6398c6eacb344c6dfd092b205a79575f57259ad2"
+    }
+  ],
+  "validation": "ZIP/XML/relationship targets and source-byte match passed; approximate visual preview checked; native PowerPoint rendering unavailable; no experiments rerun"
+}
