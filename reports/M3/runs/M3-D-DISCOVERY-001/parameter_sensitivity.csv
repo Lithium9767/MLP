@@ -1,0 +1,13 @@
+run,window_length,pca_requested,pca_actual,min_cluster_size,n_windows,n_clusters,noise_fraction,explained_variance,common_window_starts,ARI_common_starts,ARI_limitation
+w25-p20-m50,25,20,20,50,25783,2,0.11635573827715937,0.8888494372367859,24581,0.16000778998905776,"different widths compare anchored starts, not identical fragments; noise included"
+w25-p20-m100,25,20,20,100,25783,2,0.11635573827715937,0.8888494372367859,24581,0.16000778998905776,"different widths compare anchored starts, not identical fragments; noise included"
+w25-p50-m50,25,50,50,50,25783,6,0.37214443625644805,0.9569703340530396,24581,0.7547475411250764,"different widths compare anchored starts, not identical fragments; noise included"
+w25-p50-m100,25,50,50,100,25783,4,0.37551875266648566,0.9569703340530396,24581,0.7543638367315968,"different widths compare anchored starts, not identical fragments; noise included"
+w30-p20-m50,30,20,20,50,24581,4,0.3068223424596233,0.8945239186286926,24581,1.0,"different widths compare anchored starts, not identical fragments; noise included"
+w30-p20-m100,30,20,20,100,24581,3,0.3088564338310077,0.8945239186286926,24581,0.9974864763699592,"different widths compare anchored starts, not identical fragments; noise included"
+w30-p50-m50,30,50,50,50,24581,3,0.2430739188804361,0.9601754546165466,24581,0.7790509844222233,"different widths compare anchored starts, not identical fragments; noise included"
+w30-p50-m100,30,50,50,100,24581,3,0.2430739188804361,0.9601754546165466,24581,0.7790509844222233,"different widths compare anchored starts, not identical fragments; noise included"
+w35-p20-m50,35,20,20,50,23379,2,0.2170751529150092,0.8986960649490356,23379,0.5170363711176701,"different widths compare anchored starts, not identical fragments; noise included"
+w35-p20-m100,35,20,20,100,23379,2,0.2170751529150092,0.8986960649490356,23379,0.5170363711176701,"different widths compare anchored starts, not identical fragments; noise included"
+w35-p50-m50,35,50,50,50,23379,3,0.18495230762650242,0.9624431133270264,23379,0.7077945112205151,"different widths compare anchored starts, not identical fragments; noise included"
+w35-p50-m100,35,50,50,100,23379,3,0.18495230762650242,0.9624431133270264,23379,0.7077945112205151,"different widths compare anchored starts, not identical fragments; noise included"

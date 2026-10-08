@@ -1,0 +1,5 @@
+factor,adjusted_mutual_information,interpretation
+length_bin,0.29003819097373434,"association diagnostic, not causal adjustment; primary contains no partial/type-conflict"
+position_bin,0.13013978175315793,"association diagnostic, not causal adjustment; primary contains no partial/type-conflict"
+organism,0.10907684094131259,"association diagnostic, not causal adjustment; primary contains no partial/type-conflict"
+C_terminal_extension,0.1509036918178071,"association diagnostic, not causal adjustment; primary contains no partial/type-conflict"

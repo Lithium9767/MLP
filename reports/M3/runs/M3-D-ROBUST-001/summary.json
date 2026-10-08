@@ -1,0 +1,41 @@
+{
+  "cluster": 3,
+  "post_selection_state": 25,
+  "n_discovery_sequences": 1202,
+  "n_discovery_windows": 24581,
+  "n_candidate_sequences": 265,
+  "n_candidate_windows": 2216,
+  "candidate_state_fraction": 0.6394404332129964,
+  "candidate_median_length": 87,
+  "noncandidate_median_length": 144,
+  "shorter_length_only_auc_for_cluster_participation": 0.9687742896840579,
+  "length_auc_interpretation": "Descriptive ability of sequence length to distinguish cluster participation; not biological prediction performance.",
+  "candidate_median_normalized_start": 0.2631578947368421,
+  "control_diagnostics": {
+    "same_sequence_position_0.05": {
+      "matched_windows": 32,
+      "unmatched_windows": 2184,
+      "matched_sequences": 21,
+      "target_state_fraction": 0.875,
+      "control_state_fraction": 0.40625,
+      "mean_sequence_delta": 0.48412698412698413,
+      "bootstrap_sequence_ci95": [
+        0.30158730158730157,
+        0.6587301587301587
+      ]
+    },
+    "same_sequence_position_0.10": {
+      "matched_windows": 294,
+      "unmatched_windows": 1922,
+      "matched_sequences": 197,
+      "target_state_fraction": 0.5476190476190477,
+      "control_state_fraction": 0.2857142857142857,
+      "mean_sequence_delta": 0.19932318104906938,
+      "bootstrap_sequence_ci95": [
+        0.15397631133671744,
+        0.24500846023688663
+      ]
+    }
+  },
+  "interpretation": "Post-selected discovery diagnostic; windows overlap and are not independent experimental units. No functional p-value or validation claim."
+}

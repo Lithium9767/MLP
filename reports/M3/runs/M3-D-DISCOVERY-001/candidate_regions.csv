@@ -1,0 +1,5 @@
+cluster,n_windows,n_sequences,dominant_hmm_state,dominant_state_window_fraction,majority_hmm_start,majority_hmm_end,mean_mapped_fraction,matched_random_mean,matched_random_p95,random_comparison
+0,50,31,1,0.0,,,0.0,0.0,0.0,exploratory; overlapping windows are not independent; no functional p-value
+1,107,11,21,0.5700934579439252,16,39,0.6289719626168224,0.6190654205607476,0.6635514018691588,exploratory; overlapping windows are not independent; no functional p-value
+2,14666,863,31,0.3456293467884904,,,0.4019682712850584,0.3069466793945179,0.30895949815900725,exploratory; overlapping windows are not independent; no functional p-value
+3,2216,265,25,0.6394404332129964,14,39,0.6831227436823104,0.5912003610108303,0.5990749097472924,exploratory; overlapping windows are not independent; no functional p-value

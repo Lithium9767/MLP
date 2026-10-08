@@ -3,3 +3,4 @@
 reports/M2/figure_manifest.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/cohort_fix/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+reports/M3/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol

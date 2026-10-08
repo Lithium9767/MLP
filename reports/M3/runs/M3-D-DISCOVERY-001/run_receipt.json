@@ -1,0 +1,96 @@
+{
+  "status": "completed",
+  "stage": "analyze",
+  "provenance": {
+    "commit": "dc066b76c637cdb1b90b7c8490e28ad81c4cff52",
+    "dirty": false,
+    "config_sha256": "4e23dd7a594a87710e52e73c95951722ef1286ec893825d66e758970daa5346c",
+    "command": [
+      "scripts/m3_discovery.py",
+      "analyze",
+      "--metadata",
+      "data/processed/m2_handoff_received/unpacked/B_input/gvpa_v1_reproduction/metadata.csv",
+      "--split-manifest",
+      "data/processed/m2_handoff_received/unpacked/B_input/gvpa_v1_reproduction/split/split_manifest.csv",
+      "--coordinates",
+      "data/processed/m2_handoff_received/unpacked/C_scan_002/raw/hmm_coordinate_map.csv",
+      "--embeddings",
+      "data/processed/m3/M3-D-EMBED-001",
+      "--output-dir",
+      "data/processed/m3/M3-D-DISCOVERY-001",
+      "--threads",
+      "4"
+    ],
+    "utc": "2026-09-29T11:49:54.620887+00:00",
+    "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "config": {
+    "dataset_version": "gvpa-recognition-c7f6f005d717",
+    "split_version": "homology-8b9005e2d9-s42",
+    "fit_split": "discovery",
+    "primary_only": true,
+    "expected_primary_discovery": 1202,
+    "metadata_sha256": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "split_manifest_sha256": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "coordinates_sha256": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "model_id": "facebook/esm2_t12_35M_UR50D",
+    "model_revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "residue_dimension": 480,
+    "seed": 42,
+    "window_lengths": [
+      25,
+      30,
+      35
+    ],
+    "window_step": 5,
+    "pca_dimensions": [
+      20,
+      50
+    ],
+    "min_cluster_sizes": [
+      50,
+      100
+    ],
+    "min_samples": 10,
+    "main_parameters": {
+      "window_length": 30,
+      "pca_dimension": 20,
+      "min_cluster_size": 50
+    },
+    "random_baseline_repeats": 50,
+    "validation_unlock": "requires frozen candidates and explicit A confirmation",
+    "interpretation": "Clusters and HMM concentration are candidate evidence, not functional proof"
+  },
+  "result": {
+    "n_sequences": 1202,
+    "n_windows": 24581,
+    "n_candidate_clusters": 4,
+    "n_parameter_runs": 12,
+    "validation_used": false,
+    "primary_only": true,
+    "sensitivity_cohorts": "partial/type-conflict not fitted; require separate follow-up cohort run",
+    "software": {
+      "numpy": "2.4.4",
+      "scikit-learn": "1.8.0",
+      "hdbscan": "0.8.44",
+      "umap-learn": "0.5.12",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "seconds": 236.28438480000113,
+  "outputs_sha256": {
+    "candidate_freeze_proposal.json": "05ba33de451bddac1baa4e14f0a06405e9bb9a6bbfecebe58c8368ca534b3ee0",
+    "candidate_regions.csv": "f3d6be2e3a8c255b6a0c82ec378b6b45a8da912b16c022600c1f629ebfb29756",
+    "candidate_windows.csv": "d8b82d04cdee709507567a7e626e69f985592537a2580bc60485224d0fbec328",
+    "confound_checks.csv": "da37abbc4f3c23747534068fc48166bd9eac4fb61e2ecfb5fbe4e3c5f87d8773",
+    "frozen_transform_proposal.joblib": "a1c61e11eacfd341c4e8daf590374c557b10dcd34f5f672544c1f2d2eb261d9a",
+    "full_length_mean.npy": "a34e03838bce07eacef9a73c06ef544239ef74aac071bb1af119fc2f0991f7b3",
+    "full_length_pca.csv": "c1d06c4d4f1dfeee7de73615e3e4d78eb61413d00e06ed9a473e1b559228fcaf",
+    "parameter_sensitivity.csv": "e535be9f841d21d118b71a83bc8f75164b9f494201a18dd98036ff7a8680a262",
+    "pca_explained_variance.csv": "dd313c3b9337030c5319965c80d796fde804813f652a1037961a1a2811ca921a",
+    "simple_baseline.csv": "e25e042c1f34ee46faa84e0f9be8ba292d67433608ad10b61181f52693add0e3",
+    "window_pca.png": "678bd7ccfbd218f866a05406e316e488238157fa9d4fa0924ef8f44e4f45b526",
+    "window_umap.png": "7519626a8b9c314892fc54baee562bf9db841cf08539eb4447173ee95af75096"
+  }
+}

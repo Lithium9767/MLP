@@ -1,0 +1,31 @@
+{
+  "status": "completed_discovery_diagnostic",
+  "run_commit": "8a0bf23715783de9fc1c5fe9fd3e6a5bb83644ee",
+  "dirty": false,
+  "utc": "2026-10-07T02:59:04.989271+00:00",
+  "python": "3.12.11 (main, Jun  7 2025, 12:31:34)  [GCC UCRT 15.1.0 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "command": [
+    "scripts/m3_candidate_robustness.py",
+    "--windows",
+    "data/processed/m3/M3-D-DISCOVERY-001/candidate_windows.csv",
+    "--source-receipt",
+    "reports/M3/runs/M3-D-DISCOVERY-001/run_receipt.json",
+    "--cluster",
+    "3",
+    "--state",
+    "25",
+    "--output-dir",
+    "data/processed/m3/M3-D-ROBUST-001"
+  ],
+  "seed": 42,
+  "source_run_commit": "dc066b76c637cdb1b90b7c8490e28ad81c4cff52",
+  "source_receipt_sha256": "df9eacdfc61f0909e1b7110a97ea8c0ee1a6aa8a703379951f482190ef9bd3a9",
+  "candidate_windows_sha256": "d8b82d04cdee709507567a7e626e69f985592537a2580bc60485224d0fbec328",
+  "validation_used": false,
+  "outputs_sha256": {
+    "length_bins.csv": "b7bd78fb09431c7be9eef3cf0597b670c15cc88287cf16a65b34630e0802c036",
+    "sequence_deltas.csv": "a45e67724e1bb7c67458e8d0aa08925dc68420abfea690d7fa0b8a6265f6c247",
+    "summary.json": "7df878289a5f3706d1088cb906e616918b9347f972b3f5beb23c1d826a26fd8c"
+  }
+}
