@@ -194,7 +194,7 @@ def evaluate_command(features: np.ndarray, rows: list[dict], config: dict, model
         raise ValueError('Reference model is not fitted to this ordered feature cohort')
     groups = np.array([r['homology_cluster'] for r in rows])
     k = reference.config.n_clusters
-    run_rows, predicted_rows = [], []
+    run_rows, predicted_rows, alignment_rows = [], [], []
     settings = config['evaluation']
     for seed in settings['seeds']:
         splitter = GroupShuffleSplit(n_splits=1, test_size=settings['heldout_group_fraction'], random_state=seed)
@@ -209,6 +209,9 @@ def evaluate_command(features: np.ndarray, rows: list[dict], config: dict, model
         source_ids, reference_ids = linear_sum_assignment(-contingency)
         relabel = np.empty(k, dtype=int)
         relabel[source_ids] = reference_ids
+        alignment_rows.extend({'seed': seed, 'local_cluster': int(local), 'reference_cluster': int(target),
+                               'training_overlap_windows': int(contingency[local, target])}
+                              for local, target in zip(source_ids, reference_ids))
         prediction = predictor.predict(features[heldout])
         matched = relabel[prediction['cluster']]
         correct = matched == reference.labels[heldout]
@@ -232,6 +235,7 @@ def evaluate_command(features: np.ndarray, rows: list[dict], config: dict, model
         save_model(predictor, output / f'heldout_seed{seed}_model.npz', config['feature_schema'])
     write_csv(output / 'group_holdout_metrics.csv', run_rows)
     write_csv(output / 'group_holdout_predictions.csv', predicted_rows)
+    write_csv(output / 'label_alignment.csv', alignment_rows)
     summary = {'operation': 'discovery_group_holdout_transfer_consistency', 'runs': run_rows,
                'reference_includes_heldout_groups': True, 'label_matching_uses': 'training rows only',
                'independent_function_accuracy': False, 'validation_used': False,
@@ -264,6 +268,7 @@ def main(argv: list[str] | None = None) -> None:
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     args.output.mkdir(parents=True, exist_ok=False)
     receipt = {'status': 'started', 'operation': args.command, 'commit': commit, 'dirty': False,
+               'command': [sys.executable, *sys.argv],
                'utc': datetime.now(timezone.utc).isoformat(),
                'inputs_sha256': {'features': sha256_file(args.features), 'windows': sha256_file(args.windows),
                                  'source': sha256_file(args.source), 'config': sha256_file(args.config)},
