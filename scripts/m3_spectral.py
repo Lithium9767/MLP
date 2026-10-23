@@ -54,11 +54,14 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 
 
 def load_bundle(features_path: Path, windows_path: Path, source: dict, config: dict,
-                *, fitting: bool) -> tuple[np.ndarray, list[dict]]:
+                *, fitting: bool,
+                prediction_splits: frozenset[str] = frozenset({'discovery', 'new'})) -> tuple[np.ndarray, list[dict]]:
     """Verify bytes, per-row keys, cohort and representation before model use.
 
     A source manifest attests file identity, not biological validity. The
     producer remains responsible for the stated upstream feature definition.
+    The dedicated frozen-validation entry explicitly supplies its split scope;
+    the ordinary predict command keeps validation locked.
     """
     if source['feature_schema'] != config['feature_schema']:
         raise ValueError('Feature schema mismatch')
@@ -79,7 +82,7 @@ def load_bundle(features_path: Path, windows_path: Path, source: dict, config: d
         raise ValueError('Duplicate window key')
     sequence_info, digest_group = {}, {}
     for row, (_, start, end) in zip(rows, keys):
-        if row['split'] not in ({'discovery'} if fitting else {'discovery', 'new'}):
+        if row['split'] not in ({'discovery'} if fitting else prediction_splits):
             raise ValueError('Validation remains locked; allowed splits are discovery/new')
         digest = row['sequence_sha256']
         if (not row['internal_id'] or not row['homology_cluster'] or len(digest) != 64
@@ -171,7 +174,8 @@ def predict_command(features: np.ndarray, rows: list[dict], config: dict, model_
                'vote_fraction_is_calibrated_probability': False,
                'out_of_distribution_rejection_calibrated': False,
                'assignment_is_candidate_only': True,
-               'validation_used': False, 'model_sha256': sha256_file(model_path)}
+               'validation_used': any(r['split'] == 'validation' for r in rows),
+               'model_sha256': sha256_file(model_path)}
     write_json(output / 'summary.json', summary)
     return summary
 

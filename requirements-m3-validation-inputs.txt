@@ -1,0 +1,8 @@
+# Separate ESM/preparation runtime matching the archived discovery extraction.
+# Use requirements-m3-spectral.txt for the frozen PCA/label-transfer stage.
+-r requirements.txt
+numpy==2.3.5
+biopython==1.88
+torch==2.12.0
+transformers==5.9.0
+safetensors==0.7.0
