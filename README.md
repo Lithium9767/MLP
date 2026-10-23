@@ -166,6 +166,10 @@ MLP/
 
 ## 当前状态
 
+本分支补充 [谱聚类 K=12 与新窗口标签迁移](reports/M3/spectral_k12.md)
+的独立比较入口（Issue #27）。原 M3 HDBSCAN 实验仍在 PR #22；本分支
+只使用 discovery 特征，不表示候选已冻结或 519 条 validation 已完成。
+
 - 已冻结 2078 条候选、2076 条 QC 可用、1721 条 primary；478 同源簇，discovery 1453、validation 623，实际清单 ID/簇交集均为 0。
 - PR #9/#16/#18/#19 已合并；#19 干净扫描运行 SHA 为 `1b7b249f986713a3b4c8343b898486be822fc16f`，保留旧 dirty 收据。
 - C 的 [Release 交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)已实际下载，整包及 12 个文件哈希匹配；2076 accepted、80219 坐标残基逐行核对、7R1C 88/65/39 已重算。
