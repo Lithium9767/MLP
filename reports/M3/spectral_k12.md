@@ -65,6 +65,26 @@ sklearn 的谱聚类只有训练图上的标签，没有原生 `predict`。这�
 
 对照是全 discovery 的参考分区，它见过留出组。所以输出的是“与全发现集参考分区的一致性”，**不是独立泛化准确率，更不是生物功能准确率**。既报告窗口一致比例，也报告每个留出同源组等权的一致比例和 ARI。519 条 validation 全程未使用，旧冻结验证入口保持原样。
 
+保存的留出模型保留各自的局部编号，`label_alignment.csv` 记录仅按训练窗口计算的局部编号→全发现集参考编号。`group_holdout_predictions.csv` 用对齐后的编号，单独 `predict` 则输出加载模型本身的编号；不能把不同重拟合的 C6 直接当作同一个簇。
+
+## 本次实际运行结果
+
+干净源码提交为 `ea5ee90fbdd15c0d97372944f14d33d6b39ed8b5`，发布运行目录为 `M3_SPECTRAL_PR_20261023_002`。12 簇计数依次为 292、1344、592、1101、859、1420、981、667、1165、1497、1267、990；与原 K12 逐项标签相同，ARI＝1。PCA20 保留约 86.81% 方差，近邻图为一个连通分量，没有谱拟合 warning。
+
+| 同源组留出 seed | 留出窗口 | 窗口一致率 | 各同源组等权一致率 | 留出标签 ARI |
+| --- | ---: | ---: | ---: | ---: |
+| 42 | 1,897 | 88.35% | 85.00% | 0.7812 |
+| 43 | 2,335 | 73.75% | 67.20% | 0.6317 |
+| 44 | 3,172 | 72.41% | 73.67% | 0.7163 |
+
+每次训练 220 组、留出 55 组，交集为 0。三次共输出 7,404 条留出预测（跨运行可能重复，不是 7,404 个独立窗口）。票权占比中位数都是 1，但参考分区的一致率仍低于 100%，也说明高投票一致程度不能保证重拟合边界或功能判断正确。
+
+另把 seed42 的 1,897 个留出窗口组成单独输入包，实际运行 `predict` 命令，按保存的训练对齐关系核验，与 `evaluate` 预测逐行一致，0 差异。这是 discovery 留出演示，没有伪装成外部新蛋白实验。例如 GVPA_000017 的原序列 36–45 窗口，局部模型候选簇 9 对齐为参考 C6，票权占比 1，最近距离 0.09532。
+
+运行收据、实际命令、配置与输出哈希见 [拟合](spectral_k12_runs/fit_receipt.json)、[留出评价](spectral_k12_runs/evaluation_receipt.json)、[独立 predict 命令](spectral_k12_runs/prediction_receipt.json)；[精确指标](spectral_k12_runs/group_holdout_metrics.csv)、[标签对齐](spectral_k12_runs/label_alignment.csv)、[助手独立技术核验](spectral_k12_runs/assistant_verification.json) 均可检查。完整数组、7,404 条预测明细和模型留在外部产物目录，不进普通 Git；公共汇总不能替代获取上游数组后复跑。
+
+该提交完整测试：96 passed、1 skipped、58 subtests passed；其中新增两个测试文件为 52 passed、56 subtests passed。已有 PyHMMER 重扫测试因环境缺少 PyHMMER 跳过，不宣称重扫通过。M2 release validator、差异检查通过。测试环境是 Python 3.14.3、numpy 2.4.2、scipy 1.17.1、scikit-learn 1.8.0；pytest 9.1.1/Biopython 1.88 从本机外部测试依赖目录加载，未改变项目运行版本。助手交叉核验是技术检查，不冒充团队成员签名的非作者审核。
+
 ## 运行命令
 
 先安装 `requirements-m3-spectral.txt`，并在干净、已提交的工作区运行。将审核过的上游包放在任意外部目录，不改源码中的路径。以下 PowerShell 使用相对路径示例，`inputs/core` 代表实际外部目录。

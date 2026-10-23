@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "demonstrated_operation": "real frozen-label-transfer predict CLI on discovery held-out groups",
+  "windows": 1897,
+  "heldout_groups": 55,
+  "group_overlap": 0,
+  "label_alignment_uses": "training-only mapping exported by evaluation",
+  "aligned_prediction_disagreements": 0,
+  "vote_fraction_and_nearest_distance_match_evaluation": true,
+  "validation_used": false,
+  "new_proteins_claimed": false,
+  "prediction_receipt_sha256": "5fe8def9faf0dd08c470d2b3345b7d363cb02e22aa8d1ef7dba800241a42b9f5",
+  "prediction_csv_sha256": "59cca4bfa9834307cbdc98015e177adf6edb1469ca5dcea21a65b47f8a953bcd",
+  "source_sha256": "d5f939574a5c1d23c33c7b14014e4cc0c21c10d14c4b04f309abdcf6273b4948",
+  "evaluation_receipt_sha256": "b967fda10ff53ddfcc8911586e930b631c3721ee6e035c3ba217060dd7e4178d",
+  "alignment_sha256": "93d9942d65d5bacd600f753f841f5b3b5f65ddde1cf26096567fa215b9029d7a"
+}
