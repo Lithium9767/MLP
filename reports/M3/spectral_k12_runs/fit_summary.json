@@ -1,0 +1,33 @@
+{
+  "operation": "spectral_fit",
+  "windows": 12175,
+  "sequences": 1202,
+  "groups": 275,
+  "cluster_window_counts": [
+    292,
+    1344,
+    592,
+    1101,
+    859,
+    1420,
+    981,
+    667,
+    1165,
+    1497,
+    1267,
+    990
+  ],
+  "model_diagnostics": {
+    "n_training_windows": 12175,
+    "n_input_features": 480,
+    "graph_connected_components": 1,
+    "pca_explained_variance_ratio": 0.8681065539070268,
+    "warnings": [],
+    "transfer_method": "inverse_distance_neighbours_in_frozen_pca",
+    "vote_fraction_is_probability": false,
+    "training_cohort_sha256": "23a5765e265f044bf71e60b120683ef75a0fbd9c11eae7d2e48d31a7a543e0d9"
+  },
+  "feature_schema": "esm2_t12_35M@6fbf070e65b0b7291e7bbcd451118c216cff79d8:last_layer:full_protein_context:mean10_step5:subtract_actual_PF00741.24_match1-39_mean:accepted7R1C_mapping_ge8:v1",
+  "measured_function_accuracy": null,
+  "validation_used": false
+}

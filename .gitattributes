@@ -3,3 +3,10 @@
 reports/M2/figure_manifest.csv -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M2/cohort_fix/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+
+# Frozen spectral sources and configs must have portable byte identities.
+**/*spectral*.py text eol=lf
+configs/m3_spectral*.json text eol=lf
+reports/M3/spectral_k12_runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+reports/M3/spectral_k12_evidence/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+reports/M3/spectral_validation_runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol

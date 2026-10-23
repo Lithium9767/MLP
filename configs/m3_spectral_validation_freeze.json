@@ -1,0 +1,121 @@
+{
+  "protocol": "M3-SPECTRAL-K12-VALIDATION-001",
+  "authorization": {
+    "source": "User instruction in the current project chat, after reviewing PR #28 and the fixed K12 results",
+    "quote": "用一下啊？",
+    "scope": "Use all 519 primary validation sequences for one frozen K12 transfer check; no refit or tuning."
+  },
+  "learned_model_commit": "ea5ee90fbdd15c0d97372944f14d33d6b39ed8b5",
+  "spectral_model_sha256": "731cfbd4cf68b15526e4b54af7b14ac4602d9e708162a2892de78d986b3ee44f",
+  "config_sha256": "5cc2c48c65d2b611a4054a77037f7a7c63f0fa7cd779bb7ffd3fb1a643e9c26e",
+  "inputs_sha256": {
+    "metadata": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "split_manifest": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "coordinates": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "reference": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+    "discovery_features": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+    "discovery_windows": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9"
+  },
+  "expected_validation": {
+    "sequences": 519,
+    "homology_groups": 118
+  },
+  "expected_discovery": {
+    "sequences": 1202,
+    "homology_groups": 275
+  },
+  "esm": {
+    "model_id": "facebook/esm2_t12_35M_UR50D",
+    "revision": "6fbf070e65b0b7291e7bbcd451118c216cff79d8",
+    "dimension": 480,
+    "layer": 12,
+    "batch_size": 8,
+    "threads": 4,
+    "software": {
+      "numpy": "2.3.5",
+      "torch": "2.12.0",
+      "transformers": "5.9.0",
+      "safetensors": "0.7.0"
+    },
+    "files": {
+      "config.json": "ae07364efa51e0fa1d81da3fe608f6d948abdbbb69785ba6e1df379a458e58ee",
+      "model.safetensors": "e35647818e0e064351d4531ed480d225a002567b4b2b93ad3a9246d753150fc0",
+      "special_tokens_map.json": "3aedcd4211c0d43aec4e607ff60a63255f3174ead795e997350f09a5f8cd9ee1",
+      "tokenizer_config.json": "7e9161ecdb548ec45a41cbc6b24aa4476fdd418461f491c4207baa99419a29ad",
+      "vocab.txt": "0b82cc0a7c7cf9e567b1e5892d793285b9fbae822c964ca48696f7db44598e03"
+    }
+  },
+  "mapping": {
+    "reference_anchor": "PF00741 state h -> 7R1C deposited residue h+10; retain actual frozen anchors only",
+    "source_algorithm_sha256": "b75074918a62e6efbb7f165f553c85a718a785e8467bc0f0285b3df48d4e29f9",
+    "substitution_matrix": "BLOSUM62",
+    "gap_parameters": [
+      [
+        -8,
+        -0.5
+      ],
+      [
+        -10,
+        -0.5
+      ],
+      [
+        -12,
+        -1
+      ],
+      [
+        -10,
+        -2
+      ]
+    ],
+    "maximum_optimal_ties": 32,
+    "minimum_identity": 0.25,
+    "minimum_positive_fraction": 0.6,
+    "minimum_present_HMM_anchors": 20,
+    "minimum_region_coverage": {
+      "N2-10": 7,
+      "alpha2_50-62": 10,
+      "C_context50-66": 13
+    },
+    "missing_HMM_matches_imputed": false,
+    "use_tentative_mapping": false,
+    "biopython_version": "1.88"
+  },
+  "evaluation": {
+    "cluster_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "refit_PCA_or_clustering": false,
+    "selection": "Existing schema: 10aa windows, step5, at least8 accepted mapped residues; subtract actual HMM-core embedding mean",
+    "profile_comparison": "Per-cluster homology-group/sequence/window-balanced reference-position distribution TV; use frozen cluster IDs without matching",
+    "diagnostic_training_quantile": 0.95,
+    "distance_reference": "Nearest training point from a different homology group; threshold from discovery only, diagnostic rather than rejection",
+    "residual_reference": "PCA reconstruction residual energy fraction; threshold from discovery only",
+    "within_sequence_label_permutations": 100,
+    "permutation_seed": 42,
+    "no_function_accuracy_claim": true,
+    "validation_driven_parameter_changes_allowed": false
+  },
+  "transfer_software": {
+    "numpy": "2.4.2",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0"
+  },
+  "implementation_sha256": {
+    "features/spectral_windows.py": "9f79a5a2973d700d18079113be2e7a1117128fb3836cc4aa976803b1da86da70",
+    "models/spectral_validation.py": "cf53994a71a758e561ea491ad6c599de8ce26f5719e3377e9f7ecf9554eb5817",
+    "scripts/m3_spectral_validate.py": "391ee6c4d04cc2cd219fdf067b8a1f9ef162f2de3df8198146b8838be5a0f83e",
+    "models/spectral_regions.py": "34b7ec9a19e2e3d6257b0c4875c90f13ac6527f9ad2a9d42da220f4ee157c274",
+    "scripts/m3_spectral.py": "10f0fd5a947a00531d07eda7df86bc48ab638cc2b5572cf047d09da2596818aa"
+  }
+}

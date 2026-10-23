@@ -1,0 +1,212 @@
+{
+  "status": "passed",
+  "scope": "Independent verification only; no spectral/PCA refitting performed. No repository core files modified.",
+  "source_commit": "ea5ee90fbdd15c0d97372944f14d33d6b39ed8b5",
+  "receipts": {
+    "fit": {
+      "artifact": "run_receipt.json",
+      "sha256": "e10b1f6d58b70b817aa2c0ab761ae22d6e02576d64f31b2197d69458aec88daa",
+      "status": "complete",
+      "actual_command_recorded": true,
+      "n_output_hashes_verified": 3,
+      "outputs": [
+        {
+          "artifact": "assignments.csv",
+          "sha256": "6e024beb83197aee7a27f330772c793578838ed795ccf3baf2c69552aa0272d4"
+        },
+        {
+          "artifact": "model.npz",
+          "sha256": "731cfbd4cf68b15526e4b54af7b14ac4602d9e708162a2892de78d986b3ee44f"
+        },
+        {
+          "artifact": "summary.json",
+          "sha256": "7ee5e03d21d1688710bd4fefed879c6b8fe96d18f7cb1d961ab956495cde6696"
+        }
+      ]
+    },
+    "evaluation": {
+      "artifact": "run_receipt.json",
+      "sha256": "b967fda10ff53ddfcc8911586e930b631c3721ee6e035c3ba217060dd7e4178d",
+      "status": "complete",
+      "actual_command_recorded": true,
+      "n_output_hashes_verified": 7,
+      "outputs": [
+        {
+          "artifact": "group_holdout_metrics.csv",
+          "sha256": "0416317600749c3af90cc5ae7c3bae8b53b6aecf64a7a9f408396af4869f36ae"
+        },
+        {
+          "artifact": "group_holdout_predictions.csv",
+          "sha256": "c8fd6481bb514dc027abdccbc3f154ef971ed39587d73b01f47eb91d4c04c28a"
+        },
+        {
+          "artifact": "heldout_seed42_model.npz",
+          "sha256": "e8a6603f07ae08669c23e41e3043fff055977d04170bb3d02979efb0877f012a"
+        },
+        {
+          "artifact": "heldout_seed43_model.npz",
+          "sha256": "9eb3eb796af8db6ae7e05d3f9c82d538a1a693de0e441ae74536338eb4bb177c"
+        },
+        {
+          "artifact": "heldout_seed44_model.npz",
+          "sha256": "4e75bbb2a401d07c94b6746efab6ecbe6161264b3aecf1320dc662e3253c477d"
+        },
+        {
+          "artifact": "label_alignment.csv",
+          "sha256": "93d9942d65d5bacd600f753f841f5b3b5f65ddde1cf26096567fa215b9029d7a"
+        },
+        {
+          "artifact": "summary.json",
+          "sha256": "d6b509ea6fea029632ec34d2a62ae12c7d9ba19f482b7f688431ac264395740b"
+        }
+      ]
+    }
+  },
+  "feature_schema": "esm2_t12_35M@6fbf070e65b0b7291e7bbcd451118c216cff79d8:last_layer:full_protein_context:mean10_step5:subtract_actual_PF00741.24_match1-39_mean:accepted7R1C_mapping_ge8:v1",
+  "input_shape": [
+    12175,
+    480
+  ],
+  "sequences": 1202,
+  "homology_groups": 275,
+  "fit_cluster_counts": [
+    292,
+    1344,
+    592,
+    1101,
+    859,
+    1420,
+    981,
+    667,
+    1165,
+    1497,
+    1267,
+    990
+  ],
+  "fit_ARI_vs_archived_K12": 1.0,
+  "fit_exact_label_ID_agreement": true,
+  "fit_projection_max_abs_difference": 3.8746783559417963e-14,
+  "training_cohort_sha256": "23a5765e265f044bf71e60b120683ef75a0fbd9c11eae7d2e48d31a7a543e0d9",
+  "evaluation": [
+    {
+      "seed": 42,
+      "train_groups": 220,
+      "heldout_groups": 55,
+      "group_overlap": 0,
+      "train_windows": 10278,
+      "heldout_windows": 1897,
+      "prediction_rows_verified": 1897,
+      "manual_distance_vote_samples": 20,
+      "train_refit_ARI": 0.7704442606146248,
+      "heldout_transfer_ARI": 0.7811624560125167,
+      "heldout_window_agreement": 0.8835002635740643,
+      "heldout_equal_group_agreement": 0.8499964031881743,
+      "median_vote_fraction": 1.0
+    },
+    {
+      "seed": 43,
+      "train_groups": 220,
+      "heldout_groups": 55,
+      "group_overlap": 0,
+      "train_windows": 9840,
+      "heldout_windows": 2335,
+      "prediction_rows_verified": 2335,
+      "manual_distance_vote_samples": 20,
+      "train_refit_ARI": 0.5508936104228969,
+      "heldout_transfer_ARI": 0.6317014092857444,
+      "heldout_window_agreement": 0.7374732334047109,
+      "heldout_equal_group_agreement": 0.6719706462225964,
+      "median_vote_fraction": 1.0
+    },
+    {
+      "seed": 44,
+      "train_groups": 220,
+      "heldout_groups": 55,
+      "group_overlap": 0,
+      "train_windows": 9003,
+      "heldout_windows": 3172,
+      "prediction_rows_verified": 3172,
+      "manual_distance_vote_samples": 20,
+      "train_refit_ARI": 0.7002121731613088,
+      "heldout_transfer_ARI": 0.7162550725286351,
+      "heldout_window_agreement": 0.7241488020176545,
+      "heldout_equal_group_agreement": 0.7367239435316071,
+      "median_vote_fraction": 1.0
+    }
+  ],
+  "prediction_rows_total": 7404,
+  "previous_P1_contracts": {
+    "wrong_K_model_rejected": true,
+    "changed_training_window_groups_rejected": true
+  },
+  "validation_boundary": {
+    "receipts_validation_used": false,
+    "all_input_windows_split": "discovery",
+    "fit_and_evaluate_read_only_explicit_prepared_features": true,
+    "note": "Code and logged-input boundary verified; no retrospective OS-level file-access trace was claimed."
+  },
+  "limitations": [
+    "Held-out predictions are compared to a full-discovery transductive reference containing those groups. This is consistency, not independent functional accuracy.",
+    "Repeated group holdouts are not statistically independent replicates.",
+    "Inverse-distance vote fraction is not a calibrated confidence probability."
+  ],
+  "artifact_bundle": "M3_SPECTRAL_PR_20261023_002",
+  "input_artifacts": [
+    {
+      "artifact": "features.npz",
+      "sha256": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595"
+    },
+    {
+      "artifact": "core_windows.csv",
+      "sha256": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9"
+    },
+    {
+      "artifact": "m3_spectral_source.json",
+      "sha256": "e8e05f3841ae5ecb0383059fc8886a78e2cb3a032028832fe775e385adc05848"
+    },
+    {
+      "artifact": "m3_spectral_k12.json",
+      "sha256": "5cc2c48c65d2b611a4054a77037f7a7c63f0fa7cd779bb7ffd3fb1a643e9c26e"
+    }
+  ],
+  "prior_verified_bundle_equivalence": {
+    "artifact_bundle": "M3_SPECTRAL_PR_20261023_001",
+    "identical_model_metric_prediction_files": 9,
+    "comparison": "All 9 prior model/assignment/metric/prediction/summary outputs have identical SHA256. Prior full prediction-row and manual-neighbour checks therefore apply to these exact release bytes."
+  },
+  "label_alignment_verification": {
+    "artifact": "label_alignment.csv",
+    "sha256": "93d9942d65d5bacd600f753f841f5b3b5f65ddde1cf26096567fa215b9029d7a",
+    "rows": 36,
+    "seeds": [
+      {
+        "seed": 42,
+        "alignment_rows": 12,
+        "mapping_is_bijective": true,
+        "matches_training_only_Hungarian_solution": true,
+        "overlap_counts_verified": true
+      },
+      {
+        "seed": 43,
+        "alignment_rows": 12,
+        "mapping_is_bijective": true,
+        "matches_training_only_Hungarian_solution": true,
+        "overlap_counts_verified": true
+      },
+      {
+        "seed": 44,
+        "alignment_rows": 12,
+        "mapping_is_bijective": true,
+        "matches_training_only_Hungarian_solution": true,
+        "overlap_counts_verified": true
+      }
+    ]
+  },
+  "source_code_review": {
+    "artifact": "m3_spectral.py",
+    "sha256": "6094d5a0baedc55cb61cf107d417b67d57d9b1ab7cde98f4e8bc6ca486c3370d",
+    "model_configuration_checked": true,
+    "ordered_training_window_group_identity_bound": true,
+    "previous_P1_findings_resolved": true
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "status": "complete",
+  "operation": "evaluate",
+  "commit": "ea5ee90fbdd15c0d97372944f14d33d6b39ed8b5",
+  "dirty": false,
+  "command": [
+    "C:\\Users\\37948\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "scripts/m3_spectral.py",
+    "evaluate",
+    "--features",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\work\\function_completion\\core_anchor_mean_probe_run\\features.npz",
+    "--windows",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\work\\function_completion\\core_anchor_mean_probe_run\\core_windows.csv",
+    "--source",
+    "configs/m3_spectral_source.json",
+    "--model",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\fit\\model.npz",
+    "--output",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\evaluation"
+  ],
+  "utc": "2026-10-23T08:17:59.186148+00:00",
+  "inputs_sha256": {
+    "features": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+    "windows": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9",
+    "source": "e8e05f3841ae5ecb0383059fc8886a78e2cb3a032028832fe775e385adc05848",
+    "config": "5cc2c48c65d2b611a4054a77037f7a7c63f0fa7cd779bb7ffd3fb1a643e9c26e",
+    "model": "731cfbd4cf68b15526e4b54af7b14ac4602d9e708162a2892de78d986b3ee44f"
+  },
+  "software": {
+    "numpy": "2.4.2",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0"
+  },
+  "threads": 3,
+  "validation_used": false,
+  "outputs_sha256": {
+    "group_holdout_metrics.csv": "0416317600749c3af90cc5ae7c3bae8b53b6aecf64a7a9f408396af4869f36ae",
+    "group_holdout_predictions.csv": "c8fd6481bb514dc027abdccbc3f154ef971ed39587d73b01f47eb91d4c04c28a",
+    "heldout_seed42_model.npz": "e8a6603f07ae08669c23e41e3043fff055977d04170bb3d02979efb0877f012a",
+    "heldout_seed43_model.npz": "9eb3eb796af8db6ae7e05d3f9c82d538a1a693de0e441ae74536338eb4bb177c",
+    "heldout_seed44_model.npz": "4e75bbb2a401d07c94b6746efab6ecbe6161264b3aecf1320dc662e3253c477d",
+    "label_alignment.csv": "93d9942d65d5bacd600f753f841f5b3b5f65ddde1cf26096567fa215b9029d7a",
+    "summary.json": "d6b509ea6fea029632ec34d2a62ae12c7d9ba19f482b7f688431ac264395740b"
+  }
+}
