@@ -1,0 +1,35 @@
+{
+  "experiment_id": "M3-D-SPECTRAL-ALPHA1-001",
+  "alpha1_run_commit": "18eaa6a4e48b23460df80e7541f1894bab530e90",
+  "python": "3.14.3",
+  "software": {
+    "numpy": "2.4.2",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.1"
+  },
+  "alpha1_result_repeated_identically": true,
+  "alpha1_four_matched_differences_reproduced": true,
+  "earlier_runs_are_exploratory": true,
+  "aggregate_sha256": {
+    "global/all_k.csv": "5857c1f5a4be4522f89f78044594855ba73f2ea7158c1eb3a7fb48848bcddfe0",
+    "global/protocol.json": "65e5b311e5a9c7453efc08e8a3e94901faaf705927e9bd5e8a03189442fe751f",
+    "global/pairwise_stability.csv": "75b8d2950ed06b402abcb41a223ad2a5db8f34e7df95bc981f68e1a8efafea9d",
+    "regions/final_six.csv": "b5385edb0781d900fba1433c4b5c91e8bfdeafcc9c20a3b7566a62e6605eaaee",
+    "regions/final_position_profiles.csv": "fd7109e879ea31a4944d1c824c4e5db21ad2dd3932dd2893f5cbf4882742ec80",
+    "regions/k_scan.csv": "c50459ef411fe4ed7dfd94d8d6f8282084afb504a0dfa7ad6b02b08a097bd6e6",
+    "regions/confirmation_refits.csv": "364e4fb551f23376dbefd83b4357081b04412598cae2d7eae4e7187b16ba5884",
+    "regions/beta_additional_refits.csv": "66a397a66d3e17636cc0a7d2e3b00055e0ca13e4315cf778c0e73b874205e11f",
+    "regions/protocol.json": "722d72da9c4e6f60eeb8f40ef983440cd1bfc628a124a3a8b32064a9d5eefada",
+    "regions/final_selection.json": "0b0bfc0cd10628cca742df8fc03e305b49a69332eb4fe7010c058293e845b2f7",
+    "function/scan.csv": "f59bfde4aa3d270d634c5165f1c3a947df04fe4087932825acf4402a149cc174",
+    "function/children.csv": "a6ed80e18855666548a234fbd8ccf5296961021f9f554253f354bc50b4fb8f24",
+    "function/matched_chemistry.csv": "7efaf01b161183b0e5065610ad3ba3d18078af179ee4784d0e79f7bec87dc461",
+    "function/frozen_candidates.json": "0ef46d4613b8ef4d474fe8b976754a01459a3fb28d982bb456029fee9d3ab021",
+    "function/replication.csv": "020aff8dd7255120ef3dd3c02fd10121c5eed836c83659d10e73436643cdf037",
+    "function/linker_control.csv": "ebe6046ebbb3e54a256bcd0ac451e339c8cf786b9b274d3193fd290b31047132",
+    "function/protocol.json": "2cbd62342ae172e2e6933343dff9adca76208b0419919c63e5a872ad109ad9c5",
+    "alpha1/window_shift.csv": "e72e5623a4ffd294f000cfe19ac813f7decab28870d4cc6fa98cef8216b91e41",
+    "alpha1/chemistry.csv": "9c04c7a7680b4844f857b43822aedf33729e7df1d9ef0c363112e2044e607869",
+    "regions/profiles.png": "373cc03a7bac630c4f933eb475e59a23bb403a89e422e324713c5058fb42e64e"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "primary": {
+    "0": 2,
+    "1": 2,
+    "2": 2
+  },
+  "beta_check_sha256": "66a397a66d3e17636cc0a7d2e3b00055e0ca13e4315cf778c0e73b874205e11f",
+  "models": {
+    "parent0_k2.npz": "eeb8e471b0619f7a7177bfd34cfd25d72d7b60011684627f3757a2deef1a55d1",
+    "parent1_k2.npz": "f7d2419c763804e09ee14478cb76cd5d948052285ecf13f9401c0103e64d572c",
+    "parent2_k2.npz": "83c5401b85333241eb358f516784fe25cbb5e5a4d20268fc0c620f950602a879"
+  },
+  "comment": "Exploratory follow-up after initial beta K3 failed confirmation. Beta K2 was originally discovery-eligible; eight additional draws compare both, before its validation transfer."
+}

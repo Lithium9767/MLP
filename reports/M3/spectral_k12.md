@@ -1,5 +1,7 @@
 # 谱聚类 K＝12：代码边界、结果和新窗口分配
 
+后续实验比较不同 K，逐一细分三个大区，并复核 α1 候选。当前建议与证据见[分层谱聚类与功能解释](spectral_hierarchy.md)。
+
 关联 [Issue #27](https://github.com/Lithium9767/MLP/issues/27)。本分支从 main 创建，与原 HDBSCAN 实现 [PR #22](https://github.com/Lithium9767/MLP/pull/22) 分开审查，不覆盖其历史结果。
 
 后续按用户明确指令，当前K12已冻结并完成519条保留验证序列的迁移，见 [验证结果](spectral_validation.md)。下文“未使用validation”仅描述此前的发现集及内部组留出实验，不再代表项目最新状态。

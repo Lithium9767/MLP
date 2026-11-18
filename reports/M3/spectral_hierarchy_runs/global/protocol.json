@@ -1,0 +1,49 @@
+{
+  "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    24,
+    32,
+    48,
+    64,
+    80,
+    100,
+    120
+  ],
+  "sampling_seeds": [
+    3101,
+    3102,
+    3103,
+    3104,
+    3105,
+    3106,
+    3107,
+    3108
+  ],
+  "groups_retained": 220,
+  "software": [
+    "1.8.0",
+    "1.17.1",
+    "2.4.2"
+  ],
+  "selection": "Among K within 0.05 of best median pairwise refit ARI, maximize silhouette on a fixed PCA20 sample. Repeat margin at 0, 0.02, 0.10.",
+  "feature_sha256": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+  "windows_sha256": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9"
+}

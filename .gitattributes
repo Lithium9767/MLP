@@ -10,3 +10,4 @@ configs/m3_spectral*.json text eol=lf
 reports/M3/spectral_k12_runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M3/spectral_k12_evidence/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 reports/M3/spectral_validation_runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+reports/M3/spectral_hierarchy_runs/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
