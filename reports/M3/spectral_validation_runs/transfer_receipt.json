@@ -1,0 +1,76 @@
+{
+  "status": "complete",
+  "stage": "transfer",
+  "validation_used": true,
+  "freeze_sha256": "1652263211742a6a2bda67310549d1d1fe56003dc5cc8899cd800f3fb7368251",
+  "protocol": "M3-SPECTRAL-K12-VALIDATION-001",
+  "commit": "f1a5892e8993ca55aecb94f74abc035bcf7c132d",
+  "dirty": false,
+  "command": [
+    "C:\\Users\\37948\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "scripts/m3_spectral_validate.py",
+    "transfer",
+    "--metadata",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\gvpa_v1\\metadata.csv",
+    "--split-manifest",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\gvpa_v1\\split\\split_manifest.csv",
+    "--coordinates",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\m2_c\\pf00741_scan_001\\hmm_coordinate_map.csv",
+    "--reference",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\m2_c\\7r1c_e\\7r1c_residue_hmm_map.csv",
+    "--model",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\fit\\model.npz",
+    "--prepared",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_VALIDATION_20261023_001\\prepared",
+    "--discovery-features",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\work\\function_completion\\core_anchor_mean_probe_run\\features.npz",
+    "--discovery-windows",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\work\\function_completion\\core_anchor_mean_probe_run\\core_windows.csv",
+    "--output",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_VALIDATION_20261023_001\\transfer"
+  ],
+  "utc": "2026-10-23T08:47:56.511811+00:00",
+  "population": {
+    "validation": {
+      "sequences": 519,
+      "homology_groups": 118
+    },
+    "discovery": {
+      "sequences": 1202,
+      "homology_groups": 275
+    }
+  },
+  "software": {
+    "python": "3.14.3 (tags/v3.14.3:323c59a, Feb  3 2026, 16:04:56) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.2"
+  },
+  "frozen_inputs_sha256": {
+    "metadata": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "split_manifest": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "coordinates": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "reference": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+    "discovery_features": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+    "discovery_windows": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9"
+  },
+  "fit_performed": false,
+  "spectral_model_sha256": "731cfbd4cf68b15526e4b54af7b14ac4602d9e708162a2892de78d986b3ee44f",
+  "result": {
+    "selected_windows": 5276,
+    "selected_sequences": 519,
+    "fit_performed": false,
+    "frozen_model_unchanged": true,
+    "validation_used": true,
+    "software": {
+      "numpy": "2.4.2",
+      "scipy": "1.17.1",
+      "scikit-learn": "1.8.0"
+    }
+  },
+  "outputs_sha256": {
+    "cluster_transfer_summary.csv": "b8cc7130160259a3bce4b1665e6a945b8bd8993d789e77a1ae9d98d8af72090a",
+    "predictions.csv": "be3685e55897cd1368ad8865134bc8d63a96ae77f87a16d7526c8e9d0ad77088",
+    "summary.json": "416c42d873003a0798e920014cb60b7dfa5f1b83c066935dd7cd58bd5fd34a80",
+    "validation_summary.json": "8d6821c0a4ac78553ba7ec7fc762e662f0732653eafe703adb127648978b599b",
+    "window_diagnostics.csv": "7fd260542363c7edf1b97d0dae015f14f19b65a29f2f10b59ba4a7ac3efad352"
+  }
+}

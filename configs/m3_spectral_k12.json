@@ -1,0 +1,10 @@
+{
+  "feature_schema": "esm2_t12_35M@6fbf070e65b0b7291e7bbcd451118c216cff79d8:last_layer:full_protein_context:mean10_step5:subtract_actual_PF00741.24_match1-39_mean:accepted7R1C_mapping_ge8:v1",
+  "feature_dimension": 480,
+  "window_length": 10,
+  "window_step": 5,
+  "minimum_accepted_mapping": 8,
+  "discovery_expectations": {"windows": 12175, "sequences": 1202, "groups": 275},
+  "model": {"n_clusters": 12, "pca_components": 20, "graph_neighbors": 15, "transfer_neighbors": 15, "seed": 42},
+  "evaluation": {"heldout_group_fraction": 0.2, "seeds": [42, 43, 44]}
+}

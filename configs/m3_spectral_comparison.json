@@ -1,0 +1,45 @@
+{
+  "seeds": [
+    9101,
+    9102,
+    9103,
+    9104,
+    9105,
+    9106,
+    9107,
+    9108
+  ],
+  "training_groups": 220,
+  "archived": {
+    "hierarchical6": {
+      "discovery_sha256": "683645e424985a122b7e590e0490505efd18141e2ec9cc14c3583b7dd4457b5d",
+      "label_counts": [
+        1405,
+        1380,
+        1872,
+        1770,
+        2377,
+        3371
+      ],
+      "validation_sha256": "79cc9353d081b5e5a5db3302b4be0d6e5618a61e55d66d45e9a135410453f21d"
+    },
+    "flat12": {
+      "discovery_sha256": "52f65bcc8570bc1fff23f40e6febbaf82342d635e9e96053487853a5985eb4bd",
+      "label_counts": [
+        292,
+        1344,
+        592,
+        1101,
+        859,
+        1420,
+        981,
+        667,
+        1165,
+        1497,
+        1267,
+        990
+      ],
+      "validation_sha256": "78317fd4c08ac3ea34ad4a3c65b0785dab21650d7600a58c61ce4a36c0e2b318"
+    }
+  }
+}

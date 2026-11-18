@@ -1,0 +1,8 @@
+{
+  "feature_schema": "esm2_t12_35M@6fbf070e65b0b7291e7bbcd451118c216cff79d8:last_layer:full_protein_context:mean10_step5:subtract_actual_PF00741.24_match1-39_mean:accepted7R1C_mapping_ge8:v1",
+  "features_sha256": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+  "windows_sha256": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9",
+  "upstream_features_receipt_sha256": "341c24f6ff0414129f5f62faa050780f33409005b89dbbdb753f1b5a18f8d147",
+  "upstream_mapping_sha256": "f86d4525e2a20491a875f58d2260e3e3713e76fa45b52b493aad38b9706d450b",
+  "source": "Existing discovery-only core_anchor_mean_probe_run/features.npz and core_windows.csv; exploratory provenance retained, not relabeled as a clean production run. Raw arrays are external to Git."
+}

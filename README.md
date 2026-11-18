@@ -166,12 +166,17 @@ MLP/
 
 ## 当前状态
 
+本分支补充 [谱聚类 K=12 与新窗口标签迁移](reports/M3/spectral_k12.md)
+的独立比较入口（Issue #27）。原 M3 HDBSCAN 实验仍在 PR #22；本分支
+现已按用户指令冻结当前K12并完成 [519条保留组迁移](reports/M3/spectral_validation.md)，
+不表示M3整体已验收或已经证明12种生物功能。
+
 - 已冻结 2078 条候选、2076 条 QC 可用、1721 条 primary；478 同源簇，discovery 1453、validation 623，实际清单 ID/簇交集均为 0。
 - PR #9/#16/#18/#19 已合并；#19 干净扫描运行 SHA 为 `1b7b249f986713a3b4c8343b898486be822fc16f`，保留旧 dirty 收据。
 - C 的 [Release 交接包](https://github.com/Lithium9767/MLP/releases/download/c-m2-scan-002-handoff/MLP_C_M2_scan_002_handoff.zip)已实际下载，整包及 12 个文件哈希匹配；2076 accepted、80219 坐标残基逐行核对、7R1C 88/65/39 已重算。
 - #19 待审提交的完整测试为 45 passed、2 subtests passed，M2 validator 通过；后续最终提交仍须绑定 SHA 检查。
 - 队列图为 1721/20/305/30/2；旧 E001 运行 SHA 仍未知，其他六图的诊断重绘不是原运行的字节复现。
-- **已取消强制 B/C 独立复核；M2 已由 A 确认验收。M3 可以启动，#17 已转为待审，尚未运行正式实验。** 规则见 [CONTRIBUTING](CONTRIBUTING.md)，证据与关闭条件见 [验收报告](reports/M2/m2_acceptance.md) 和 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
+- **已取消强制 B/C 独立复核；M2 已由 A 确认验收。M3 HDBSCAN 结果见 PR #22；本分支固定谱聚类K12并完成519条validation迁移，区域对应可复现、C10仍混杂。原HDBSCAN候选冻结状态不变，M3尚未整体验收。** 规则见 [CONTRIBUTING](CONTRIBUTING.md)，M2 证据见 [验收报告](reports/M2/m2_acceptance.md) 和 [Issue #15](https://github.com/Lithium9767/MLP/issues/15)。
 - B 复现包中的两份摘要不是 C 原扫描摘要；实际三份冻结输入哈希一致，不改变原 split。限制见技术核验报告。
 
 ## 主要风险
@@ -194,4 +199,4 @@ MLP/
 - [ ] A 确认旧 E001 来源未知等限制的处理，不将归档 SHA 冒充运行 SHA。
 - [ ] D在验证集复现全长与窗口表示结果并完成参数敏感性。
 - [ ] E实现至少一种残基遮挡/扰动方法及随机区域基线。
-- [x] M2 收尾与计划 PR 已按负责人授权合并；M3 仅有迁移草稿。B/C 旧分支保留。
+- [x] M2 收尾与计划 PR 已按负责人授权合并；M3 实验在独立分支中审查，尚未验收。B/C 旧分支保留。

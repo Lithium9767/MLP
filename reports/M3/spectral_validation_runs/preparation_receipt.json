@@ -1,0 +1,67 @@
+{
+  "status": "complete",
+  "stage": "prepare",
+  "validation_used": true,
+  "freeze_sha256": "1652263211742a6a2bda67310549d1d1fe56003dc5cc8899cd800f3fb7368251",
+  "protocol": "M3-SPECTRAL-K12-VALIDATION-001",
+  "commit": "f1a5892e8993ca55aecb94f74abc035bcf7c132d",
+  "dirty": false,
+  "command": [
+    "C:\\ProgramData\\anaconda3\\python.exe",
+    "scripts/m3_spectral_validate.py",
+    "prepare",
+    "--metadata",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\gvpa_v1\\metadata.csv",
+    "--split-manifest",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\gvpa_v1\\split\\split_manifest.csv",
+    "--coordinates",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\m2_c\\pf00741_scan_001\\hmm_coordinate_map.csv",
+    "--reference",
+    "C:\\Users\\37948\\Desktop\\MLP\\data\\processed\\m2_c\\7r1c_e\\7r1c_residue_hmm_map.csv",
+    "--model",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\fit\\model.npz",
+    "--embeddings",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_VALIDATION_20261023_001\\embeddings",
+    "--output",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_VALIDATION_20261023_001\\prepared"
+  ],
+  "utc": "2026-10-23T08:47:29.687084+00:00",
+  "population": {
+    "validation": {
+      "sequences": 519,
+      "homology_groups": 118
+    },
+    "discovery": {
+      "sequences": 1202,
+      "homology_groups": 275
+    }
+  },
+  "software": {
+    "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "numpy": "2.3.5"
+  },
+  "frozen_inputs_sha256": {
+    "metadata": "62893e31a2dbc245f29c0e9af0a282dcb5099d0e95b96db1a9cead2ac933004e",
+    "split_manifest": "0a6bd3b44d284a407e1cc9d5be758f0f9439c28395deb6d62d2c787f95341e9c",
+    "coordinates": "624e65366776ab71ed9141afd7d97aa00cb07f0465a6bd133944c7f6675b395d",
+    "reference": "c48bd6f1c9f489000872ab3aa50f56d30106c0b56cf3762dbda4ef8a4aa56b7c",
+    "discovery_features": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+    "discovery_windows": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9"
+  },
+  "fit_performed": false,
+  "spectral_model_sha256": "731cfbd4cf68b15526e4b54af7b14ac4602d9e708162a2892de78d986b3ee44f",
+  "result": {
+    "all_windows": 12902,
+    "selected_windows": 5276,
+    "sequences_with_selected_windows": 519,
+    "fit_performed": false
+  },
+  "outputs_sha256": {
+    "accepted_reference_mapping.csv": "7c1db543a61ce3194d6b0b061ac0d99f9f65732c9f99c4b587cb3668ec18ea07",
+    "all_windows.csv": "9bd5a7b20be97f1475bddacaae57cfc366ef9027e4151f06fdb551bce223b1eb",
+    "features.npz": "423dab2464e77b543a1b53b447844b0bfc524763d836ff60f613f73e73801f83",
+    "sequence_mapping_quality.csv": "b3ce5110c4d4bc80e55d400ef76f5c4ab752fa801153b34eb78c1a602594406b",
+    "source.json": "2c1c797a438d7a56dd0d4f8c065dab82ad5199894690b1be727af2b3abcafbd0",
+    "windows.csv": "198b8421659c9c3fdb32b8ed33130fcae284902c226fffccc111b2e8c6e15865"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "ks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    20,
+    24,
+    32,
+    48,
+    64
+  ],
+  "seeds": [
+    5101,
+    5102,
+    5103,
+    5104,
+    5105,
+    5106,
+    5107,
+    5108,
+    5109,
+    5110,
+    5111,
+    5112
+  ],
+  "sampled_groups": 220,
+  "parent_source": {
+    "chosen_k": 3,
+    "model_sha256": "f63bc94338fb9a0c98667b6ce5bbabfbc330b9083af2b32cf05f8bff1fb7bb15",
+    "screen_to_model": {
+      "0": 0,
+      "1": 1,
+      "2": 2
+    },
+    "metrics_sha256": "5857c1f5a4be4522f89f78044594855ba73f2ea7158c1eb3a7fb48848bcddfe0",
+    "used_validation_for_selection": false,
+    "evaluation_cohort_previously_used_for_k12": true
+  },
+  "schema": "esm2_t12_35M@6fbf070e65b0b7291e7bbcd451118c216cff79d8:last_layer:full_protein_context:mean10_step5:subtract_actual_PF00741.24_match1-39_mean:accepted7R1C_mapping_ge8:v1",
+  "stable": "One-to-one, group-balanced membership Jaccard: median >= .75 and Q25 >= .60, >=15 discovery groups.",
+  "partition": "All children stable; median conditional ARI >= .70; silhouette >= .15; keep within .05 best eligible ARI, maximize silhouette; fallback K=1.",
+  "extra": "For each parent and reference midpoint band, one stable exemplar with >=.70 band share and >=.20 gain over parent. Rank by median Jaccard then group support. Overlapping resolutions are not a partition.",
+  "region_bands": [
+    "N",
+    "alpha1_front",
+    "alpha1_end",
+    "link22_23",
+    "beta1_front",
+    "beta1_end",
+    "turn",
+    "beta2_front",
+    "beta2_end",
+    "link49",
+    "alpha2_front",
+    "alpha2_end",
+    "C"
+  ],
+  "validation_used_for_selection": false
+}

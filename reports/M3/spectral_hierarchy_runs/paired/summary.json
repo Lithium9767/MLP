@@ -1,0 +1,30 @@
+{
+  "discovery_windows": 12175,
+  "validation_windows": 5276,
+  "paired_runs": 8,
+  "pair_comparisons": 28,
+  "methods": {
+    "flat6": {
+      "median_ari": 0.7230914553857992,
+      "min_ari": 0.5221979748016282,
+      "max_ari": 0.9780654853459396,
+      "midpoint_mae": 2.488934034967784
+    },
+    "flat12": {
+      "median_ari": 0.7538960084563222,
+      "min_ari": 0.5938448312791546,
+      "max_ari": 0.8883225073842685,
+      "midpoint_mae": 2.8692739593468
+    },
+    "hierarchical6": {
+      "median_ari": 0.8002790679838214,
+      "min_ari": 0.6274944063839241,
+      "max_ari": 0.9899243987237653,
+      "midpoint_mae": 2.476897044686241
+    }
+  },
+  "archived_labels_verified": [
+    "hierarchical6",
+    "flat12"
+  ]
+}

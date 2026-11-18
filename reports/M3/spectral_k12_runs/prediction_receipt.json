@@ -1,0 +1,40 @@
+{
+  "status": "complete",
+  "operation": "predict",
+  "commit": "ea5ee90fbdd15c0d97372944f14d33d6b39ed8b5",
+  "dirty": false,
+  "command": [
+    "C:\\Users\\37948\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "scripts/m3_spectral.py",
+    "predict",
+    "--features",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\predict_input\\features.npz",
+    "--windows",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\predict_input\\windows.csv",
+    "--source",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\predict_input\\source.json",
+    "--model",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\evaluation\\heldout_seed42_model.npz",
+    "--output",
+    "C:\\Users\\37948\\Documents\\Codex\\2026-10-12\\kan\\outputs\\M3_SPECTRAL_PR_20261023_002\\prediction_demo"
+  ],
+  "utc": "2026-10-23T08:19:38.928171+00:00",
+  "inputs_sha256": {
+    "features": "5ac325c1c68f593c7cf08dc59dd921f5c22b7771a7463ed8f4fc806106cba186",
+    "windows": "deb929150970ff13900dbdd63a4fc0a6ea2a804303d4c9cef832bd6b678b86e2",
+    "source": "d5f939574a5c1d23c33c7b14014e4cc0c21c10d14c4b04f309abdcf6273b4948",
+    "config": "5cc2c48c65d2b611a4054a77037f7a7c63f0fa7cd779bb7ffd3fb1a643e9c26e",
+    "model": "e8a6603f07ae08669c23e41e3043fff055977d04170bb3d02979efb0877f012a"
+  },
+  "software": {
+    "numpy": "2.4.2",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.8.0"
+  },
+  "threads": 3,
+  "validation_used": false,
+  "outputs_sha256": {
+    "predictions.csv": "59cca4bfa9834307cbdc98015e177adf6edb1469ca5dcea21a65b47f8a953bcd",
+    "summary.json": "037e8ea480d7ead8973913b22b2b26fe58cb8555ab3d1f38128d118dbb23249f"
+  }
+}

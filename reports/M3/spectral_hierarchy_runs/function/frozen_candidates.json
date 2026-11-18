@@ -1,0 +1,46 @@
+{
+  "candidates": [
+    {
+      "leaf": "3",
+      "k": "24",
+      "child": "18",
+      "site": "7",
+      "child_rate": "0.7188037972085924",
+      "other_rate": "0.3455136225612303",
+      "difference": "0.37329017464736214",
+      "comparable_child_fraction": "0.920559900216949"
+    },
+    {
+      "leaf": "3",
+      "k": "48",
+      "child": "33",
+      "site": "6",
+      "child_rate": "0.6300118826990574",
+      "other_rate": "0.877369225867983",
+      "difference": "-0.24735734316892566",
+      "comparable_child_fraction": "0.9574481169715743"
+    },
+    {
+      "leaf": "5",
+      "k": "24",
+      "child": "18",
+      "site": "38",
+      "child_rate": "0.9723021552492459",
+      "other_rate": "0.6730785558986765",
+      "difference": "0.2992235993505694",
+      "comparable_child_fraction": "0.5160156211883566"
+    },
+    {
+      "leaf": "5",
+      "k": "48",
+      "child": "20",
+      "site": "38",
+      "child_rate": "0.9999999999999998",
+      "other_rate": "0.7670319683106676",
+      "difference": "0.23296803168933222",
+      "comparable_child_fraction": "1.0"
+    }
+  ],
+  "replication": "Same sign, same matching, >=.20 absolute difference and same group/overlap requirements.",
+  "prior_use": "Previously used 519 sequences, biochemical replication only; no measured function per sequence."
+}

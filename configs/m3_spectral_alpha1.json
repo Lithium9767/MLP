@@ -1,0 +1,35 @@
+{
+  "path": [
+    {
+      "k": 3,
+      "windows": 3642,
+      "cohort_sha256": "109708e33ea3cb3659b8cbe9c98626c44c8afb2cc7e87178c6234e4453cd8d7c"
+    },
+    {
+      "k": 2,
+      "windows": 1770,
+      "cohort_sha256": "708aad93c8c211c97598817fb6f9d737eafda5b08ed074a8df8f0b8ff98ec097"
+    },
+    {
+      "k": 24,
+      "windows": 100,
+      "cohort_sha256": "f72aed43568462df6e854f9abfee32d226d5f41147925ea60055613e860b0ed9"
+    }
+  ],
+  "discovery": {
+    "features_sha256": "eae1e3f2ffe4981b83fdcf369e5d19a81b62ea7afb22e5be752f60f893b38595",
+    "windows_sha256": "c68270227a37b129783967a26d84f7a0d1229d34771e1ef498f53e1d7dd192f9",
+    "mapping_sha256": "f86d4525e2a20491a875f58d2260e3e3713e76fa45b52b493aad38b9706d450b",
+    "embedding_manifest_sha256": "e210aab1fa1390c34706aad8e75729fc57872303c093b7447e686d00ce9e1fba",
+    "window_table": "core_windows.csv"
+  },
+  "validation": {
+    "features_sha256": "423dab2464e77b543a1b53b447844b0bfc524763d836ff60f613f73e73801f83",
+    "windows_sha256": "198b8421659c9c3fdb32b8ed33130fcae284902c226fffccc111b2e8c6e15865",
+    "mapping_sha256": "7c1db543a61ce3194d6b0b061ac0d99f9f65732c9f99c4b587cb3668ec18ea07",
+    "embedding_manifest_sha256": "87a969e1fc4aaf65d5ff9556d036b4315078ef905140a1ed328687e4ffe98d32",
+    "window_table": "windows.csv"
+  },
+  "site": 7,
+  "residues": "ST"
+}

@@ -1,0 +1,12 @@
+{
+  "source_csv_sha256": "b8cc7130160259a3bce4b1665e6a945b8bd8993d789e77a1ae9d98d8af72090a",
+  "figure_sha256": "1ba4fd63e0c14ec200af9e3a408bf91dc58913fc2d64b667c493a9d58b4bc5f5",
+  "script_sha256": "9a19bb1730247805a702f6d4edcf773f889cf11ef80ec906784ba5d6a821e5ee",
+  "matplotlib": "3.10.8",
+  "shared_scale": [
+    0,
+    0.15000000000000002
+  ],
+  "figure_rows_match_source_TV": true,
+  "function_accuracy_displayed": false
+}
